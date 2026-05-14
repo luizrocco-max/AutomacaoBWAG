@@ -1,0 +1,19 @@
+cores:
+  primarias:
+    navy:    { hex: "#1C0845", rgb: [28, 8, 69],     uso: "logo, textos principais, fundos institucionais" }
+    royal:   { hex: "#2A1A8C", rgb: [42, 26, 140],   uso: "headers, capas, blocos de destaque" }
+    electric:{ hex: "#4A3BE0", rgb: [74, 59, 224],   uso: "setas, ícones, elementos gráficos de movimento" }
+
+  secundarias:
+    periwinkle: { hex: "#7B6FF0", rgb: [123, 111, 240], uso: "sobreposições, blocos intermediários, gráficos" }
+    lavanda:    { hex: "#BFB8F5", rgb: [191, 184, 245], uso: "linhas finas, callouts, textos secundários em fundos escuros" }
+
+  neutras:
+    branco:      { hex: "#FFFFFF", rgb: [255, 255, 255], uso: "fundos limpos, contraste em peças escuras" }
+    cinza_claro: { hex: "#F4F4F6", rgb: [244, 244, 246], uso: "fundos sutis, tabelas, separadores" }
+    cinza_texto: { hex: "#6B6B7B", rgb: [107, 107, 123], uso: "textos secundários, legendas" }
+    preto_bwag:  { hex: "#0A0420", rgb: [10, 4, 32],    uso: "textos principais sobre fundos claros (nunca preto puro)" }
+
+logo:
+  versao_escura: "templates/logo_bwag_dark.png"
+  versao_branca: "templates/logo_bwag_white.png"

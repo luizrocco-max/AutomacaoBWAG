@@ -8,6 +8,32 @@ caminhos:
   processed: "data/processed/"
   output: "output/"
 
-fundos:
-  - nome: "Fundo A"
-  - nome: "Fundo B"
+sumario:
+  Overview: 3
+  "Performance Fundos Gestão BWAG": 5
+  Multimercado: 15
+  "Renda Variável": 22
+  "Movimentações e Sugestões": 32
+  "Novas Gestoras": 37
+
+overview:
+  arquivo_quantum: "data/input/quantum/Relatorio_14_05_2026_10_30_57.xlsx"
+  valor_fundos: 633600000
+  valor_direto: 95500000
+
+  # Nome completo (Quantum) → nome curto (gráfico)
+  nomes_curtos:
+    "BWAG SABIÁ FIF CIC MULTIMERCADO": "SABIÁ"
+    "CASULO FIF CIC MULTIMERCADO": "CASULO"
+    "CAVALIER HARRY KING FIF MULTIMERCADO": "CAVALIER HARRY KING"
+    "EM5 FIF MULTIMERCADO": "EM5"
+    "EXCLUSIVE FINANCIAL RESERVE 11 FIF MULTIMERCADO": "EXCLUSIVE FIN RES 11"
+    "FALCÃO PEREGRINO FIF MULTIMERCADO": "FALCÃO PEREGRINO"
+    "FINANCE 38 FAMILY FI MULTIMERCADO": "FINANCE 38 FAMILY"
+    "LHC FIF MULTIMERCADO": "LHC"
+    "LUPA RESP LIMITADA FIF CIC MULTIMERCADO CRÉDITO PRIVADO": "LUPA"
+    "MAITACA AÇÕES FIF CIC AÇÕES": "MAITACA"
+    "MEMMO FI MULTIMERCADO": "MEMMO"
+    "SAMPA 91 FIF MULTIMERCADO": "SAMPA 91"
+    "SAMPA FIF FI INFRA RENDA FIXA": "SAMPA INFRA"
+    "SÃO MANUEL ICATU QUALIFICADO PREVIDÊNCIA FIF MULTIMERCADO PREVIDENCIÁRIO": "SÃO MANUEL"
