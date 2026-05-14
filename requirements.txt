@@ -1,0 +1,7 @@
+pandas
+openpyxl
+pdfplumber
+python-pptx
+matplotlib
+pyyaml
+python-dotenv

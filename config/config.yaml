@@ -1,0 +1,13 @@
+competencia: "2026-05"
+
+caminhos:
+  template: "templates/comite_template.pptx"
+  input_excel: "data/input/excel/"
+  input_pdf: "data/input/pdf/"
+  input_quantum: "data/input/quantum/"
+  processed: "data/processed/"
+  output: "output/"
+
+fundos:
+  - nome: "Fundo A"
+  - nome: "Fundo B"
