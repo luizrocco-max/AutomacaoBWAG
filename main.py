@@ -5,7 +5,10 @@ from pptx import Presentation
 
 from src.builders.capa_sumario import build_capa, build_sumario
 from src.builders.overview import build_overview
+from src.builders.performance import build_performance
 from src.readers.quantum_reader import ler_quantum
+from src.readers.quantum_performance_reader import ler_performance
+from src.readers.btg_pdf_reader import carregar_overrides_btg
 
 load_dotenv()
 
@@ -37,6 +40,17 @@ def main():
         dados_quantum=dados_quantum,
         valor_fundos=cfg_ov["valor_fundos"],
         valor_direto=cfg_ov["valor_direto"],
+    )
+
+    print("[ Performance ]")
+    cfg_perf = config["performance"]
+    dados_perf = ler_performance(cfg_perf["arquivo_quantum"])
+    overrides_btg = carregar_overrides_btg(config["caminhos"]["input_pdf"])
+    build_performance(
+        slide=prs.slides[5],
+        dados_quantum=dados_perf,
+        overrides_btg=overrides_btg,
+        config_performance=cfg_perf,
     )
 
     pasta_saida = os.path.join(config["caminhos"]["output"], competencia)
