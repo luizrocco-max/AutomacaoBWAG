@@ -2,11 +2,11 @@ competencia: "2026-05"
 
 caminhos:
   template: "templates/comite_template.pptx"
-  input_excel: "C:/Users/Rocco/Meu Drive/AutomacaoBWAG_data/input/excel/"
-  input_pdf: "C:/Users/Rocco/Meu Drive/AutomacaoBWAG_data/input/pdf/"
-  input_quantum: "C:/Users/Rocco/Meu Drive/AutomacaoBWAG_data/input/quantum/"
-  processed: "C:/Users/Rocco/Meu Drive/AutomacaoBWAG_data/processed/"
-  output: "C:/Users/Rocco/Meu Drive/AutomacaoBWAG_output/"
+  input_excel:    "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG/data/input/excel/"
+  input_pdf:      "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG/data/input/pdf/"
+  input_quantum:  "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG/data/input/quantum/"
+  processed:      "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG/data/processed/"
+  output:         "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG/output/"
 
 sumario:
   Overview: 3
@@ -17,7 +17,7 @@ sumario:
   "Novas Gestoras": 37
 
 overview:
-  arquivo_quantum: "C:/Users/Rocco/Meu Drive/AutomacaoBWAG_data/input/quantum/Relatorio_14_05_2026_10_30_57.xlsx"
+  arquivo_quantum: "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG/data/input/quantum/Relatorio_14_05_2026_10_30_57.xlsx"
   valor_fundos: 633600000
   valor_direto: 95500000
 
@@ -39,7 +39,7 @@ overview:
     "SÃO MANUEL ICATU QUALIFICADO PREVIDÊNCIA FIF MULTIMERCADO PREVIDENCIÁRIO": "SÃO MANUEL"
 
 performance:
-  arquivo_quantum: "C:/Users/Rocco/Meu Drive/AutomacaoBWAG_data/input/quantum/Relatorio_14_05_2026_10_41_40.xlsx"
+  arquivo_quantum: "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG/data/input/quantum/Relatorio_14_05_2026_10_41_40.xlsx"
 
   fundos_cdi:
     - "CASULO FIF CIC MULTIMERCADO"
