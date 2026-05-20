@@ -7,10 +7,13 @@ from src.builders.capa_sumario import build_capa, build_sumario
 from src.builders.overview import build_overview
 from src.builders.performance import build_performance
 from src.builders.multimercado_sabia import build_multimercado_sabia
+from src.builders.renda_variavel_maitaca import build_renda_variavel_maitaca, ler_mapeamento_nomes
 from src.readers.quantum_reader import ler_quantum
 from src.readers.quantum_performance_reader import ler_performance
 from src.readers.btg_pdf_reader import carregar_overrides_btg
 from src.readers.btg_sabia_reader import ler_sabia, encontrar_pdf_sabia
+from src.readers.btg_carteira_reader import ler_carteira_btg, encontrar_pdf_fundo
+from src.readers.quantum_beta_reader import ler_quantum_beta
 
 load_dotenv()
 
@@ -67,6 +70,27 @@ def main():
         )
     else:
         print("  Aviso: PDF do SABIA nao encontrado em input_pdf/")
+
+    print("[ Renda Variável - MAITACA ]")
+    cfg_rv = config.get("renda_variavel", {})
+    pdf_maitaca = encontrar_pdf_fundo(config["caminhos"]["input_pdf"], "maitaca")
+    if pdf_maitaca and cfg_rv.get("arquivo_quantum_beta"):
+        dados_maitaca  = ler_carteira_btg(pdf_maitaca)
+        dados_beta     = ler_quantum_beta(cfg_rv["arquivo_quantum_beta"])
+        mapa_nomes     = ler_mapeamento_nomes(
+            os.path.join(config["caminhos"]["input_excel"], "mapeamento_nomes_maitaca.xlsx")
+        )
+        build_renda_variavel_maitaca(
+            slide=prs.slides[21],
+            dados_pdf=dados_maitaca,
+            dados_beta=dados_beta,
+            config_maitaca={
+                "titulo":            cfg_rv.get("maitaca_titulo", "MAITACA AÇÕES FIC AÇÕES"),
+                "nomes_pdf_quantum": mapa_nomes,
+            },
+        )
+    else:
+        print("  Aviso: PDF ou Quantum Beta do MAITACA não encontrado")
 
     pasta_saida = os.path.join(config["caminhos"]["output"], competencia)
     os.makedirs(pasta_saida, exist_ok=True)

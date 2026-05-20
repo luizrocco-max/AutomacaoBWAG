@@ -42,6 +42,11 @@ multimercado:
   sabia_titulo: "BWAG SABIÁ FIC MULTIMERCADO CRÉDITO PRIVADO"
   # PDF encontrado automaticamente pelo nome (qualquer arquivo com "sabia" na pasta input_pdf)
 
+renda_variavel:
+  maitaca_titulo: "MAITACA AÇÕES FIC AÇÕES"
+  arquivo_quantum_beta: "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG_dados/data/input/quantum/Relatorio_20_05_2026_15_02_19.xlsx"
+  # Mapeamento em: data/input/excel/mapeamento_nomes_maitaca.xlsx
+
 performance:
   arquivo_quantum: "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG_dados/data/input/quantum/Relatorio_14_05_2026_10_41_40.xlsx"
 
