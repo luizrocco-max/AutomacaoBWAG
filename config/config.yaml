@@ -38,6 +38,10 @@ overview:
     "SAMPA FIF FI INFRA RENDA FIXA": "SAMPA INFRA"
     "SÃO MANUEL ICATU QUALIFICADO PREVIDÊNCIA FIF MULTIMERCADO PREVIDENCIÁRIO": "SÃO MANUEL"
 
+multimercado:
+  sabia_titulo: "BWAG SABIÁ FIC MULTIMERCADO CRÉDITO PRIVADO"
+  # PDF encontrado automaticamente pelo nome (qualquer arquivo com "sabia" na pasta input_pdf)
+
 performance:
   arquivo_quantum: "G:/.shortcut-targets-by-id/1_KboCrKj4jeX6ujjF9DFVoPqD5Fbu8aL/Nova BWAG/Pastas Colaboradores - Pública/Luiz Rocco - Pública/AutomacaoBWAG_dados/data/input/quantum/Relatorio_14_05_2026_10_41_40.xlsx"
 

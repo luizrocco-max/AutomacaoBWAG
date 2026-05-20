@@ -6,9 +6,11 @@ from pptx import Presentation
 from src.builders.capa_sumario import build_capa, build_sumario
 from src.builders.overview import build_overview
 from src.builders.performance import build_performance
+from src.builders.multimercado_sabia import build_multimercado_sabia
 from src.readers.quantum_reader import ler_quantum
 from src.readers.quantum_performance_reader import ler_performance
 from src.readers.btg_pdf_reader import carregar_overrides_btg
+from src.readers.btg_sabia_reader import ler_sabia, encontrar_pdf_sabia
 
 load_dotenv()
 
@@ -52,6 +54,19 @@ def main():
         overrides_btg=overrides_btg,
         config_performance=cfg_perf,
     )
+
+    print("[ Multimercado - SABIA ]")
+    cfg_mult = config.get("multimercado", {})
+    pdf_sabia = encontrar_pdf_sabia(config["caminhos"]["input_pdf"])
+    if pdf_sabia:
+        dados_sabia = ler_sabia(pdf_sabia)
+        build_multimercado_sabia(
+            slide=prs.slides[14],
+            dados_sabia=dados_sabia,
+            config_multimercado=cfg_mult,
+        )
+    else:
+        print("  Aviso: PDF do SABIA nao encontrado em input_pdf/")
 
     pasta_saida = os.path.join(config["caminhos"]["output"], competencia)
     os.makedirs(pasta_saida, exist_ok=True)
