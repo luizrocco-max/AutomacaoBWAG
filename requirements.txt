@@ -7,3 +7,4 @@ pyyaml
 python-dotenv
 streamlit
 plotly
+requests
