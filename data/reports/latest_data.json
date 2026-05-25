@@ -1,152 +1,932 @@
 [
   {
     "data_base": "15/05/2026",
-    "patrimonio": 14090579.84,
+    "patrimonio": 5804888.1,
     "perf_total": {
-      "mes": -0.0369,
-      "ano": -0.0276,
-      "m12": 0.0529,
-      "m24": 0.079
+      "mes": -0.0888,
+      "ano": -0.0911,
+      "m12": -0.10099999999999999,
+      "m24": 0.0
     },
     "pct_bench": {
-      "mes": -6.8935,
-      "ano": -0.5418999999999999,
-      "m12": 0.35710000000000003,
-      "m24": 0.2805
+      "mes": -1.2852000000000001,
+      "ano": -0.6147,
+      "m12": -0.6809999999999999,
+      "m24": 0.0
     },
     "fundos": [
       {
         "nome": "BBDC4",
-        "pl": 31.14,
-        "financeiro": 4387120.0,
+        "pl": 7.88,
+        "financeiro": 457286.5,
         "mes": -0.0834,
-        "ano": null,
+        "ano": -0.0086,
         "m12": null,
         "m24": null
       },
       {
-        "nome": "ITUB4",
-        "pl": 12.74,
-        "financeiro": 1794440.0,
-        "mes": -0.08039999999999999,
-        "ano": null,
+        "nome": "BPAC11",
+        "pl": 7.87,
+        "financeiro": 456928.0,
+        "mes": -0.0816,
+        "ano": 0.0365,
         "m12": null,
         "m24": null
       },
       {
-        "nome": "NTNB IPCA",
-        "pl": 7.28,
-        "financeiro": 1026266.86,
-        "mes": 0.0033,
-        "ano": 0.0533,
+        "nome": "MELI34",
+        "pl": 7.51,
+        "financeiro": 435739.5,
+        "mes": -0.12119999999999999,
+        "ano": -0.2925,
         "m12": null,
         "m24": null
       },
       {
-        "nome": "BRAV3",
-        "pl": 6.96,
-        "financeiro": 981225.0,
-        "mes": -0.023,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "VALE3",
-        "pl": 6.81,
-        "financeiro": 960250.0,
-        "mes": 0.0286,
-        "ano": null,
+        "nome": "SBSP3",
+        "pl": 6.85,
+        "financeiro": 397711.0,
+        "mes": -0.1243,
+        "ano": 0.0959,
         "m12": null,
         "m24": null
       },
       {
         "nome": "RF CDB I",
-        "pl": 4.18,
-        "financeiro": 588886.65,
+        "pl": 5.86,
+        "financeiro": 340450.14,
         "mes": 0.0054,
         "ano": 0.0513,
         "m12": 0.14880000000000002,
-        "m24": 0.28300000000000003
+        "m24": null
+      },
+      {
+        "nome": "LOGN3",
+        "pl": 5.63,
+        "financeiro": 326716.0,
+        "mes": -0.0129,
+        "ano": -0.0974,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "RAIL3",
+        "pl": 5.24,
+        "financeiro": 303891.0,
+        "mes": -0.0483,
+        "ano": 0.0213,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "MILS3",
+        "pl": 5.18,
+        "financeiro": 300753.0,
+        "mes": -0.0016,
+        "ano": -0.0504,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BBAS3",
+        "pl": 5.03,
+        "financeiro": 291870.0,
+        "mes": -0.068,
+        "ano": -0.0455,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "VULC3",
+        "pl": 4.91,
+        "financeiro": 284836.48,
+        "mes": -0.0583,
+        "ano": -0.2589,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "RENT3",
+        "pl": 4.29,
+        "financeiro": 249284.0,
+        "mes": -0.0638,
+        "ano": -0.002,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "KLBN11",
+        "pl": 4.21,
+        "financeiro": 244429.11,
+        "mes": -0.0601,
+        "ano": -0.1242,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "EQTL3",
+        "pl": 3.99,
+        "financeiro": 231540.0,
+        "mes": -0.08810000000000001,
+        "ano": 0.0023,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "CMIG4",
+        "pl": 3.96,
+        "financeiro": 229817.84,
+        "mes": -0.08410000000000001,
+        "ano": 0.0449,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "TUESDAY VINTAGE FIA",
+        "pl": 3.93,
+        "financeiro": 228195.83,
+        "mes": -0.0086,
+        "ano": -0.0824,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "POMO3",
+        "pl": 3.25,
+        "financeiro": 188496.0,
+        "mes": -0.0761,
+        "ano": 0.0509,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "HBOR3",
+        "pl": 3.01,
+        "financeiro": 174609.0,
+        "mes": -0.051100000000000007,
+        "ano": -0.0565,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "FLRY3",
+        "pl": 2.07,
+        "financeiro": 120120.0,
+        "mes": -0.029900000000000003,
+        "ano": 0.04,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "CVCB3",
+        "pl": 1.77,
+        "financeiro": 102627.0,
+        "mes": -0.0622,
+        "ano": -0.162,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "AMER3",
+        "pl": 1.67,
+        "financeiro": 96934.88,
+        "mes": -0.1341,
+        "ano": -0.031200000000000002,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "LUPA3",
+        "pl": 1.49,
+        "financeiro": 86625.0,
+        "mes": null,
+        "ano": -0.25,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "MEAL3",
+        "pl": 1.45,
+        "financeiro": 84200.0,
+        "mes": 0.0204,
+        "ano": -0.2126,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "PASS3",
+        "pl": 1.43,
+        "financeiro": 82880.0,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "RENT4",
+        "pl": 0.16,
+        "financeiro": 9265.65,
+        "mes": -0.0587,
+        "ano": 0.013500000000000002,
+        "m12": null,
+        "m24": null
       }
     ],
-    "_filename": "EXCLUSIVE FINANCIAL RESERVE 11 FIM CP IE - 15.05.2026.pdf",
-    "_nome": "EXCLUSIVE FINANCIAL RESERVE 11 FIM CP IE -",
+    "_filename": "FALCÃO-PEREGRINO FUNDO DE INVESTIMENTO FINANCEIRO MULTIMERCADO - 15.05.2026.pdf",
+    "_nome": "FALCÃO-PEREGRINO FUNDO DE INVESTIMENTO FINANCEIRO MULTIMERCADO -",
+    "_dt": "2026-05-15 00:00:00"
+  },
+  {
+    "data_base": "15/05/2026",
+    "patrimonio": 69465876.19,
+    "perf_total": {
+      "mes": -0.006500000000000001,
+      "ano": 0.0278,
+      "m12": 0.1318,
+      "m24": 0.2489
+    },
+    "pct_bench": {
+      "mes": -1.2094,
+      "ano": 0.5448,
+      "m12": 0.8886,
+      "m24": 0.8843000000000001
+    },
+    "fundos": [
+      {
+        "nome": "ABSOLUTEPACE LB FIA",
+        "pl": 10.33,
+        "financeiro": 7175399.67,
+        "mes": -0.028399999999999998,
+        "ano": 0.0637,
+        "m12": 0.2182,
+        "m24": 0.365
+      },
+      {
+        "nome": "K ZETA FFIM",
+        "pl": 8.07,
+        "financeiro": 5603098.2,
+        "mes": 0.0038,
+        "ano": -0.0147,
+        "m12": 0.1466,
+        "m24": 0.3034
+      },
+      {
+        "nome": "SPXR FIQ FIM CP IE",
+        "pl": 7.2,
+        "financeiro": 5001514.03,
+        "mes": 0.0127,
+        "ano": -0.035699999999999996,
+        "m12": 0.08560000000000001,
+        "m24": 0.2949
+      },
+      {
+        "nome": "RF CDB I",
+        "pl": 6.91,
+        "financeiro": 4802423.42,
+        "mes": 0.0054,
+        "ano": 0.0513,
+        "m12": 0.14880000000000002,
+        "m24": null
+      },
+      {
+        "nome": "ACS LEGACY C FIC FIM",
+        "pl": 6.77,
+        "financeiro": 4705044.96,
+        "mes": 0.003,
+        "ano": 0.0252,
+        "m12": 0.12689999999999999,
+        "m24": 0.2223
+      },
+      {
+        "nome": "PIMCO INCOME FIM IE",
+        "pl": 6.25,
+        "financeiro": 4341650.01,
+        "mes": -0.0046,
+        "ano": 0.0207,
+        "m12": 0.1635,
+        "m24": 0.2954
+      },
+      {
+        "nome": "TESOURO IPCA LONGORF",
+        "pl": 5.94,
+        "financeiro": 4124087.37,
+        "mes": -0.010700000000000001,
+        "ano": 0.0341,
+        "m12": 0.0886,
+        "m24": 0.10710000000000001
+      },
+      {
+        "nome": "JP GLOBAL MAC OPPFIM",
+        "pl": 5.77,
+        "financeiro": 4011313.2,
+        "mes": 0.019299999999999998,
+        "ano": 0.013000000000000001,
+        "m12": 0.08310000000000001,
+        "m24": 0.2112
+      },
+      {
+        "nome": "ACS IBIUNA STH FC",
+        "pl": 5.66,
+        "financeiro": 3930107.4,
+        "mes": 0.0017000000000000001,
+        "ano": 0.0037,
+        "m12": 0.0862,
+        "m24": 0.1913
+      },
+      {
+        "nome": "ARMOR AXE FC FIM",
+        "pl": 5.28,
+        "financeiro": 3668960.53,
+        "mes": 0.008100000000000001,
+        "ano": 0.0528,
+        "m12": 0.1392,
+        "m24": 0.28300000000000003
+      },
+      {
+        "nome": "BTGP MFS FIC FIM IE",
+        "pl": 5.12,
+        "financeiro": 3555389.59,
+        "mes": -0.0165,
+        "ano": -0.013300000000000001,
+        "m12": 0.0643,
+        "m24": 0.2473
+      },
+      {
+        "nome": "TREND IBOV ALAV FIA",
+        "pl": 4.47,
+        "financeiro": 3108241.34,
+        "mes": -0.1124,
+        "ano": 0.135,
+        "m12": 0.3875,
+        "m24": 0.45840000000000003
+      },
+      {
+        "nome": "BTGP PICTET FC FM IE",
+        "pl": 3.9,
+        "financeiro": 2707343.8,
+        "mes": 0.0291,
+        "ano": 0.030299999999999997,
+        "m12": 0.1684,
+        "m24": 0.2311
+      },
+      {
+        "nome": "BTG T PRE RF IRFM1+",
+        "pl": 3.87,
+        "financeiro": 2685491.85,
+        "mes": -0.0096,
+        "ano": 0.0223,
+        "m12": 0.11689999999999999,
+        "m24": 0.1838
+      },
+      {
+        "nome": "PACTUAL CAMBIAL FI",
+        "pl": 3.42,
+        "financeiro": 2372439.4,
+        "mes": 0.0239,
+        "ano": -0.0594,
+        "m12": -0.06480000000000001,
+        "m24": 0.0894
+      },
+      {
+        "nome": "PIMCO GLBCRED FIM IE",
+        "pl": 2.22,
+        "financeiro": 1539823.47,
+        "mes": 0.0014000000000000002,
+        "ano": 0.0305,
+        "m12": 0.1666,
+        "m24": 0.3312
+      },
+      {
+        "nome": "TESOURO IPCA GERALRF",
+        "pl": 2.1,
+        "financeiro": 1461916.86,
+        "mes": -0.005699999999999999,
+        "ano": 0.0447,
+        "m12": 0.10439999999999999,
+        "m24": 0.1524
+      },
+      {
+        "nome": "DAHLIA TOTAL RET FIA",
+        "pl": 1.78,
+        "financeiro": 1234125.08,
+        "mes": -0.0313,
+        "ano": 0.044199999999999996,
+        "m12": 0.17129999999999998,
+        "m24": null
+      },
+      {
+        "nome": "SPRINGS EH FIC",
+        "pl": 1.72,
+        "financeiro": 1191841.63,
+        "mes": 0.0095,
+        "ano": 0.058499999999999996,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "SHIFT ALPHA I FIP A",
+        "pl": 1.56,
+        "financeiro": 1081587.16,
+        "mes": 0.0005,
+        "ano": 0.0567,
+        "m12": 0.056600000000000004,
+        "m24": 0.5521
+      },
+      {
+        "nome": "BTAG13",
+        "pl": 1.02,
+        "financeiro": 711104.0,
+        "mes": -0.0275,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BTAG11",
+        "pl": 0.59,
+        "financeiro": 409662.57,
+        "mes": -0.0275,
+        "ano": 0.021,
+        "m12": 0.1782,
+        "m24": 0.08650000000000001
+      },
+      {
+        "nome": "INFRA II FIC FIP",
+        "pl": 0.04,
+        "financeiro": 27559.83,
+        "mes": -0.0001,
+        "ano": 0.08470000000000001,
+        "m12": 0.2726,
+        "m24": null
+      }
+    ],
+    "_filename": "SABIA BWAG FIC FI MULT CRED PRIV - 15.05.2026.pdf",
+    "_nome": "SABIA BWAG FIC FI MULT CRED PRIV -",
     "_dt": "2026-05-15 00:00:00"
   },
   {
     "data_base": "21/05/2026",
-    "patrimonio": 14134425.59,
+    "patrimonio": 69743823.99,
     "perf_total": {
-      "mes": -0.0262,
-      "ano": -0.0168,
-      "m12": 0.062400000000000004,
-      "m24": 0.0874
+      "mes": -0.0025,
+      "ano": 0.0319,
+      "m12": 0.13470000000000001,
+      "m24": 0.25429999999999997
     },
     "pct_bench": {
-      "mes": -3.492,
-      "ano": -0.3161,
-      "m12": 0.42119999999999996,
-      "m24": 0.3098
+      "mes": -0.3331,
+      "ano": 0.5991,
+      "m12": 0.9084,
+      "m24": 0.9009999999999999
     },
     "fundos": [
       {
-        "nome": "BBDC4",
-        "pl": 30.92,
-        "financeiro": 4369760.0,
-        "mes": -0.08710000000000001,
-        "ano": null,
-        "m12": null,
+        "nome": "ABSOLUTEPACE LB FIA",
+        "pl": 10.32,
+        "financeiro": 7199398.64,
+        "mes": -0.0252,
+        "ano": 0.0673,
+        "m12": 0.2189,
+        "m24": 0.38380000000000003
+      },
+      {
+        "nome": "K ZETA FFIM",
+        "pl": 8.15,
+        "financeiro": 5685189.74,
+        "mes": 0.018500000000000003,
+        "ano": -0.0002,
+        "m12": 0.14980000000000002,
+        "m24": 0.3041
+      },
+      {
+        "nome": "SPXR FIQ FIM CP IE",
+        "pl": 7.14,
+        "financeiro": 4981002.12,
+        "mes": 0.0086,
+        "ano": -0.039599999999999996,
+        "m12": 0.0622,
+        "m24": 0.2896
+      },
+      {
+        "nome": "RF CDB I",
+        "pl": 6.9,
+        "financeiro": 4812731.06,
+        "mes": 0.0075,
+        "ano": 0.0536,
+        "m12": 0.14880000000000002,
         "m24": null
       },
       {
-        "nome": "ITUB4",
-        "pl": 12.61,
-        "financeiro": 1782236.0,
-        "mes": -0.0867,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAV3",
-        "pl": 7.35,
-        "financeiro": 1038450.0,
-        "mes": 0.034,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "NTNB IPCA",
-        "pl": 7.29,
-        "financeiro": 1031068.3,
-        "mes": 0.008,
-        "ano": 0.0581,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "VALE3",
+        "nome": "ACS LEGACY C FIC FIM",
         "pl": 6.76,
-        "financeiro": 955650.0,
-        "mes": 0.023700000000000002,
+        "financeiro": 4717032.56,
+        "mes": 0.005600000000000001,
+        "ano": 0.0278,
+        "m12": 0.1286,
+        "m24": 0.2266
+      },
+      {
+        "nome": "PIMCO INCOME FIM IE",
+        "pl": 6.26,
+        "financeiro": 4368176.08,
+        "mes": 0.0015,
+        "ano": 0.0269,
+        "m12": 0.175,
+        "m24": 0.3046
+      },
+      {
+        "nome": "TESOURO IPCA LONGORF",
+        "pl": 5.92,
+        "financeiro": 4129730.66,
+        "mes": -0.009300000000000001,
+        "ano": 0.0355,
+        "m12": 0.0892,
+        "m24": 0.1051
+      },
+      {
+        "nome": "JP GLOBAL MAC OPPFIM",
+        "pl": 5.74,
+        "financeiro": 4005256.77,
+        "mes": 0.0178,
+        "ano": 0.0115,
+        "m12": 0.0882,
+        "m24": 0.2071
+      },
+      {
+        "nome": "ACS IBIUNA STH FC",
+        "pl": 5.66,
+        "financeiro": 3950844.55,
+        "mes": 0.006999999999999999,
+        "ano": 0.0089,
+        "m12": 0.0917,
+        "m24": 0.19190000000000002
+      },
+      {
+        "nome": "ARMOR AXE FC FIM",
+        "pl": 5.27,
+        "financeiro": 3677003.51,
+        "mes": 0.0103,
+        "ano": 0.055099999999999996,
+        "m12": 0.1404,
+        "m24": 0.2805
+      },
+      {
+        "nome": "BTGP MFS FIC FIM IE",
+        "pl": 5.19,
+        "financeiro": 3621955.94,
+        "mes": 0.0019,
+        "ano": 0.0051,
+        "m12": 0.0783,
+        "m24": 0.27140000000000003
+      },
+      {
+        "nome": "TREND IBOV ALAV FIA",
+        "pl": 4.47,
+        "financeiro": 3114114.76,
+        "mes": -0.1108,
+        "ano": 0.1371,
+        "m12": 0.4269,
+        "m24": 0.4804
+      },
+      {
+        "nome": "BTGP PICTET FC FM IE",
+        "pl": 3.92,
+        "financeiro": 2733535.42,
+        "mes": 0.0391,
+        "ano": 0.04019999999999999,
+        "m12": 0.1807,
+        "m24": 0.23370000000000002
+      },
+      {
+        "nome": "BTG T PRE RF IRFM1+",
+        "pl": 3.88,
+        "financeiro": 2708993.88,
+        "mes": -0.0009,
+        "ano": 0.0313,
+        "m12": 0.12380000000000001,
+        "m24": 0.1954
+      },
+      {
+        "nome": "PACTUAL CAMBIAL FI",
+        "pl": 3.36,
+        "financeiro": 2343900.66,
+        "mes": 0.0116,
+        "ano": -0.0708,
+        "m12": -0.07150000000000001,
+        "m24": 0.0806
+      },
+      {
+        "nome": "PIMCO GLBCRED FIM IE",
+        "pl": 2.21,
+        "financeiro": 1543884.15,
+        "mes": 0.0040999999999999995,
+        "ano": 0.0332,
+        "m12": 0.1689,
+        "m24": 0.3308
+      },
+      {
+        "nome": "TESOURO IPCA GERALRF",
+        "pl": 2.1,
+        "financeiro": 1465112.07,
+        "mes": -0.0034999999999999996,
+        "ano": 0.047,
+        "m12": 0.10490000000000001,
+        "m24": 0.1521
+      },
+      {
+        "nome": "DAHLIA TOTAL RET FIA",
+        "pl": 1.77,
+        "financeiro": 1234190.13,
+        "mes": -0.031200000000000002,
+        "ano": 0.0443,
+        "m12": 0.17350000000000002,
+        "m24": null
+      },
+      {
+        "nome": "SPRINGS EH FIC",
+        "pl": 1.72,
+        "financeiro": 1196108.41,
+        "mes": 0.0131,
+        "ano": 0.0623,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "SHIFT ALPHA I FIP A",
+        "pl": 1.55,
+        "financeiro": 1080270.96,
+        "mes": -0.0008,
+        "ano": 0.0555,
+        "m12": 0.054000000000000006,
+        "m24": 0.5501
+      },
+      {
+        "nome": "BTAG13",
+        "pl": 1.04,
+        "financeiro": 723200.0,
+        "mes": -0.0109,
         "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BTAG11",
+        "pl": 0.6,
+        "financeiro": 416631.0,
+        "mes": -0.0109,
+        "ano": 0.0383,
+        "m12": 0.1946,
+        "m24": 0.122
+      },
+      {
+        "nome": "INFRA II FIC FIP",
+        "pl": 0.04,
+        "financeiro": 27558.1,
+        "mes": -0.0001,
+        "ano": 0.08460000000000001,
+        "m12": 0.28800000000000003,
+        "m24": null
+      }
+    ],
+    "_filename": "SABIA BWAG FIC FI MULT CRED PRIV - 21.05.2026.pdf",
+    "_nome": "SABIA BWAG FIC FI MULT CRED PRIV -",
+    "_dt": "2026-05-21 00:00:00"
+  },
+  {
+    "data_base": "21/05/2026",
+    "patrimonio": 5818195.24,
+    "perf_total": {
+      "mes": -0.0572,
+      "ano": -0.0736,
+      "m12": -0.0173,
+      "m24": 0.0
+    },
+    "pct_bench": {
+      "mes": -7.6274,
+      "ano": -1.3832,
+      "m12": -0.1168,
+      "m24": 0.0
+    },
+    "fundos": [
+      {
+        "nome": "MELI34",
+        "pl": 7.92,
+        "financeiro": 460782.0,
+        "mes": -0.0707,
+        "ano": -0.2518,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BBDC4",
+        "pl": 7.83,
+        "financeiro": 455477.0,
+        "mes": -0.08710000000000001,
+        "ano": -0.0125,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BPAC11",
+        "pl": 7.77,
+        "financeiro": 452149.12,
+        "mes": -0.09119999999999999,
+        "ano": 0.025699999999999997,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "SBSP3",
+        "pl": 6.7,
+        "financeiro": 389902.0,
+        "mes": -0.14150000000000001,
+        "ano": 0.07440000000000001,
         "m12": null,
         "m24": null
       },
       {
         "nome": "RF CDB I",
-        "pl": 4.18,
-        "financeiro": 590398.67,
+        "pl": 5.98,
+        "financeiro": 347818.94,
         "mes": 0.008100000000000001,
         "ano": 0.0541,
         "m12": 0.1487,
-        "m24": 0.2839
+        "m24": null
+      },
+      {
+        "nome": "LOGN3",
+        "pl": 5.5,
+        "financeiro": 319753.2,
+        "mes": -0.034,
+        "ano": -0.1166,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "MILS3",
+        "pl": 5.34,
+        "financeiro": 310470.0,
+        "mes": 0.030699999999999998,
+        "ano": -0.0197,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BBAS3",
+        "pl": 5.07,
+        "financeiro": 295254.0,
+        "mes": -0.0572,
+        "ano": -0.0344,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "VULC3",
+        "pl": 4.97,
+        "financeiro": 289436.8,
+        "mes": -0.0431,
+        "ano": -0.2469,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "RAIL3",
+        "pl": 4.96,
+        "financeiro": 288463.0,
+        "mes": -0.0966,
+        "ano": -0.0305,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "RENT3",
+        "pl": 4.32,
+        "financeiro": 251430.0,
+        "mes": -0.0558,
+        "ano": 0.0066,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "KLBN11",
+        "pl": 4.21,
+        "financeiro": 244875.42,
+        "mes": -0.0584,
+        "ano": -0.1226,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "TUESDAY VINTAGE FIA",
+        "pl": 3.99,
+        "financeiro": 231914.49,
+        "mes": 0.0076,
+        "ano": -0.0675,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "CMIG4",
+        "pl": 3.93,
+        "financeiro": 228798.24,
+        "mes": -0.0882,
+        "ano": 0.04019999999999999,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "EQTL3",
+        "pl": 3.88,
+        "financeiro": 226020.0,
+        "mes": -0.1099,
+        "ano": -0.0216,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "POMO3",
+        "pl": 3.22,
+        "financeiro": 187228.8,
+        "mes": -0.0823,
+        "ano": 0.0438,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "HBOR3",
+        "pl": 3.01,
+        "financeiro": 175392.0,
+        "mes": -0.046799999999999994,
+        "ano": -0.052300000000000006,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "FLRY3",
+        "pl": 2.08,
+        "financeiro": 120813.0,
+        "mes": -0.024300000000000002,
+        "ano": 0.046,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "AMER3",
+        "pl": 1.72,
+        "financeiro": 100250.56,
+        "mes": -0.1045,
+        "ano": 0.0019,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "CVCB3",
+        "pl": 1.72,
+        "financeiro": 100359.0,
+        "mes": -0.08289999999999999,
+        "ano": -0.18059999999999998,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "LUPA3",
+        "pl": 1.55,
+        "financeiro": 90090.0,
+        "mes": 0.04,
+        "ano": -0.22,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "PASS3",
+        "pl": 1.48,
+        "financeiro": 86080.0,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "MEAL3",
+        "pl": 1.46,
+        "financeiro": 85042.0,
+        "mes": 0.030600000000000002,
+        "ano": -0.2047,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "RENT4",
+        "pl": 0.16,
+        "financeiro": 9252.27,
+        "mes": -0.06,
+        "ano": 0.012,
+        "m12": null,
+        "m24": null
       }
     ],
-    "_filename": "EXCLUSIVE FINANCIAL RESERVE 11 FIM CP IE - 22.05.2026.pdf",
-    "_nome": "EXCLUSIVE FINANCIAL RESERVE 11 FIM CP IE -",
+    "_filename": "FALCÃO-PEREGRINO FUNDO DE INVESTIMENTO FINANCEIRO MULTIMERCADO - 22.05.2026.pdf",
+    "_nome": "FALCÃO-PEREGRINO FUNDO DE INVESTIMENTO FINANCEIRO MULTIMERCADO -",
     "_dt": "2026-05-21 00:00:00"
   }
 ]
