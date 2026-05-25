@@ -140,9 +140,13 @@ def load_btg(raw: bytes, fname: str):
         tmp.write(raw)
         path = tmp.name
     try:
+        import pdfplumber as _plumber
+        with _plumber.open(path) as _pdf:
+            data_raw_p1 = _pdf.pages[0].extract_text() or ""
         data = ler_carteira_btg(path)
         data["_filename"] = fname
         data["_nome"]     = _nome_fundo(fname)
+        data["_raw_p1"]   = data_raw_p1
         # Data do arquivo é mais confiável que a data interna do PDF
         data_arq = _data_do_arquivo(fname)
         if data_arq:
@@ -222,6 +226,9 @@ if is_admin and f_pdfs:
                 f"Ret.Mês : {c.get('perf_total', {}).get('mes', 'N/A')}\n"
                 f"Posições: {len(c.get('fundos', []))}"
             )
+            if c.get("patrimonio", 1) == 0.0:
+                st.text("--- Texto pág 1 (debug) ---")
+                st.code(c.get("_raw_p1", "")[:1500])
 else:
     # Todos os outros → carrega do GitHub
     dados_salvos, _ = github_load(GITHUB_TOKEN, GITHUB_REPO)
