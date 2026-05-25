@@ -54,6 +54,8 @@ def _nome_fundo(fname: str) -> str:
     nome = re.sub(r'[_ ]\d{8}.*$', '', nome)
     nome = re.sub(r'[_ ]\d{2}[./]\d{2}[./]\d{4}.*$', '', nome)
     nome = re.sub(r'[_ ]\d{2}[./]\d{2}[./]\d{2}.*$', '', nome)
+    # Remove separadores residuais no final (ex: " - " ou "_" antes da data)
+    nome = re.sub(r'[\s\-_]+$', '', nome)
     return nome.strip()
 
 def _data_do_arquivo(fname: str) -> str:
@@ -230,7 +232,7 @@ if not carteiras_raw:
 
 # Botão de publicar (admin)
 if is_admin and fonte == "upload":
-    col_pub, col_info = st.columns([2, 5])
+    col_pub, col_sub, col_info = st.columns([2, 2, 3])
     with col_pub:
         if st.button("💾 Salvar e publicar", type="primary"):
             with st.spinner("Salvando no GitHub..."):
@@ -246,6 +248,15 @@ if is_admin and fonte == "upload":
                 github_load.clear()
             else:
                 st.error("Erro ao salvar. Verifique o token do GitHub.")
+    with col_sub:
+        if st.button("🗑️ Substituir tudo", help="Apaga o histórico e salva APENAS os PDFs carregados agora"):
+            with st.spinner("Substituindo..."):
+                ok = github_save(carteiras_raw, GITHUB_TOKEN, GITHUB_REPO)
+            if ok:
+                st.success(f"Histórico substituído. {len(carteiras_raw)} relatório(s) salvos.")
+                github_load.clear()
+            else:
+                st.error("Erro ao salvar.")
 
 # Info de atualização
 datas_base = sorted(set(c.get("data_base","") for c in carteiras_raw if c.get("data_base")))
