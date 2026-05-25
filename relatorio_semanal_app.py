@@ -722,13 +722,13 @@ with tab_comp:
 
         st.markdown("---")
         st.subheader("Destaques da Semana")
-        df_dest = df_pos.dropna(subset=["Δ Ret.Mês"]).sort_values("Δ Ret.Mês", ascending=False)
+        df_dest = df_pos.dropna(subset=["Ret.Mês B"]).sort_values("Ret.Mês B", ascending=False)
         col_hi, col_lo = st.columns(2)
         with col_hi:
             st.markdown("**Maiores avanços**")
             for _, row in df_dest.head(3).iterrows():
-                st.success(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}% vs {da.get('data_base','A')})")
+                st.success(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}")
         with col_lo:
             st.markdown("**Maiores quedas**")
             for _, row in df_dest.tail(3).iloc[::-1].iterrows():
-                st.error(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}% vs {da.get('data_base','A')})")
+                st.error(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}")
