@@ -98,17 +98,18 @@ def _extrair_perf_p1(texto, tabelas=None):
 
 
 def _extrair_perf_formato2(texto, tabelas):
-    """Formato com 'em DD/MM/YYYY' + patrimônio e tabela de performance separada."""
+    """
+    Formato LHC: duas tabelas na pág 1.
+    Tabela 1 — Dia/Mês/Ano/Desde: Data|PL|Cota|Dia%|Dia%CDI|Mês%|Mês%CDI|Ano%|Ano%CDI|...
+    Tabela 2 — 3M/6M/12M/24M:    Data|PL|Cota|3M%|3M%CDI|6M%|6M%CDI|12M%|12M%CDI|24M%|24M%CDI
+    """
     data_base  = ""
     patrimonio = 0.0
 
-    # "em DD/MM/YYYY" seguido (com ou sem espaço) pelo valor do patrimônio
     m = re.search(r'em\s+(\d{2}/\d{2}/\d{4})\s*([\d,]+\.\d{2})', texto, re.S)
     if m:
         data_base  = m.group(1)
         patrimonio = float(m.group(2).replace(",", ""))
-
-    # Fallback: primeira linha de tabela com data + patrimônio (com ou sem espaço)
     if not data_base:
         m2 = re.search(r'(\d{2}/\d{2}/\d{4})\s*([\d,]+\.\d{2})', texto)
         if m2:
@@ -118,36 +119,40 @@ def _extrair_perf_formato2(texto, tabelas):
     perf_total = {"mes": None, "ano": None, "m12": None, "m24": None}
     pct_bench  = {"mes": None, "ano": None, "m12": None, "m24": None}
 
-    # Tenta extrair performance das tabelas da página 1
-    # Estrutura esperada: [Data, Patrimônio, Cota, Dia%, Dia%CDI, Mês%, Mês%CDI, Ano%, Ano%CDI, ...]
     for tabela in tabelas:
+        # Detecta tipo pelo cabeçalho: "Dia" só existe na tabela Dia/Mês/Ano
+        todas_cells = " ".join(str(c or "") for row in tabela for c in (row or []))
+        is_curta = "Dia" in todas_cells and "3 Meses" not in todas_cells
+        is_longa = "3 Meses" in todas_cells or "12 Meses" in todas_cells
+
         for linha in tabela:
             if not linha:
                 continue
             cells = [str(c or "").strip() for c in linha]
             if not cells or not re.match(r'\d{2}/\d{2}/\d{4}', cells[0]):
                 continue
+            # nums[i] corresponde a cells[i+1] (após a data)
+            # Estrutura: [PL, Cota, p1%, p1%CDI, p2%, p2%CDI, p3%, p3%CDI, ...]
             nums = [_num(c) for c in cells[1:]]
-            # Precisa pelo menos: patrimônio, cota, dia%, dia%CDI, mês%, mês%CDI, ano%, ano%CDI
-            valid = [n for n in nums if n is not None]
-            if len(valid) < 6:
+            if len(nums) < 8:
                 continue
-            # Se o patrimônio ainda não foi encontrado, usa o primeiro número da linha
-            if patrimonio == 0.0 and nums[0] is not None and nums[0] > 1000:
-                patrimonio = nums[0]
-            # Índices esperados: 0=PL, 1=cota, 2=dia%, 3=dia%CDI, 4=mês%, 5=mês%CDI, 6=ano%, 7=ano%CDI
             try:
-                if len(valid) >= 6:
-                    perf_total["mes"] = valid[2] / 100
-                    pct_bench["mes"]  = valid[3] / 100
-                if len(valid) >= 8:
-                    perf_total["ano"] = valid[4] / 100
-                    pct_bench["ano"]  = valid[5] / 100
-                    perf_total["m12"] = valid[6] / 100 if len(valid) > 6 else None
-                    pct_bench["m12"]  = valid[7] / 100 if len(valid) > 7 else None
+                if is_curta and perf_total["mes"] is None:
+                    # índices: 0=PL, 1=Cota, 2=Dia%, 3=Dia%CDI, 4=Mês%, 5=Mês%CDI, 6=Ano%, 7=Ano%CDI
+                    perf_total["mes"] = nums[4] / 100 if nums[4] is not None else None
+                    pct_bench["mes"]  = nums[5] / 100 if nums[5] is not None else None
+                    perf_total["ano"] = nums[6] / 100 if nums[6] is not None else None
+                    pct_bench["ano"]  = nums[7] / 100 if nums[7] is not None else None
+                    break
+                elif is_longa and perf_total["m12"] is None:
+                    # índices: 0=PL, 1=Cota, 2=3M%, 3=3M%CDI, 4=6M%, 5=6M%CDI, 6=12M%, 7=12M%CDI, 8=24M%, 9=24M%CDI
+                    perf_total["m12"] = nums[6] / 100 if nums[6] is not None else None
+                    pct_bench["m12"]  = nums[7] / 100 if nums[7] is not None else None
+                    if len(nums) > 8 and nums[8] is not None and nums[8] != 0:
+                        perf_total["m24"] = nums[8] / 100
+                    break
             except (IndexError, TypeError):
-                pass
-            break  # usa só a primeira linha com data
+                continue
 
     return perf_total, pct_bench, data_base, patrimonio
 
