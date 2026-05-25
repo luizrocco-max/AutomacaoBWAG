@@ -102,15 +102,15 @@ def _extrair_perf_formato2(texto, tabelas):
     data_base  = ""
     patrimonio = 0.0
 
-    # "em DD/MM/YYYY" seguido (mesma linha ou próxima) pelo valor do patrimônio
-    m = re.search(r'em\s+(\d{2}/\d{2}/\d{4})\s+([\d,]+\.\d{2})', texto, re.S)
+    # "em DD/MM/YYYY" seguido (com ou sem espaço) pelo valor do patrimônio
+    m = re.search(r'em\s+(\d{2}/\d{2}/\d{4})\s*([\d,]+\.\d{2})', texto, re.S)
     if m:
         data_base  = m.group(1)
         patrimonio = float(m.group(2).replace(",", ""))
 
-    # Fallback: primeira linha de tabela com data + patrimônio
+    # Fallback: primeira linha de tabela com data + patrimônio (com ou sem espaço)
     if not data_base:
-        m2 = re.search(r'(\d{2}/\d{2}/\d{4})\s+([\d,]+\.\d{2})', texto)
+        m2 = re.search(r'(\d{2}/\d{2}/\d{4})\s*([\d,]+\.\d{2})', texto)
         if m2:
             data_base  = m2.group(1)
             patrimonio = float(m2.group(2).replace(",", ""))
