@@ -1,0 +1,152 @@
+[
+  {
+    "data_base": "15/05/2026",
+    "patrimonio": 14090579.84,
+    "perf_total": {
+      "mes": -0.0369,
+      "ano": -0.0276,
+      "m12": 0.0529,
+      "m24": 0.079
+    },
+    "pct_bench": {
+      "mes": -6.8935,
+      "ano": -0.5418999999999999,
+      "m12": 0.35710000000000003,
+      "m24": 0.2805
+    },
+    "fundos": [
+      {
+        "nome": "BBDC4",
+        "pl": 31.14,
+        "financeiro": 4387120.0,
+        "mes": -0.0834,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "ITUB4",
+        "pl": 12.74,
+        "financeiro": 1794440.0,
+        "mes": -0.08039999999999999,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "NTNB IPCA",
+        "pl": 7.28,
+        "financeiro": 1026266.86,
+        "mes": 0.0033,
+        "ano": 0.0533,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAV3",
+        "pl": 6.96,
+        "financeiro": 981225.0,
+        "mes": -0.023,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "VALE3",
+        "pl": 6.81,
+        "financeiro": 960250.0,
+        "mes": 0.0286,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "RF CDB I",
+        "pl": 4.18,
+        "financeiro": 588886.65,
+        "mes": 0.0054,
+        "ano": 0.0513,
+        "m12": 0.14880000000000002,
+        "m24": 0.28300000000000003
+      }
+    ],
+    "_filename": "EXCLUSIVE FINANCIAL RESERVE 11 FIM CP IE - 15.05.2026.pdf",
+    "_nome": "EXCLUSIVE FINANCIAL RESERVE 11 FIM CP IE -",
+    "_dt": "2026-05-15 00:00:00"
+  },
+  {
+    "data_base": "21/05/2026",
+    "patrimonio": 14134425.59,
+    "perf_total": {
+      "mes": -0.0262,
+      "ano": -0.0168,
+      "m12": 0.062400000000000004,
+      "m24": 0.0874
+    },
+    "pct_bench": {
+      "mes": -3.492,
+      "ano": -0.3161,
+      "m12": 0.42119999999999996,
+      "m24": 0.3098
+    },
+    "fundos": [
+      {
+        "nome": "BBDC4",
+        "pl": 30.92,
+        "financeiro": 4369760.0,
+        "mes": -0.08710000000000001,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "ITUB4",
+        "pl": 12.61,
+        "financeiro": 1782236.0,
+        "mes": -0.0867,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAV3",
+        "pl": 7.35,
+        "financeiro": 1038450.0,
+        "mes": 0.034,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "NTNB IPCA",
+        "pl": 7.29,
+        "financeiro": 1031068.3,
+        "mes": 0.008,
+        "ano": 0.0581,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "VALE3",
+        "pl": 6.76,
+        "financeiro": 955650.0,
+        "mes": 0.023700000000000002,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "RF CDB I",
+        "pl": 4.18,
+        "financeiro": 590398.67,
+        "mes": 0.008100000000000001,
+        "ano": 0.0541,
+        "m12": 0.1487,
+        "m24": 0.2839
+      }
+    ],
+    "_filename": "EXCLUSIVE FINANCIAL RESERVE 11 FIM CP IE - 22.05.2026.pdf",
+    "_nome": "EXCLUSIVE FINANCIAL RESERVE 11 FIM CP IE -",
+    "_dt": "2026-05-21 00:00:00"
+  }
+]
