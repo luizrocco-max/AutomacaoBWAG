@@ -59,11 +59,16 @@ def _nome_fundo(fname: str) -> str:
     return nome.strip()
 
 def _data_do_arquivo(fname: str) -> str:
-    """Extrai data do nome do arquivo (YYYYMMDD → DD/MM/YYYY). Mais confiável que o conteúdo do PDF."""
-    m = re.search(r'[_ ](\d{8})(?:\s|\.|$|\()', fname)
+    """Extrai data do nome do arquivo. Mais confiável que o conteúdo do PDF."""
+    # Formato YYYYMMDD  ex: _20260515.pdf
+    m = re.search(r'[_ -](\d{8})(?:\s|\.|$|\()', fname)
     if m:
         d = m.group(1)
         return f"{d[6:8]}/{d[4:6]}/{d[:4]}"
+    # Formato DD.MM.YYYY ou DD/MM/YYYY  ex: - 30.04.2026.pdf
+    m = re.search(r'[_ -](\d{2})[./](\d{2})[./](\d{4})(?:\s|\.|$|\()', fname)
+    if m:
+        return f"{m.group(1)}/{m.group(2)}/{m.group(3)}"
     return ""
 
 def _parse_data(data_str: str):
