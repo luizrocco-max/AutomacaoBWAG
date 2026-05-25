@@ -1,9 +1,11 @@
 """
 Dashboard semanal de fundos BWAG — baseado em PDFs BTG
+Jogue todos os PDFs de uma vez; o app agrupa por fundo e data automaticamente.
 """
 import os
 import sys
 import tempfile
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -42,13 +44,19 @@ def fmt_pct(v, dec=2):
     return f"{v * 100:.{dec}f}%"
 
 def _nome_fundo(fname: str) -> str:
-    """Extrai nome legível do nome do arquivo PDF."""
+    """Extrai nome do fundo a partir do nome do arquivo BTG."""
     nome = fname.replace("AcompFI_", "").replace(".pdf", "")
-    # Remove data do final (ex: _20260515)
     partes = nome.rsplit("_", 1)
-    if len(partes) == 2 and partes[1].isdigit():
+    if len(partes) == 2 and partes[1].isdigit() and len(partes[1]) == 8:
         return partes[0].strip()
     return nome.strip()
+
+def _parse_data(data_str: str):
+    """Converte 'DD/MM/YYYY' para datetime."""
+    try:
+        return datetime.strptime(data_str, "%d/%m/%Y")
+    except Exception:
+        return datetime.min
 
 
 @st.cache_data(show_spinner=False)
@@ -60,12 +68,24 @@ def load_btg(raw: bytes, fname: str) -> dict | None:
         data = ler_carteira_btg(path)
         data["_filename"] = fname
         data["_nome"]     = _nome_fundo(fname)
+        data["_dt"]       = _parse_data(data.get("data_base", ""))
         return data
     except Exception as e:
         st.sidebar.error(f"Erro ao ler {fname}: {e}")
         return None
     finally:
         os.unlink(path)
+
+
+def agrupar_por_fundo(carteiras: list) -> dict:
+    """Retorna dict {nome_fundo: [carteira_mais_antiga, ..., carteira_mais_nova]}."""
+    grupos = {}
+    for c in carteiras:
+        nome = c["_nome"]
+        grupos.setdefault(nome, []).append(c)
+    for nome in grupos:
+        grupos[nome].sort(key=lambda c: c["_dt"])
+    return grupos
 
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
@@ -78,41 +98,48 @@ with st.sidebar:
     st.markdown("---")
 
     st.subheader("📋 Carteiras BTG")
-    st.caption("Carregue um ou mais PDFs de carteira")
-    f_carteiras = st.file_uploader(
-        "PDFs das carteiras",
+    st.caption("Carregue todos os PDFs de uma vez — pode misturar fundos e datas")
+    f_pdfs = st.file_uploader(
+        "PDFs",
         type=["pdf"],
         accept_multiple_files=True,
-        key="carteiras",
+        key="pdfs",
         label_visibility="collapsed",
     )
 
     st.markdown("---")
-    st.subheader("🔍 Comparativo Semanal")
-    st.caption("Compare a mesma carteira em duas datas")
-    f_cmp_a = st.file_uploader("Carteira — data A", type=["pdf"], key="cmp_a")
-    f_cmp_b = st.file_uploader("Carteira — data B", type=["pdf"], key="cmp_b")
-
-    st.markdown("---")
-    st.caption("BWAG Automações — v1.1")
+    st.caption("BWAG Automações — v1.2")
 
 
-# ── Carregar dados ────────────────────────────────────────────────────────────
-carteiras = [
-    c for f in (f_carteiras or [])
+# ── Carregar e agrupar ────────────────────────────────────────────────────────
+carteiras_raw = [
+    c for f in (f_pdfs or [])
     if (c := load_btg(f.getvalue(), f.name)) is not None
 ]
-cmp_a = load_btg(f_cmp_a.getvalue(), f_cmp_a.name) if f_cmp_a else None
-cmp_b = load_btg(f_cmp_b.getvalue(), f_cmp_b.name) if f_cmp_b else None
+grupos = agrupar_por_fundo(carteiras_raw)
+
+# Para visão geral: última data de cada fundo
+mais_recentes = {nome: datas[-1] for nome, datas in grupos.items()}
 
 
 # ── Header ────────────────────────────────────────────────────────────────────
 st.title("📊 Relatório Semanal de Fundos")
 st.divider()
 
-if not carteiras and not cmp_a:
+if not carteiras_raw:
     st.info("👈 Carregue os PDFs BTG na barra lateral para iniciar.")
     st.stop()
+
+# Resumo do que foi carregado
+total_fundos = len(grupos)
+total_pdfs   = len(carteiras_raw)
+fundos_comp  = [n for n, d in grupos.items() if len(d) >= 2]
+
+col_r1, col_r2, col_r3 = st.columns(3)
+col_r1.metric("Fundos carregados", total_fundos)
+col_r2.metric("PDFs processados",  total_pdfs)
+col_r3.metric("Com comparativo",   len(fundos_comp))
+st.divider()
 
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
@@ -125,313 +152,298 @@ tab_geral, tab_top, tab_detalhe, tab_comp = st.tabs([
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# TAB 1 — VISÃO GERAL
+# TAB 1 — VISÃO GERAL  (usa sempre a data mais recente de cada fundo)
 # ══════════════════════════════════════════════════════════════════════════════
 with tab_geral:
-    if not carteiras:
-        st.info("Carregue PDFs na seção **Carteiras BTG** da barra lateral.")
-    else:
-        aum_total = sum(c.get("patrimonio", 0) for c in carteiras)
-        datas = sorted(set(c.get("data_base", "") for c in carteiras))
+    rows = []
+    for nome, c in mais_recentes.items():
+        p = c.get("perf_total", {})
+        rows.append({
+            "Fundo": nome,
+            "PL":    c.get("patrimonio", 0),
+            "Data":  c.get("data_base", ""),
+            "Mês":   p.get("mes"),
+            "Ano":   p.get("ano"),
+            "12M":   p.get("m12"),
+            "24M":   p.get("m24"),
+        })
+    df = pd.DataFrame(rows).sort_values("PL", ascending=False)
 
-        c1, c2, c3 = st.columns(3)
-        c1.metric("AUM Total", f"R$ {aum_total / 1e6:.1f}M")
-        c2.metric("Fundos carregados", len(carteiras))
-        c3.metric("Data base", " / ".join(datas))
+    aum_total = df["PL"].sum()
+    c1, c2 = st.columns(2)
+    c1.metric("AUM Total", f"R$ {aum_total / 1e6:.1f}M")
+    c2.metric("Data(s) base", " / ".join(sorted(df["Data"].unique())))
 
-        st.markdown("---")
+    st.markdown("---")
+    col_bar, col_tbl = st.columns([3, 2])
 
-        # Tabela de performance de todos os fundos
-        rows = []
-        for c in carteiras:
-            p = c.get("perf_total", {})
-            rows.append({
-                "Fundo":   c["_nome"],
-                "PL":      c.get("patrimonio", 0),
-                "Mês":     p.get("mes"),
-                "Ano":     p.get("ano"),
-                "12M":     p.get("m12"),
-                "24M":     p.get("m24"),
-                "Data":    c.get("data_base", ""),
-            })
-        df = pd.DataFrame(rows).sort_values("PL", ascending=False)
+    with col_bar:
+        df_bar = df.copy()
+        df_bar["PL (R$MM)"] = df_bar["PL"] / 1e6
+        fig = px.bar(
+            df_bar.sort_values("PL (R$MM)"),
+            x="PL (R$MM)", y="Fundo", orientation="h",
+            title="Patrimônio por Fundo (R$ MM)",
+            color="PL (R$MM)",
+            color_continuous_scale=[LAVA, NAVY],
+            text_auto=".0f",
+        )
+        fig.update_traces(texttemplate="R$ %{x:.0f}MM", textposition="outside")
+        fig.update_layout(
+            showlegend=False, coloraxis_showscale=False,
+            height=max(360, len(df) * 50),
+            plot_bgcolor="white", paper_bgcolor="white",
+            yaxis_title="", xaxis_title="R$ Milhões",
+        )
+        st.plotly_chart(fig, use_container_width=True)
 
-        col_bar, col_tbl = st.columns([3, 2])
-
-        with col_bar:
-            df_bar = df.copy()
-            df_bar["PL (R$MM)"] = df_bar["PL"] / 1e6
-            fig = px.bar(
-                df_bar.sort_values("PL (R$MM)"),
-                x="PL (R$MM)", y="Fundo", orientation="h",
-                title="Patrimônio por Fundo (R$ MM)",
-                color="PL (R$MM)",
-                color_continuous_scale=[LAVA, NAVY],
-                text_auto=".0f",
-            )
-            fig.update_traces(texttemplate="R$ %{x:.0f}MM", textposition="outside")
-            fig.update_layout(
-                showlegend=False, coloraxis_showscale=False,
-                height=max(360, len(df) * 48),
-                plot_bgcolor="white", paper_bgcolor="white",
-                yaxis_title="", xaxis_title="R$ Milhões",
-            )
-            st.plotly_chart(fig, use_container_width=True)
-
-        with col_tbl:
-            df_show = df[["Fundo", "PL", "Mês", "Ano", "12M", "24M"]].copy()
-            df_show["PL"]  = df_show["PL"].apply(lambda x: f"R$ {x/1e6:.1f}M")
-            df_show["Mês"] = df_show["Mês"].apply(fmt_pct)
-            df_show["Ano"] = df_show["Ano"].apply(fmt_pct)
-            df_show["12M"] = df_show["12M"].apply(fmt_pct)
-            df_show["24M"] = df_show["24M"].apply(fmt_pct)
-            st.dataframe(df_show, use_container_width=True, hide_index=True, height=420)
+    with col_tbl:
+        df_show = df[["Fundo","PL","Data","Mês","Ano","12M","24M"]].copy()
+        df_show["PL"]  = df_show["PL"].apply(lambda x: f"R$ {x/1e6:.1f}M")
+        for col in ["Mês","Ano","12M","24M"]:
+            df_show[col] = df_show[col].apply(fmt_pct)
+        st.dataframe(df_show, use_container_width=True, hide_index=True, height=420)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 2 — TOP / BOTTOM
 # ══════════════════════════════════════════════════════════════════════════════
 with tab_top:
-    if not carteiras:
-        st.info("Carregue PDFs na seção **Carteiras BTG** da barra lateral.")
-    else:
-        periodo = st.radio(
-            "Período", ["Mês", "Ano", "12M", "24M"],
-            horizontal=True, key="periodo_top",
-        )
-        pk = {"Mês": "mes", "Ano": "ano", "12M": "m12", "24M": "m24"}[periodo]
+    periodo = st.radio(
+        "Período", ["Mês", "Ano", "12M", "24M"],
+        horizontal=True, key="periodo_top",
+    )
+    pk = {"Mês": "mes", "Ano": "ano", "12M": "m12", "24M": "m24"}[periodo]
 
-        # ── Top/Bottom por fundo (visão macro) ──────────────────────────────
-        if len(carteiras) > 1:
-            st.subheader(f"Performance dos Fundos — {periodo}")
-            rows_f = [
-                {
-                    "Fundo":   c["_nome"],
-                    "Retorno": c.get("perf_total", {}).get(pk),
-                    "Ret%":    (c.get("perf_total", {}).get(pk) or 0) * 100,
-                }
-                for c in carteiras if c.get("perf_total", {}).get(pk) is not None
-            ]
-            df_f = pd.DataFrame(rows_f).sort_values("Retorno", ascending=False)
+    # ── Performance entre fundos ─────────────────────────────────────────────
+    if len(mais_recentes) > 1:
+        st.subheader(f"Ranking de Fundos — {periodo}")
+        rows_f = [
+            {"Fundo": nome, "Ret%": (c.get("perf_total",{}).get(pk) or 0) * 100,
+             "Retorno": c.get("perf_total",{}).get(pk)}
+            for nome, c in mais_recentes.items()
+            if c.get("perf_total",{}).get(pk) is not None
+        ]
+        df_f = pd.DataFrame(rows_f).sort_values("Retorno", ascending=False)
 
-            col_t, col_b = st.columns(2)
-            with col_t:
-                st.markdown("#### 🏆 Top 5")
-                top5 = df_f.head(5).iloc[::-1]
-                fig_t = px.bar(top5, x="Ret%", y="Fundo", orientation="h",
-                               color="Ret%", color_continuous_scale=["#a5d6a7","#1b5e20"],
-                               text_auto=".2f")
-                fig_t.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
-                fig_t.update_layout(showlegend=False, coloraxis_showscale=False,
-                                    height=300, plot_bgcolor="white", paper_bgcolor="white",
-                                    xaxis_title="", yaxis_title="",
-                                    margin=dict(l=0, r=50, t=10, b=10))
-                st.plotly_chart(fig_t, use_container_width=True)
+        col_t, col_b = st.columns(2)
+        with col_t:
+            st.markdown("#### 🏆 Top 5")
+            top5 = df_f.head(5).iloc[::-1]
+            fig_t = px.bar(top5, x="Ret%", y="Fundo", orientation="h",
+                           color="Ret%", color_continuous_scale=["#a5d6a7","#1b5e20"],
+                           text_auto=".2f")
+            fig_t.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
+            fig_t.update_layout(showlegend=False, coloraxis_showscale=False,
+                                height=300, plot_bgcolor="white", paper_bgcolor="white",
+                                xaxis_title="", yaxis_title="",
+                                margin=dict(l=0, r=50, t=10, b=10))
+            st.plotly_chart(fig_t, use_container_width=True)
 
-            with col_b:
-                st.markdown("#### ⚠️ Bottom 5")
-                bot5 = df_f.tail(5)
-                fig_b = px.bar(bot5, x="Ret%", y="Fundo", orientation="h",
-                               color="Ret%", color_continuous_scale=["#b71c1c","#ef9a9a"],
-                               text_auto=".2f")
-                fig_b.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
-                fig_b.update_layout(showlegend=False, coloraxis_showscale=False,
-                                    height=300, plot_bgcolor="white", paper_bgcolor="white",
-                                    xaxis_title="", yaxis_title="",
-                                    margin=dict(l=0, r=50, t=10, b=10))
-                st.plotly_chart(fig_b, use_container_width=True)
+        with col_b:
+            st.markdown("#### ⚠️ Bottom 5")
+            bot5 = df_f.tail(5)
+            fig_b = px.bar(bot5, x="Ret%", y="Fundo", orientation="h",
+                           color="Ret%", color_continuous_scale=["#b71c1c","#ef9a9a"],
+                           text_auto=".2f")
+            fig_b.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
+            fig_b.update_layout(showlegend=False, coloraxis_showscale=False,
+                                height=300, plot_bgcolor="white", paper_bgcolor="white",
+                                xaxis_title="", yaxis_title="",
+                                margin=dict(l=0, r=50, t=10, b=10))
+            st.plotly_chart(fig_b, use_container_width=True)
 
-            st.markdown("---")
+        st.markdown("---")
 
-        # ── Top/Bottom por posição dentro de cada fundo ──────────────────────
-        st.subheader(f"Top / Bottom Posições por Fundo — {periodo}")
+    # ── Top/Bottom posições dentro de cada fundo ─────────────────────────────
+    st.subheader(f"Top / Bottom Posições por Fundo — {periodo}")
+    for nome, c in mais_recentes.items():
+        posicoes = c.get("fundos", [])
+        if not posicoes:
+            continue
+        df_pos = pd.DataFrame(posicoes).dropna(subset=[pk]).sort_values(pk, ascending=False)
+        if df_pos.empty:
+            continue
 
-        for cart in carteiras:
-            posicoes = cart.get("fundos", [])
-            if not posicoes:
-                continue
-            df_pos = pd.DataFrame(posicoes)
-            df_pos = df_pos.dropna(subset=[pk]).sort_values(pk, ascending=False)
-            if df_pos.empty:
-                continue
+        with st.expander(
+            f"**{nome}** — {c.get('data_base','')}  |  PL: R$ {c.get('patrimonio',0)/1e6:.1f}M",
+            expanded=True,
+        ):
+            col_t2, col_b2 = st.columns(2)
+            with col_t2:
+                st.markdown("🏆 **Top 5**")
+                top = df_pos.head(5).copy()
+                top["ret%"] = top[pk] * 100
+                fig_tp = px.bar(top.iloc[::-1], x="ret%", y="nome", orientation="h",
+                                color="ret%", color_continuous_scale=["#a5d6a7","#1b5e20"],
+                                text_auto=".2f")
+                fig_tp.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
+                fig_tp.update_layout(showlegend=False, coloraxis_showscale=False,
+                                     height=260, plot_bgcolor="white", paper_bgcolor="white",
+                                     xaxis_title="", yaxis_title="",
+                                     margin=dict(l=0, r=50, t=5, b=5))
+                st.plotly_chart(fig_tp, use_container_width=True)
 
-            with st.expander(f"**{cart['_nome']}** — {cart.get('data_base','')}  |  PL: R$ {cart.get('patrimonio',0)/1e6:.1f}M", expanded=True):
-                col_t2, col_b2 = st.columns(2)
-
-                with col_t2:
-                    st.markdown("🏆 **Top 5 posições**")
-                    top = df_pos.head(5)[["nome", pk]].copy()
-                    top["ret%"] = top[pk] * 100
-                    fig_tp = px.bar(top.iloc[::-1], x="ret%", y="nome", orientation="h",
-                                    color="ret%", color_continuous_scale=["#a5d6a7","#1b5e20"],
-                                    text_auto=".2f")
-                    fig_tp.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
-                    fig_tp.update_layout(showlegend=False, coloraxis_showscale=False,
-                                         height=260, plot_bgcolor="white", paper_bgcolor="white",
-                                         xaxis_title="", yaxis_title="",
-                                         margin=dict(l=0, r=50, t=5, b=5))
-                    st.plotly_chart(fig_tp, use_container_width=True)
-
-                with col_b2:
-                    st.markdown("⚠️ **Bottom 5 posições**")
-                    bot = df_pos.tail(5)
-                    bot["ret%"] = bot[pk] * 100
-                    fig_bt = px.bar(bot, x="ret%", y="nome", orientation="h",
-                                    color="ret%", color_continuous_scale=["#b71c1c","#ef9a9a"],
-                                    text_auto=".2f")
-                    fig_bt.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
-                    fig_bt.update_layout(showlegend=False, coloraxis_showscale=False,
-                                         height=260, plot_bgcolor="white", paper_bgcolor="white",
-                                         xaxis_title="", yaxis_title="",
-                                         margin=dict(l=0, r=50, t=5, b=5))
-                    st.plotly_chart(fig_bt, use_container_width=True)
+            with col_b2:
+                st.markdown("⚠️ **Bottom 5**")
+                bot = df_pos.tail(5).copy()
+                bot["ret%"] = bot[pk] * 100
+                fig_bt = px.bar(bot, x="ret%", y="nome", orientation="h",
+                                color="ret%", color_continuous_scale=["#b71c1c","#ef9a9a"],
+                                text_auto=".2f")
+                fig_bt.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
+                fig_bt.update_layout(showlegend=False, coloraxis_showscale=False,
+                                     height=260, plot_bgcolor="white", paper_bgcolor="white",
+                                     xaxis_title="", yaxis_title="",
+                                     margin=dict(l=0, r=50, t=5, b=5))
+                st.plotly_chart(fig_bt, use_container_width=True)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 3 — DETALHES DA CARTEIRA
 # ══════════════════════════════════════════════════════════════════════════════
 with tab_detalhe:
-    if not carteiras:
-        st.info("Carregue PDFs na seção **Carteiras BTG** da barra lateral.")
+    # Opções: um item por (fundo, data)
+    opcoes_det = [
+        (c["_nome"], c.get("data_base",""), c)
+        for datas in grupos.values()
+        for c in datas
+    ]
+    labels_det = [f"{nome} — {data}" for nome, data, _ in opcoes_det]
+
+    sel = st.selectbox("Selecionar fundo / data", range(len(labels_det)),
+                       format_func=lambda i: labels_det[i])
+    cart  = opcoes_det[sel][2]
+    perf  = cart.get("perf_total", {})
+    bench = cart.get("pct_bench",  {})
+
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("Data Base",   cart.get("data_base", "—"))
+    c2.metric("Patrimônio",  f"R$ {cart.get('patrimonio',0)/1e6:.2f}M")
+    c3.metric("Retorno Mês", fmt_pct(perf.get("mes")),
+              delta=f"bench {fmt_pct(bench.get('mes'))}")
+    c4.metric("Retorno Ano", fmt_pct(perf.get("ano")),
+              delta=f"bench {fmt_pct(bench.get('ano'))}")
+    c5.metric("12M",         fmt_pct(perf.get("m12")))
+
+    st.markdown("---")
+    posicoes = cart.get("fundos", [])
+    if not posicoes:
+        st.warning("Nenhuma posição encontrada neste PDF.")
     else:
-        opcoes = [
-            f"{c['_nome']} — {c.get('data_base','')}"
-            for c in carteiras
-        ]
-        sel = st.selectbox("Selecionar fundo", range(len(opcoes)),
-                           format_func=lambda i: opcoes[i])
-        cart = carteiras[sel]
-        perf  = cart.get("perf_total", {})
-        bench = cart.get("pct_bench",  {})
+        df_p = pd.DataFrame(posicoes)
+        col_pie, col_tbl = st.columns([2, 3])
 
-        c1, c2, c3, c4, c5 = st.columns(5)
-        c1.metric("Data Base",   cart.get("data_base", "—"))
-        c2.metric("Patrimônio",  f"R$ {cart.get('patrimonio',0)/1e6:.2f}M")
-        c3.metric("Retorno Mês", fmt_pct(perf.get("mes")),
-                  delta=f"bench {fmt_pct(bench.get('mes'))}")
-        c4.metric("Retorno Ano", fmt_pct(perf.get("ano")),
-                  delta=f"bench {fmt_pct(bench.get('ano'))}")
-        c5.metric("12M",         fmt_pct(perf.get("m12")))
+        with col_pie:
+            fig_pie = px.pie(
+                df_p.head(15), values="pl", names="nome",
+                title="Distribuição %PL (Top 15)",
+                color_discrete_sequence=px.colors.sequential.Purples_r,
+                hole=0.35,
+            )
+            fig_pie.update_traces(textposition="inside", textinfo="percent+label")
+            fig_pie.update_layout(showlegend=False, height=420)
+            st.plotly_chart(fig_pie, use_container_width=True)
 
-        st.markdown("---")
-
-        posicoes = cart.get("fundos", [])
-        if not posicoes:
-            st.warning("Nenhuma posição encontrada neste PDF.")
-        else:
-            df_p = pd.DataFrame(posicoes)
-
-            col_pie, col_tbl = st.columns([2, 3])
-
-            with col_pie:
-                fig_pie = px.pie(
-                    df_p.head(15), values="pl", names="nome",
-                    title="Distribuição %PL (Top 15)",
-                    color_discrete_sequence=px.colors.sequential.Purples_r,
-                    hole=0.35,
-                )
-                fig_pie.update_traces(textposition="inside", textinfo="percent+label")
-                fig_pie.update_layout(showlegend=False, height=420)
-                st.plotly_chart(fig_pie, use_container_width=True)
-
-            with col_tbl:
-                df_show = df_p.copy()
-                for col in ["mes", "ano", "m12", "m24"]:
-                    if col in df_show.columns:
-                        df_show[col] = df_show[col].apply(fmt_pct)
-                df_show["financeiro"] = df_show["financeiro"].apply(lambda x: f"R$ {x:,.0f}")
-                df_show["pl"]         = df_show["pl"].apply(lambda x: f"{x:.2f}%")
-                df_show = df_show.rename(columns={
-                    "nome": "Ativo", "pl": "%PL", "financeiro": "Financeiro",
-                    "mes": "Mês", "ano": "Ano", "m12": "12M", "m24": "24M",
-                })
-                st.dataframe(df_show, use_container_width=True, hide_index=True, height=400)
+        with col_tbl:
+            df_show = df_p.copy()
+            for col in ["mes","ano","m12","m24"]:
+                if col in df_show.columns:
+                    df_show[col] = df_show[col].apply(fmt_pct)
+            df_show["financeiro"] = df_show["financeiro"].apply(lambda x: f"R$ {x:,.0f}")
+            df_show["pl"]         = df_show["pl"].apply(lambda x: f"{x:.2f}%")
+            df_show = df_show.rename(columns={
+                "nome":"Ativo","pl":"%PL","financeiro":"Financeiro",
+                "mes":"Mês","ano":"Ano","m12":"12M","m24":"24M",
+            })
+            st.dataframe(df_show, use_container_width=True, hide_index=True, height=400)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# TAB 4 — COMPARATIVO SEMANAL
+# TAB 4 — COMPARATIVO SEMANAL (automático para fundos com 2+ datas)
 # ══════════════════════════════════════════════════════════════════════════════
 with tab_comp:
-    if not cmp_a or not cmp_b:
+    if not fundos_comp:
         st.info(
-            "👈 Carregue os dois PDFs da mesma carteira na barra lateral "
-            "(seção **Comparativo Semanal**) para ver a análise."
+            "Carregue **dois PDFs do mesmo fundo** (datas diferentes) "
+            "para ver o comparativo automático."
         )
     else:
-        da, db = cmp_a, cmp_b
-        pa, pb = da.get("perf_total", {}), db.get("perf_total", {})
-        pl_a,  pl_b  = da.get("patrimonio", 0), db.get("patrimonio", 0)
-        delta_pl = pl_b - pl_a
+        # Selector se houver mais de um fundo com comparativo
+        fundo_sel = st.selectbox(
+            "Selecionar fundo", fundos_comp,
+            key="sel_comp",
+        ) if len(fundos_comp) > 1 else fundos_comp[0]
 
-        st.subheader(da["_nome"])
+        datas_disp = grupos[fundo_sel]
+        da = datas_disp[0]   # mais antiga
+        db = datas_disp[-1]  # mais recente
 
-        # ── Métricas ─────────────────────────────────────────────────────────
-        c1, c2, c3, c4, c5, c6 = st.columns(6)
-        c1.metric("Data A", da.get("data_base", "—"))
-        c2.metric("Data B", db.get("data_base", "—"))
-        c3.metric(
-            "PL (data B)", f"R$ {pl_b/1e6:.2f}M",
-            delta=f"R$ {delta_pl:+,.0f} ({delta_pl/pl_a*100:+.2f}%)" if pl_a else None,
-        )
-        c4.metric(
-            "Retorno Mês", fmt_pct(pb.get("mes")),
-            delta=fmt_pct((pb.get("mes") or 0) - (pa.get("mes") or 0)) + " vs data A",
-        )
-        c5.metric(
-            "Retorno Ano", fmt_pct(pb.get("ano")),
-            delta=fmt_pct((pb.get("ano") or 0) - (pa.get("ano") or 0)) + " vs data A",
-        )
+        pa, pb   = da.get("perf_total",{}), db.get("perf_total",{})
+        pl_a, pl_b = da.get("patrimonio",0), db.get("patrimonio",0)
+        delta_pl   = pl_b - pl_a
+
+        st.subheader(fundo_sel)
+
+        c1,c2,c3,c4,c5,c6 = st.columns(6)
+        c1.metric("Data A", da.get("data_base","—"))
+        c2.metric("Data B", db.get("data_base","—"))
+        c3.metric("PL (data B)", f"R$ {pl_b/1e6:.2f}M",
+                  delta=f"R$ {delta_pl:+,.0f} ({delta_pl/pl_a*100:+.2f}%)" if pl_a else None)
+        c4.metric("Retorno Mês", fmt_pct(pb.get("mes")),
+                  delta=fmt_pct((pb.get("mes") or 0)-(pa.get("mes") or 0))+" vs data A")
+        c5.metric("Retorno Ano", fmt_pct(pb.get("ano")),
+                  delta=fmt_pct((pb.get("ano") or 0)-(pa.get("ano") or 0))+" vs data A")
         c6.metric("12M (data B)", fmt_pct(pb.get("m12")))
 
         st.markdown("---")
 
-        # ── Comparativo de posições ──────────────────────────────────────────
-        ativos_a = {f["nome"]: f for f in da.get("fundos", [])}
-        ativos_b = {f["nome"]: f for f in db.get("fundos", [])}
-        todos    = sorted(set(ativos_a) | set(ativos_b))
+        ativos_a = {f["nome"]: f for f in da.get("fundos",[])}
+        ativos_b = {f["nome"]: f for f in db.get("fundos",[])}
+        todos    = sorted(set(ativos_a)|set(ativos_b))
 
         rows_pos = []
         for nome in todos:
-            fa, fb = ativos_a.get(nome, {}), ativos_b.get(nome, {})
+            fa, fb = ativos_a.get(nome,{}), ativos_b.get(nome,{})
             ra, rb = fa.get("mes"), fb.get("mes")
             rows_pos.append({
-                "Ativo":       nome,
-                "%PL A":       fa.get("pl", 0.0),
-                "%PL B":       fb.get("pl", 0.0),
-                "Δ %PL":       fb.get("pl", 0.0) - fa.get("pl", 0.0),
-                "Ret.Mês A":   ra,
-                "Ret.Mês B":   rb,
-                "Δ Ret.Mês":   (rb - ra) if (ra is not None and rb is not None) else None,
-                "Fin. B":      fb.get("financeiro", fa.get("financeiro", 0)),
+                "Ativo":     nome,
+                "%PL A":     fa.get("pl",0.0),
+                "%PL B":     fb.get("pl",0.0),
+                "Δ %PL":     fb.get("pl",0.0)-fa.get("pl",0.0),
+                "Ret.Mês A": ra,
+                "Ret.Mês B": rb,
+                "Δ Ret.Mês": (rb-ra) if (ra is not None and rb is not None) else None,
+                "Fin. B":    fb.get("financeiro", fa.get("financeiro",0)),
             })
         df_pos = pd.DataFrame(rows_pos).sort_values("%PL B", ascending=False)
 
-        col_bar, col_ret = st.columns(2)
+        col_bar2, col_ret2 = st.columns(2)
 
-        with col_bar:
-            df_b = df_pos[df_pos["Δ %PL"] != 0].copy()
-            df_b["cor"] = df_b["Δ %PL"].apply(lambda x: "#2e7d32" if x >= 0 else "#c62828")
+        with col_bar2:
+            df_b2 = df_pos[df_pos["Δ %PL"]!=0].copy()
+            df_b2["cor"] = df_b2["Δ %PL"].apply(lambda x: "#2e7d32" if x>=0 else "#c62828")
             fig_pl = go.Figure(go.Bar(
-                x=df_b["Ativo"], y=df_b["Δ %PL"],
-                marker_color=df_b["cor"],
-                text=[f"{v:+.2f}p.p." for v in df_b["Δ %PL"]],
+                x=df_b2["Ativo"], y=df_b2["Δ %PL"],
+                marker_color=df_b2["cor"],
+                text=[f"{v:+.2f}p.p." for v in df_b2["Δ %PL"]],
                 textposition="outside",
             ))
             fig_pl.update_layout(
-                title=f"Variação de %PL por Ativo ({da['data_base']} → {db['data_base']})",
+                title=f"Variação de %PL ({da['data_base']} → {db['data_base']})",
                 plot_bgcolor="white", paper_bgcolor="white",
                 height=380, yaxis_title="Δ %PL (p.p.)",
                 showlegend=False, xaxis_tickangle=-30,
             )
             st.plotly_chart(fig_pl, use_container_width=True)
 
-        with col_ret:
-            df_r = df_pos.dropna(subset=["Δ Ret.Mês"]).copy()
-            df_r["cor"] = df_r["Δ Ret.Mês"].apply(lambda x: "#2e7d32" if x >= 0 else "#c62828")
+        with col_ret2:
+            df_r2 = df_pos.dropna(subset=["Δ Ret.Mês"]).copy()
+            df_r2["cor"] = df_r2["Δ Ret.Mês"].apply(lambda x: "#2e7d32" if x>=0 else "#c62828")
             fig_ret = go.Figure(go.Bar(
-                x=df_r["Ativo"], y=df_r["Δ Ret.Mês"] * 100,
-                marker_color=df_r["cor"],
-                text=[f"{v*100:+.2f}%" for v in df_r["Δ Ret.Mês"]],
+                x=df_r2["Ativo"], y=df_r2["Δ Ret.Mês"]*100,
+                marker_color=df_r2["cor"],
+                text=[f"{v*100:+.2f}%" for v in df_r2["Δ Ret.Mês"]],
                 textposition="outside",
             ))
             fig_ret.update_layout(
@@ -442,7 +454,6 @@ with tab_comp:
             )
             st.plotly_chart(fig_ret, use_container_width=True)
 
-        # ── Tabela ───────────────────────────────────────────────────────────
         st.subheader("Tabela Detalhada")
         df_tbl = df_pos.copy()
         df_tbl["%PL A"]     = df_tbl["%PL A"].apply(lambda x: f"{x:.2f}%")
@@ -453,26 +464,20 @@ with tab_comp:
         df_tbl["Δ Ret.Mês"] = df_tbl["Δ Ret.Mês"].apply(
             lambda x: f"{x*100:+.2f}p.p." if x is not None else "—"
         )
-        df_tbl["Fin. B"]    = df_tbl["Fin. B"].apply(lambda x: f"R$ {x:,.0f}")
+        df_tbl["Fin. B"] = df_tbl["Fin. B"].apply(lambda x: f"R$ {x:,.0f}")
         st.dataframe(df_tbl, use_container_width=True, hide_index=True)
 
-        # ── Destaques ────────────────────────────────────────────────────────
         st.markdown("---")
         st.subheader("Destaques da Semana")
         df_dest = df_pos.dropna(subset=["Δ Ret.Mês"]).sort_values("Δ Ret.Mês", ascending=False)
-
         col_hi, col_lo = st.columns(2)
         with col_hi:
             st.markdown("**Maiores avanços**")
             for _, row in df_dest.head(3).iterrows():
-                st.success(
-                    f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  "
-                    f"({row['Δ Ret.Mês']*100:+.2f}p.p. vs data A)"
-                )
+                st.success(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  "
+                           f"({row['Δ Ret.Mês']*100:+.2f}p.p. vs data A)")
         with col_lo:
             st.markdown("**Maiores quedas**")
             for _, row in df_dest.tail(3).iloc[::-1].iterrows():
-                st.error(
-                    f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  "
-                    f"({row['Δ Ret.Mês']*100:+.2f}p.p. vs data A)"
-                )
+                st.error(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  "
+                         f"({row['Δ Ret.Mês']*100:+.2f}p.p. vs data A)")
