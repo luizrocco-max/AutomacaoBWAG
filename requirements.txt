@@ -5,3 +5,5 @@ python-pptx
 matplotlib
 pyyaml
 python-dotenv
+streamlit
+plotly
