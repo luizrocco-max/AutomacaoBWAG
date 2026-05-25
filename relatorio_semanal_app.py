@@ -45,7 +45,10 @@ st.markdown(f"""
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def fmt_pct(v, dec=2):
-    if v is None:
+    try:
+        if v is None or pd.isna(v):
+            return "—"
+    except (TypeError, ValueError):
         return "—"
     return f"{v * 100:.{dec}f}%"
 
