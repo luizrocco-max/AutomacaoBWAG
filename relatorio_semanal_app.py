@@ -321,7 +321,6 @@ with st.sidebar:
     st.markdown(f"""
     <div style="padding:0.8rem 0 0.4rem 0;">
         {_sb_logo}
-        <div style="color:{LAVA};font-size:0.7rem;margin-top:4px;letter-spacing:0.05em;text-transform:uppercase;">Multi Family Office</div>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("---")
@@ -401,7 +400,6 @@ st.markdown(f"""
     <div style="width:1px;height:40px;background:rgba(191,184,245,0.4);"></div>
     <div>
         <div style="color:white;font-size:1.3rem;font-weight:700;letter-spacing:0.3px;line-height:1.2;">Relatório Semanal de Fundos</div>
-        <div style="color:{LAVA};font-size:0.78rem;margin-top:2px;font-weight:400;">BWAG Multi Family Office</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
