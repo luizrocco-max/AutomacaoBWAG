@@ -422,28 +422,28 @@ with tab_top:
             continue
         with st.expander(f"**{nome}** — {c.get('data_base','')}  |  PL: R$ {c.get('patrimonio',0)/1e6:.1f}M", expanded=True):
             col_t2, col_b2 = st.columns(2)
+            def _bar_chart(df_sub, ascending):
+                df_sub = df_sub.copy()
+                df_sub["ret%"] = df_sub[pk] * 100
+                df_sub = df_sub.sort_values("ret%", ascending=ascending)
+                cores = ["#2e7d32" if v >= 0 else "#c62828" for v in df_sub["ret%"]]
+                fig = go.Figure(go.Bar(
+                    x=df_sub["ret%"], y=df_sub["nome"], orientation="h",
+                    marker_color=cores,
+                    text=[f"{v:.2f}%" for v in df_sub["ret%"]], textposition="outside",
+                ))
+                fig.update_layout(showlegend=False, height=260,
+                                  plot_bgcolor="white", paper_bgcolor="white",
+                                  xaxis_title="", yaxis_title="",
+                                  margin=dict(l=0, r=60, t=5, b=5))
+                return fig
+
             with col_t2:
                 st.markdown("🏆 **Top 5**")
-                top = df_pos.head(5).copy()
-                top["ret%"] = top[pk] * 100
-                fig_tp = px.bar(top.iloc[::-1], x="ret%", y="nome", orientation="h",
-                                color="ret%", color_continuous_scale=["#a5d6a7","#1b5e20"], text_auto=".2f")
-                fig_tp.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
-                fig_tp.update_layout(showlegend=False, coloraxis_showscale=False, height=260,
-                                     plot_bgcolor="white", paper_bgcolor="white",
-                                     xaxis_title="", yaxis_title="", margin=dict(l=0,r=50,t=5,b=5))
-                st.plotly_chart(fig_tp, use_container_width=True)
+                st.plotly_chart(_bar_chart(df_pos.head(5), ascending=True), use_container_width=True)
             with col_b2:
                 st.markdown("⚠️ **Bottom 5**")
-                bot = df_pos.tail(5).copy()
-                bot["ret%"] = bot[pk] * 100
-                fig_bt = px.bar(bot, x="ret%", y="nome", orientation="h",
-                                color="ret%", color_continuous_scale=["#b71c1c","#ef9a9a"], text_auto=".2f")
-                fig_bt.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
-                fig_bt.update_layout(showlegend=False, coloraxis_showscale=False, height=260,
-                                     plot_bgcolor="white", paper_bgcolor="white",
-                                     xaxis_title="", yaxis_title="", margin=dict(l=0,r=50,t=5,b=5))
-                st.plotly_chart(fig_bt, use_container_width=True)
+                st.plotly_chart(_bar_chart(df_pos.tail(5), ascending=False), use_container_width=True)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
