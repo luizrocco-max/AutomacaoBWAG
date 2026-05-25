@@ -664,7 +664,7 @@ with tab_comp:
         c1.metric("Data A", da.get("data_base","—"))
         c2.metric("Data B", db.get("data_base","—"))
         c3.metric("PL (data B)", f"R$ {pl_b/1e6:.2f}M",
-                  delta=f"R$ {delta_pl:+,.0f} ({delta_pl/pl_a*100:+.2f}%)" if pl_a else None)
+                  delta=f"{delta_pl:+,.0f} ({delta_pl/pl_a*100:+.2f}%)" if pl_a else None)
         c4.metric("Retorno Mês", fmt_pct(pb.get("mes")),
                   delta=fmt_pct((pb.get("mes") or 0)-(pa.get("mes") or 0))+f" vs {da.get('data_base','A')}")
         c5.metric("Retorno Ano", fmt_pct(pb.get("ano")),
