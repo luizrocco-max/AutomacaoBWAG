@@ -21,11 +21,27 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).parent))
 from src.readers.btg_carteira_reader import ler_carteira_btg
 
-NAVY  = "#1C0845"
-ROYAL = "#2A1A8C"
-LAVA  = "#BFB8F5"
+# ── Paleta BWAG ──────────────────────────────────────────────────────────────
+NAVY     = "#1C0845"
+ROYAL    = "#2A1A8C"
+ELECTRIC = "#4A3BE0"
+PERIW    = "#7B6FF0"
+LAVA     = "#BFB8F5"
+CINZA_BG = "#F4F4F6"
+CINZA_TX = "#6B6B7B"
+PRETO    = "#0A0420"
+BWAG_COLORS = [NAVY, ROYAL, ELECTRIC, PERIW, LAVA, "#9F96F3", "#D4D0F8"]
 
 GITHUB_DATA_PATH = "data/reports/latest_data.json"
+
+# ── Logo (base64 para embed inline) ──────────────────────────────────────────
+def _logo_b64() -> str:
+    p = Path(__file__).parent / "assets" / "logo_bwag_dark.png"
+    if p.exists():
+        return base64.b64encode(p.read_bytes()).decode()
+    return ""
+
+_LOGO = _logo_b64()
 
 st.set_page_config(
     page_title="Relatório Semanal — BWAG",
@@ -35,10 +51,116 @@ st.set_page_config(
 )
 st.markdown(f"""
 <style>
-  .block-container {{ padding-top: 1.5rem; }}
-  h1, h2 {{ color: {NAVY}; }}
-  h3 {{ color: {ROYAL}; }}
-  [data-testid="stMetricValue"] {{ color: {NAVY}; font-weight: bold; }}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+html, body, [class*="css"] {{ font-family: 'Inter', sans-serif !important; }}
+
+/* ── Layout ── */
+.main .block-container {{
+    padding-top: 0 !important;
+    padding-bottom: 2rem;
+    max-width: 1400px;
+}}
+
+/* ── Sidebar ── */
+[data-testid="stSidebar"] {{
+    background: linear-gradient(180deg, {NAVY} 0%, {ROYAL} 100%) !important;
+}}
+[data-testid="stSidebar"] .stMarkdown,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] small {{
+    color: {LAVA} !important;
+}}
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {{
+    color: #ffffff !important;
+}}
+[data-testid="stSidebar"] hr {{
+    border-color: rgba(191,184,245,0.25) !important;
+}}
+[data-testid="stSidebar"] [data-testid="stTextInput"] input {{
+    background: rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(191,184,245,0.4) !important;
+    color: white !important;
+    border-radius: 6px;
+}}
+[data-testid="stSidebar"] [data-testid="stFileUploader"] {{
+    background: rgba(255,255,255,0.07);
+    border: 1px dashed rgba(191,184,245,0.4);
+    border-radius: 8px;
+    padding: 0.5rem;
+}}
+
+/* ── Tabs ── */
+[data-testid="stTabs"] [role="tab"] {{
+    font-weight: 500;
+    color: {CINZA_TX};
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px 6px 0 0;
+}}
+[data-testid="stTabs"] [role="tab"][aria-selected="true"] {{
+    color: {ELECTRIC} !important;
+    border-bottom: 3px solid {ELECTRIC} !important;
+    font-weight: 600;
+}}
+
+/* ── Metrics ── */
+[data-testid="stMetricLabel"] {{
+    color: {CINZA_TX} !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}}
+[data-testid="stMetricValue"] {{
+    color: {NAVY} !important;
+    font-weight: 700 !important;
+}}
+
+/* ── Buttons ── */
+.stButton > button[kind="primary"] {{
+    background: linear-gradient(135deg, {ROYAL}, {ELECTRIC}) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    padding: 0.4rem 1.2rem !important;
+}}
+.stButton > button[kind="secondary"] {{
+    background: transparent !important;
+    border: 1.5px solid {ELECTRIC} !important;
+    color: {ELECTRIC} !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+}}
+
+/* ── Expanders ── */
+[data-testid="stExpander"] {{
+    border: 1px solid {LAVA} !important;
+    border-radius: 10px !important;
+    background: white !important;
+}}
+[data-testid="stExpander"] summary span {{
+    color: {NAVY} !important;
+    font-weight: 600;
+}}
+
+/* ── Headings ── */
+h1, h2 {{ color: {NAVY} !important; }}
+h3 {{ color: {ROYAL} !important; }}
+
+/* ── Selectbox / labels ── */
+[data-testid="stSelectbox"] label,
+[data-testid="stRadio"] label {{
+    color: {NAVY} !important;
+    font-weight: 600 !important;
+}}
+
+/* ── Divider ── */
+hr {{ border-color: {LAVA}44 !important; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -195,21 +317,23 @@ GITHUB_REPO  = st.secrets.get("GITHUB_REPO", "")
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    logo_path = "templates/logo_bwag_dark.png"
-    if os.path.exists(logo_path):
-        st.image(logo_path, width=150)
-    else:
-        st.markdown("## **BWAG**")
+    _sb_logo = f'<img src="data:image/png;base64,{_LOGO}" style="height:36px;filter:brightness(0) invert(1);margin-bottom:4px;">' if _LOGO else '<span style="color:white;font-size:1.3rem;font-weight:800;">BWAG.</span>'
+    st.markdown(f"""
+    <div style="padding:0.8rem 0 0.4rem 0;">
+        {_sb_logo}
+        <div style="color:{LAVA};font-size:0.7rem;margin-top:4px;letter-spacing:0.05em;text-transform:uppercase;">Multi Family Office</div>
+    </div>
+    """, unsafe_allow_html=True)
     st.markdown("---")
 
-    senha = st.text_input("🔑 Senha admin", type="password", key="senha")
+    senha = st.text_input("Senha admin", type="password", key="senha", placeholder="••••••••")
     is_admin = (senha == ADMIN_PWD and ADMIN_PWD != "")
 
     if is_admin:
-        st.success("Modo admin ativo")
+        st.success("✓ Modo admin ativo")
         st.markdown("---")
-        st.subheader("📋 Carregar PDFs")
-        st.caption("Carregue todos os PDFs de uma vez — pode misturar fundos e datas")
+        st.markdown(f'<p style="color:white;font-weight:600;margin-bottom:4px;">Carregar PDFs</p>', unsafe_allow_html=True)
+        st.caption("Pode misturar fundos e datas")
         f_pdfs = st.file_uploader(
             "PDFs", type=["pdf"], accept_multiple_files=True,
             key="pdfs", label_visibility="collapsed",
@@ -220,7 +344,7 @@ with st.sidebar:
             st.error("Senha incorreta")
 
     st.markdown("---")
-    st.caption("BWAG Automações — v2.0")
+    st.markdown(f'<p style="color:{LAVA};font-size:0.72rem;text-align:center;opacity:0.7;">Automações BWAG — v2.0</p>', unsafe_allow_html=True)
 
 
 # ── Carregar dados ────────────────────────────────────────────────────────────
@@ -262,7 +386,25 @@ fundos_comp   = [n for n, d in grupos.items() if len(d) >= 2]
 
 
 # ── Header ────────────────────────────────────────────────────────────────────
-st.title("📊 Relatório Semanal de Fundos")
+_logo_html = f'<img src="data:image/png;base64,{_LOGO}" style="height:42px;filter:brightness(0) invert(1);vertical-align:middle;">' if _LOGO else '<span style="font-size:1.4rem;font-weight:800;color:white;letter-spacing:2px;">BWAG.</span>'
+st.markdown(f"""
+<div style="
+    background: linear-gradient(135deg, {NAVY} 0%, {ROYAL} 55%, {ELECTRIC} 100%);
+    padding: 1.1rem 2rem;
+    margin: -2rem -4rem 1.5rem -4rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 2px 12px rgba(28,8,69,0.3);
+">
+    {_logo_html}
+    <div style="width:1px;height:40px;background:rgba(191,184,245,0.4);"></div>
+    <div>
+        <div style="color:white;font-size:1.3rem;font-weight:700;letter-spacing:0.3px;line-height:1.2;">Relatório Semanal de Fundos</div>
+        <div style="color:{LAVA};font-size:0.78rem;margin-top:2px;font-weight:400;">BWAG Multi Family Office</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 if not carteiras_raw:
     if is_admin:
@@ -480,7 +622,7 @@ with tab_detalhe:
         with col_pie:
             fig_pie = px.pie(df_p.head(15), values="pl", names="nome",
                              title="Distribuição %PL (Top 15)",
-                             color_discrete_sequence=px.colors.sequential.Purples_r, hole=0.35)
+                             color_discrete_sequence=BWAG_COLORS, hole=0.35)
             fig_pie.update_traces(textposition="inside", textinfo="percent+label")
             fig_pie.update_layout(showlegend=False, height=420)
             st.plotly_chart(fig_pie, use_container_width=True)
