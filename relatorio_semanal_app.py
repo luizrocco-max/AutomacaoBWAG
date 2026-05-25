@@ -45,13 +45,12 @@ def fmt_pct(v, dec=2):
     return f"{v * 100:.{dec}f}%"
 
 def _nome_fundo(fname: str) -> str:
-    """Extrai nome do fundo a partir do nome do arquivo BTG.
-    Remove prefixo AcompFI_, sufixo de data (_YYYYMMDD) e qualquer
-    coisa depois (ex: ' (1)', ' - copia', etc.).
-    """
-    nome = fname.replace("AcompFI_", "").replace(".pdf", "")
-    # Remove _YYYYMMDD e tudo que vier depois
-    nome = re.sub(r'_\d{8}.*$', '', nome)
+    """Extrai nome do fundo removendo prefixo AcompFI_ e qualquer
+    sufixo de data (_YYYYMMDD, _DD.MM.YYYY, etc.) e variantes."""
+    nome = fname.replace("AcompFI_", "").replace(".pdf", "").strip()
+    nome = re.sub(r'[_ ]\d{8}.*$', '', nome)           # _20260515 (1)
+    nome = re.sub(r'[_ ]\d{2}[./]\d{2}[./]\d{4}.*$', '', nome)  # _15.05.2026
+    nome = re.sub(r'[_ ]\d{2}[./]\d{2}[./]\d{2}.*$', '', nome)  # _15.05.26
     return nome.strip()
 
 def _parse_data(data_str: str):
@@ -111,7 +110,7 @@ with st.sidebar:
     )
 
     st.markdown("---")
-    st.caption("BWAG Automações — v1.2")
+    st.caption("BWAG Automações — v1.3")
 
 
 # ── Carregar e agrupar ────────────────────────────────────────────────────────
@@ -142,6 +141,14 @@ col_r1, col_r2, col_r3 = st.columns(3)
 col_r1.metric("Fundos carregados", total_fundos)
 col_r2.metric("PDFs processados",  total_pdfs)
 col_r3.metric("Com comparativo",   len(fundos_comp))
+
+with st.expander("🔎 Fundos detectados", expanded=(len(fundos_comp) == 0 and total_pdfs > 1)):
+    for nome, datas in grupos.items():
+        dts = " · ".join(c.get("data_base","?") for c in datas)
+        n   = len(datas)
+        tag = "✅ comparativo" if n >= 2 else "📄 1 data"
+        st.write(f"**{nome}** — {dts} — {tag}")
+
 st.divider()
 
 
