@@ -56,6 +56,14 @@ def _nome_fundo(fname: str) -> str:
     nome = re.sub(r'[_ ]\d{2}[./]\d{2}[./]\d{2}.*$', '', nome)
     return nome.strip()
 
+def _data_do_arquivo(fname: str) -> str:
+    """Extrai data do nome do arquivo (YYYYMMDD → DD/MM/YYYY). Mais confiável que o conteúdo do PDF."""
+    m = re.search(r'[_ ](\d{8})(?:\s|\.|$|\()', fname)
+    if m:
+        d = m.group(1)
+        return f"{d[6:8]}/{d[4:6]}/{d[:4]}"
+    return ""
+
 def _parse_data(data_str: str):
     try:
         return datetime.strptime(data_str, "%d/%m/%Y")
@@ -128,6 +136,10 @@ def load_btg(raw: bytes, fname: str):
         data = ler_carteira_btg(path)
         data["_filename"] = fname
         data["_nome"]     = _nome_fundo(fname)
+        # Data do arquivo é mais confiável que a data interna do PDF
+        data_arq = _data_do_arquivo(fname)
+        if data_arq:
+            data["data_base"] = data_arq
         data["_dt"]       = _parse_data(data.get("data_base", ""))
         return data
     except Exception as e:
