@@ -710,6 +710,8 @@ with tab_comp:
             st.plotly_chart(fig_ret, use_container_width=True)
 
         st.subheader("Tabela Detalhada")
+        data_a_label = da.get("data_base", "A")
+        data_b_label = db.get("data_base", "B")
         df_tbl = df_pos.copy()
         df_tbl["%PL A"]     = df_tbl["%PL A"].apply(lambda x: f"{x:.2f}%")
         df_tbl["%PL B"]     = df_tbl["%PL B"].apply(lambda x: f"{x:.2f}%")
@@ -718,6 +720,13 @@ with tab_comp:
         df_tbl["Ret.Mês B"] = df_tbl["Ret.Mês B"].apply(fmt_pct)
         df_tbl["Δ Ret.Mês"] = df_tbl["Δ Ret.Mês"].apply(lambda x: f"{x*100:+.2f}%" if x is not None else "—")
         df_tbl["Fin. B"]    = df_tbl["Fin. B"].apply(lambda x: f"R$ {x:,.0f}")
+        df_tbl = df_tbl.rename(columns={
+            "%PL A":     f"%PL {data_a_label}",
+            "%PL B":     f"%PL {data_b_label}",
+            "Ret.Mês A": f"Ret.Mês {data_a_label}",
+            "Ret.Mês B": f"Ret.Mês {data_b_label}",
+            "Fin. B":    f"Fin. {data_b_label}",
+        })
         st.dataframe(df_tbl, use_container_width=True, hide_index=True)
 
         st.markdown("---")
