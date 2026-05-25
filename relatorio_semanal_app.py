@@ -470,7 +470,16 @@ with tab_comp:
     else:
         fundo_sel = st.selectbox("Selecionar fundo", fundos_comp, key="sel_comp") if len(fundos_comp) > 1 else fundos_comp[0]
         datas_disp = grupos[fundo_sel]
-        da, db   = datas_disp[0], datas_disp[-1]
+        labels_datas = [c.get("data_base", f"#{i}") for i, c in enumerate(datas_disp)]
+
+        col_da, col_db = st.columns(2)
+        with col_da:
+            idx_a = st.selectbox("Data A (base)", range(len(labels_datas)),
+                                 format_func=lambda i: labels_datas[i], index=0, key="sel_da")
+        with col_db:
+            idx_b = st.selectbox("Data B (comparação)", range(len(labels_datas)),
+                                 format_func=lambda i: labels_datas[i], index=len(labels_datas)-1, key="sel_db")
+        da, db = datas_disp[idx_a], datas_disp[idx_b]
         pa, pb   = da.get("perf_total",{}), db.get("perf_total",{})
         pl_a, pl_b = da.get("patrimonio",0), db.get("patrimonio",0)
         delta_pl   = pl_b - pl_a
