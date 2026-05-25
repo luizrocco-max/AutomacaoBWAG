@@ -120,6 +120,21 @@ def github_save(dados: list, token: str, repo: str) -> bool:
     return r.status_code in (200, 201)
 
 @st.cache_data(ttl=300, show_spinner=False)
+def _limpar_zeros(d: dict) -> dict:
+    """Converte m12/m24 = 0.0 para None (placeholder de dado inexistente)."""
+    for secao in ("perf_total", "pct_bench"):
+        perf = d.get(secao) or {}
+        for k in ("m12", "m24"):
+            if perf.get(k) == 0.0:
+                perf[k] = None
+    for f in d.get("fundos", []):
+        if f.get("m24") == 0.0:
+            f["m24"] = None
+        if f.get("m12") == 0.0:
+            f["m12"] = None
+    return d
+
+
 def github_load(token: str, repo: str):
     url = f"https://api.github.com/repos/{repo}/contents/{GITHUB_DATA_PATH}"
     r = requests.get(url, headers=_gh_headers(token), timeout=10)
@@ -128,11 +143,9 @@ def github_load(token: str, repo: str):
     meta = r.json()
     content = base64.b64decode(meta["content"]).decode()
     dados = json.loads(content)
-    # Reconstrói _dt
     for d in dados:
         d["_dt"] = _parse_data(d.get("data_base", ""))
-    # Data do último commit
-    ultima = meta.get("_links", {})
+        _limpar_zeros(d)
     return dados, meta.get("sha")
 
 
@@ -157,6 +170,7 @@ def load_btg(raw: bytes, fname: str):
         if data_arq:
             data["data_base"] = data_arq
         data["_dt"]       = _parse_data(data.get("data_base", ""))
+        _limpar_zeros(data)
         return data
     except Exception as e:
         st.sidebar.error(f"Erro ao ler {fname}: {e}")
