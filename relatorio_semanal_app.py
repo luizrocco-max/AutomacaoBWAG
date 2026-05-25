@@ -62,7 +62,7 @@ def _parse_data(data_str: str):
 
 
 @st.cache_data(show_spinner=False)
-def load_btg(raw: bytes, fname: str) -> dict | None:
+def load_btg(raw: bytes, fname: str):
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
         tmp.write(raw)
         path = tmp.name
