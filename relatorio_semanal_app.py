@@ -54,7 +54,22 @@ def _nome_fundo(fname: str) -> str:
     nome = re.sub(r'[_ ]\d{8}.*$', '', nome)
     nome = re.sub(r'[_ ]\d{2}[./]\d{2}[./]\d{4}.*$', '', nome)
     nome = re.sub(r'[_ ]\d{2}[./]\d{2}[./]\d{2}.*$', '', nome)
+    # Remove separadores residuais no final (ex: " - " ou "_" antes da data)
+    nome = re.sub(r'[\s\-_]+$', '', nome)
     return nome.strip()
+
+def _data_do_arquivo(fname: str) -> str:
+    """Extrai data do nome do arquivo. Mais confiável que o conteúdo do PDF."""
+    # Formato YYYYMMDD  ex: _20260515.pdf
+    m = re.search(r'[_ -](\d{8})(?:\s|\.|$|\()', fname)
+    if m:
+        d = m.group(1)
+        return f"{d[6:8]}/{d[4:6]}/{d[:4]}"
+    # Formato DD.MM.YYYY ou DD/MM/YYYY  ex: - 30.04.2026.pdf
+    m = re.search(r'[_ -](\d{2})[./](\d{2})[./](\d{4})(?:\s|\.|$|\()', fname)
+    if m:
+        return f"{m.group(1)}/{m.group(2)}/{m.group(3)}"
+    return ""
 
 def _parse_data(data_str: str):
     try:
@@ -69,6 +84,19 @@ def _gh_headers(token: str) -> dict:
         "Authorization": f"token {token}",
         "Accept": "application/vnd.github.v3+json",
     }
+
+def merge_dados(existentes: list, novos: list) -> list:
+    """Mescla novos uploads com o histórico existente. Mesmo fundo+data → substitui."""
+    merged = {(d.get("_nome", ""), d.get("data_base", "")): d for d in existentes}
+    adicionados, atualizados = 0, 0
+    for d in novos:
+        key = (d.get("_nome", ""), d.get("data_base", ""))
+        if key in merged:
+            atualizados += 1
+        else:
+            adicionados += 1
+        merged[key] = d
+    return list(merged.values()), adicionados, atualizados
 
 def github_save(dados: list, token: str, repo: str) -> bool:
     url = f"https://api.github.com/repos/{repo}/contents/{GITHUB_DATA_PATH}"
@@ -115,6 +143,10 @@ def load_btg(raw: bytes, fname: str):
         data = ler_carteira_btg(path)
         data["_filename"] = fname
         data["_nome"]     = _nome_fundo(fname)
+        # Data do arquivo é mais confiável que a data interna do PDF
+        data_arq = _data_do_arquivo(fname)
+        if data_arq:
+            data["data_base"] = data_arq
         data["_dt"]       = _parse_data(data.get("data_base", ""))
         return data
     except Exception as e:
@@ -176,6 +208,12 @@ if is_admin and f_pdfs:
         if (c := load_btg(f.getvalue(), f.name)) is not None
     ]
     fonte = "upload"
+    # Debug temporário — mostra o que foi detectado por arquivo
+    with st.sidebar.expander("🔍 Debug arquivos", expanded=False):
+        for f in f_pdfs:
+            data_arq = _data_do_arquivo(f.name)
+            nome_arq = _nome_fundo(f.name)
+            st.code(f"Arquivo : {f.name}\nNome    : {nome_arq}\nData arq: {data_arq or '(não encontrada)'}")
 else:
     # Todos os outros → carrega do GitHub
     dados_salvos, _ = github_load(GITHUB_TOKEN, GITHUB_REPO)
@@ -199,16 +237,31 @@ if not carteiras_raw:
 
 # Botão de publicar (admin)
 if is_admin and fonte == "upload":
-    col_pub, col_info = st.columns([2, 5])
+    col_pub, col_sub, col_info = st.columns([2, 2, 3])
     with col_pub:
         if st.button("💾 Salvar e publicar", type="primary"):
             with st.spinner("Salvando no GitHub..."):
-                ok = github_save(carteiras_raw, GITHUB_TOKEN, GITHUB_REPO)
+                dados_existentes, _ = github_load(GITHUB_TOKEN, GITHUB_REPO)
+                dados_merged, adicionados, atualizados = merge_dados(dados_existentes or [], carteiras_raw)
+                ok = github_save(dados_merged, GITHUB_TOKEN, GITHUB_REPO)
             if ok:
-                st.success("Publicado! O time já pode ver os dados atualizados.")
+                partes = []
+                if adicionados: partes.append(f"{adicionados} novo(s)")
+                if atualizados: partes.append(f"{atualizados} atualizado(s)")
+                detalhe = f" ({', '.join(partes)})" if partes else ""
+                st.success(f"Publicado{detalhe}! Histórico total: {len(dados_merged)} relatório(s).")
                 github_load.clear()
             else:
                 st.error("Erro ao salvar. Verifique o token do GitHub.")
+    with col_sub:
+        if st.button("🗑️ Substituir tudo", help="Apaga o histórico e salva APENAS os PDFs carregados agora"):
+            with st.spinner("Substituindo..."):
+                ok = github_save(carteiras_raw, GITHUB_TOKEN, GITHUB_REPO)
+            if ok:
+                st.success(f"Histórico substituído. {len(carteiras_raw)} relatório(s) salvos.")
+                github_load.clear()
+            else:
+                st.error("Erro ao salvar.")
 
 # Info de atualização
 datas_base = sorted(set(c.get("data_base","") for c in carteiras_raw if c.get("data_base")))
