@@ -201,6 +201,12 @@ if is_admin and f_pdfs:
         if (c := load_btg(f.getvalue(), f.name)) is not None
     ]
     fonte = "upload"
+    # Debug temporário — mostra o que foi detectado por arquivo
+    with st.sidebar.expander("🔍 Debug arquivos", expanded=False):
+        for f in f_pdfs:
+            data_arq = _data_do_arquivo(f.name)
+            nome_arq = _nome_fundo(f.name)
+            st.code(f"Arquivo : {f.name}\nNome    : {nome_arq}\nData arq: {data_arq or '(não encontrada)'}")
 else:
     # Todos os outros → carrega do GitHub
     dados_salvos, _ = github_load(GITHUB_TOKEN, GITHUB_REPO)
