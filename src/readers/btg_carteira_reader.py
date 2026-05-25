@@ -41,71 +41,100 @@ def _br2float(s):
         return None
 
 
-def _ler_formato_lupa(texto_p1: str) -> dict:
+def _pct_cell(s):
+    """Converte célula de tabela com % (incluindo negativo em parênteses) para float."""
+    if s is None:
+        return None
+    s = str(s).strip()
+    negativo = s.startswith('(') and s.endswith(')')
+    s = s.lstrip('(').rstrip(')').replace('%', '').strip()
+    val = _br2float(s)
+    return (-val if negativo else val) if val is not None else None
+
+
+def _ler_formato_lupa(texto: str, tabelas: list = None) -> dict:
     """
     Parser para o formato 'Carteira Diária' (LUPA e similares).
-    Extrai data, patrimônio, performance e posições a partir da pág 1.
+    Usa extract_tables() como fonte primária; texto como fallback.
     """
     # data_base
     data_base = ""
-    m = re.search(r'Data de Posi[çc][ãa]o\s*:\s*(\d{2}/\d{2}/\d{4})', texto_p1)
+    m = re.search(r'Data de Posi[çc][ãa]o\s*:\s*(\d{2}/\d{2}/\d{4})', texto)
     if m:
         data_base = m.group(1)
 
     # patrimônio (formato BR)
     patrimonio = 0.0
-    m = re.search(r'Total do Patrim[ôo]nio\s+([\d.]+,\d+)', texto_p1)
+    m = re.search(r'Total do Patrim[ôo]nio\s+([\d.]+,\d+)', texto)
     if m:
         patrimonio = _br2float(m.group(1)) or 0.0
 
-    # performance e benchmark — tabela Rentabilidade Acumulada
-    # Colunas: BenchMark | Rent.Real | Var.Diária | Var.Mensal | Var.Anual | Últimos 6M | Últimos 12M
-    # idx:       0           1           2             3            4           5             6
+    # performance — tabela Rentabilidade Acumulada
+    # Colunas (após Indexador): BenchMark|Rent.Real|Var.Diária|Var.Mensal|Var.Anual|6M|12M
+    # índices 0-6:               0         1         2          3          4        5  6
     perf_total = {"mes": None, "ano": None, "m12": None, "m24": None}
     pct_bench  = {"mes": None, "ano": None, "m12": None, "m24": None}
 
-    def _pcts_linha(linha):
-        """Extrai lista de floats de valores %; negativos quando em (número%)."""
-        out = []
-        for m in re.finditer(r'\(([\d]+,[\d]+)%\)|([\d]+,[\d]+)%', linha):
-            raw = m.group(1) or m.group(2)
-            val = _br2float(raw)
-            if val is not None:
-                out.append(-val if m.group(1) else val)
-        return out
+    # --- Tentativa 1: extract_tables() (estruturado, mais confiável) ---
+    for tabela in (tabelas or []):
+        for row in tabela:
+            if not row or not row[0]:
+                continue
+            label = str(row[0]).strip()
+            vals = [_pct_cell(c) for c in row[1:] if _pct_cell(c) is not None]
+            if label == "COTA" and perf_total["mes"] is None and len(vals) >= 7:
+                perf_total["mes"] = vals[3] / 100
+                perf_total["ano"] = vals[4] / 100
+                perf_total["m12"] = vals[6] / 100
+            elif label == "CDI" and pct_bench["mes"] is None and len(vals) >= 7:
+                pct_bench["mes"] = vals[3] / 100
+                pct_bench["ano"] = vals[4] / 100
+                pct_bench["m12"] = vals[6] / 100
 
-    def _coletar_pcts(linhas, idx_inicio, stop_kws=()):
-        """Coleta até 7 valores % a partir da linha idx, podendo avançar linhas."""
-        pcts = []
-        for j in range(idx_inicio, min(idx_inicio + 15, len(linhas))):
-            ls = linhas[j].strip()
-            if j > idx_inicio and any(ls.startswith(kw) for kw in stop_kws):
-                break
-            pcts.extend(_pcts_linha(ls))
-            if len(pcts) >= 7:
-                break
-        return pcts
+    # --- Tentativa 2: fallback via texto (para PDFs onde extract_tables() falha) ---
+    if perf_total["mes"] is None:
+        def _pcts_linha(linha):
+            out = []
+            for mt in re.finditer(r'\(([\d]+,[\d]+)%\)|([\d]+,[\d]+)%', linha):
+                raw = mt.group(1) or mt.group(2)
+                val = _br2float(raw)
+                if val is not None:
+                    out.append(-val if mt.group(1) else val)
+            return out
 
-    linhas = texto_p1.split("\n")
-    in_rent = False
-    for i, linha in enumerate(linhas):
-        ls = linha.strip()
-        if "Rentabilidade" in ls:
-            in_rent = True
-        if not in_rent:
-            continue
-        if ls.startswith("COTA") and perf_total["mes"] is None:
-            pcts = _coletar_pcts(linhas, i, stop_kws=("SELIC", "Valor da Cota", "Quantidade"))
-            if len(pcts) >= 7:
-                perf_total["mes"] = pcts[3] / 100
-                perf_total["ano"] = pcts[4] / 100
-                perf_total["m12"] = pcts[6] / 100
-        elif ls.startswith("CDI") and pct_bench["mes"] is None:
-            pcts = _coletar_pcts(linhas, i, stop_kws=("COTA", "SELIC", "Valor da Cota"))
-            if len(pcts) >= 7:
-                pct_bench["mes"] = pcts[3] / 100
-                pct_bench["ano"] = pcts[4] / 100
-                pct_bench["m12"] = pcts[6] / 100
+        linhas = texto.split("\n")
+        in_rent = False
+        for i, linha in enumerate(linhas):
+            ls = linha.strip()
+            if "Rentabilidade" in ls:
+                in_rent = True
+            if not in_rent:
+                continue
+            for kw, is_cota in (("COTA", True), ("CDI", False)):
+                if not ls.startswith(kw):
+                    continue
+                if is_cota and perf_total["mes"] is not None:
+                    continue
+                if not is_cota and pct_bench["mes"] is not None:
+                    continue
+                pcts = []
+                stop = ("SELIC", "Valor da Cota", "Quantidade") if is_cota else ("COTA", "SELIC")
+                for j in range(i, min(i + 15, len(linhas))):
+                    nls = linhas[j].strip()
+                    if j > i and any(nls.startswith(s) for s in stop):
+                        break
+                    pcts.extend(_pcts_linha(nls))
+                    if len(pcts) >= 7:
+                        break
+                if len(pcts) >= 7:
+                    if is_cota:
+                        perf_total["mes"] = pcts[3] / 100
+                        perf_total["ano"] = pcts[4] / 100
+                        perf_total["m12"] = pcts[6] / 100
+                    else:
+                        pct_bench["mes"] = pcts[3] / 100
+                        pct_bench["ano"] = pcts[4] / 100
+                        pct_bench["m12"] = pcts[6] / 100
 
     # posições — linhas: {6-digit-code} {NOME FUNDO+INST} {qty} ... {valor_atual} 0,00 {valor_liq} {%s/fi}% ...
     fundos = []
@@ -122,7 +151,7 @@ def _ler_formato_lupa(texto_p1: str) -> dict:
         r'([\d.,]+)%'            # % s/fi  ← grupo 4
     )
     vistos = set()
-    for linha in texto_p1.split("\n"):
+    for linha in texto.split("\n"):
         mf = _LUPA_FUNDO.match(linha.strip())
         if mf:
             nome = mf.group(2).strip()
@@ -169,17 +198,20 @@ def ler_carteira_btg(caminho: str) -> dict:
     with pdfplumber.open(caminho) as pdf:
         texto_p1   = pdf.pages[0].extract_text() or ""
         tabelas_p1 = pdf.pages[0].extract_tables() or []
-        # Para formato Lupa lemos todas as páginas na p1 também
-        texto_todas = texto_p1
+        texto_todas  = texto_p1
+        tabelas_todas = list(tabelas_p1)
         for idx in range(1, len(pdf.pages)):
-            texto_todas += "\n" + (pdf.pages[idx].extract_text() or "")
+            pg_txt = pdf.pages[idx].extract_text() or ""
+            texto_todas += "\n" + pg_txt
+            if "Carteira Di" in texto_p1:
+                tabelas_todas.extend(pdf.pages[idx].extract_tables() or [])
         texto_carteira = ""
         for idx in range(2, min(len(pdf.pages), 5)):
             texto_carteira += "\n" + (pdf.pages[idx].extract_text() or "")
 
     # Formato "Carteira Diária" (LUPA e similares)
     if "Carteira Di" in texto_p1:
-        return _ler_formato_lupa(texto_todas)
+        return _ler_formato_lupa(texto_todas, tabelas_todas)
 
     perf_total, pct_bench, data_base, patrimonio = _extrair_perf_p1(texto_p1, tabelas_p1)
     fundos = _extrair_carteira(texto_carteira)
