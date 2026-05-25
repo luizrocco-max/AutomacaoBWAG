@@ -427,15 +427,21 @@ with tab_top:
                 df_sub["ret%"] = df_sub[pk] * 100
                 df_sub = df_sub.sort_values("ret%", ascending=ascending)
                 cores = ["#2e7d32" if v >= 0 else "#c62828" for v in df_sub["ret%"]]
+                # Range com padding para labels não serem cortados
+                vmin = min(df_sub["ret%"].min(), 0)
+                vmax = max(df_sub["ret%"].max(), 0)
+                pad = max((vmax - vmin) * 0.25, 0.5)
                 fig = go.Figure(go.Bar(
                     x=df_sub["ret%"], y=df_sub["nome"], orientation="h",
                     marker_color=cores,
                     text=[f"{v:.2f}%" for v in df_sub["ret%"]], textposition="outside",
+                    cliponaxis=False,
                 ))
                 fig.update_layout(showlegend=False, height=260,
                                   plot_bgcolor="white", paper_bgcolor="white",
+                                  xaxis=dict(range=[vmin - pad, vmax + pad]),
                                   xaxis_title="", yaxis_title="",
-                                  margin=dict(l=0, r=60, t=5, b=5))
+                                  margin=dict(l=0, r=10, t=5, b=5))
                 return fig
 
             with col_t2:
