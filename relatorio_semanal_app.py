@@ -70,6 +70,19 @@ def _gh_headers(token: str) -> dict:
         "Accept": "application/vnd.github.v3+json",
     }
 
+def merge_dados(existentes: list, novos: list) -> list:
+    """Mescla novos uploads com o histórico existente. Mesmo fundo+data → substitui."""
+    merged = {(d.get("_nome", ""), d.get("data_base", "")): d for d in existentes}
+    adicionados, atualizados = 0, 0
+    for d in novos:
+        key = (d.get("_nome", ""), d.get("data_base", ""))
+        if key in merged:
+            atualizados += 1
+        else:
+            adicionados += 1
+        merged[key] = d
+    return list(merged.values()), adicionados, atualizados
+
 def github_save(dados: list, token: str, repo: str) -> bool:
     url = f"https://api.github.com/repos/{repo}/contents/{GITHUB_DATA_PATH}"
     # Busca SHA se já existe
@@ -203,9 +216,15 @@ if is_admin and fonte == "upload":
     with col_pub:
         if st.button("💾 Salvar e publicar", type="primary"):
             with st.spinner("Salvando no GitHub..."):
-                ok = github_save(carteiras_raw, GITHUB_TOKEN, GITHUB_REPO)
+                dados_existentes, _ = github_load(GITHUB_TOKEN, GITHUB_REPO)
+                dados_merged, adicionados, atualizados = merge_dados(dados_existentes or [], carteiras_raw)
+                ok = github_save(dados_merged, GITHUB_TOKEN, GITHUB_REPO)
             if ok:
-                st.success("Publicado! O time já pode ver os dados atualizados.")
+                partes = []
+                if adicionados: partes.append(f"{adicionados} novo(s)")
+                if atualizados: partes.append(f"{atualizados} atualizado(s)")
+                detalhe = f" ({', '.join(partes)})" if partes else ""
+                st.success(f"Publicado{detalhe}! Histórico total: {len(dados_merged)} relatório(s).")
                 github_load.clear()
             else:
                 st.error("Erro ao salvar. Verifique o token do GitHub.")
