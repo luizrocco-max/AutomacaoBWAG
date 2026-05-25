@@ -520,9 +520,9 @@ with tab_comp:
         c3.metric("PL (data B)", f"R$ {pl_b/1e6:.2f}M",
                   delta=f"R$ {delta_pl:+,.0f} ({delta_pl/pl_a*100:+.2f}%)" if pl_a else None)
         c4.metric("Retorno Mês", fmt_pct(pb.get("mes")),
-                  delta=fmt_pct((pb.get("mes") or 0)-(pa.get("mes") or 0))+" vs {da.get('data_base','A')}")
+                  delta=fmt_pct((pb.get("mes") or 0)-(pa.get("mes") or 0))+f" vs {da.get('data_base','A')}")
         c5.metric("Retorno Ano", fmt_pct(pb.get("ano")),
-                  delta=fmt_pct((pb.get("ano") or 0)-(pa.get("ano") or 0))+" vs {da.get('data_base','A')}")
+                  delta=fmt_pct((pb.get("ano") or 0)-(pa.get("ano") or 0))+f" vs {da.get('data_base','A')}")
         c6.metric("12M (data B)", fmt_pct(pb.get("m12")))
         st.markdown("---")
 
