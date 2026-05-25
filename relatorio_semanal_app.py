@@ -213,7 +213,15 @@ if is_admin and f_pdfs:
         for f in f_pdfs:
             data_arq = _data_do_arquivo(f.name)
             nome_arq = _nome_fundo(f.name)
-            st.code(f"Arquivo : {f.name}\nNome    : {nome_arq}\nData arq: {data_arq or '(não encontrada)'}")
+            c = next((x for x in carteiras_raw if x.get("_filename") == f.name), {})
+            st.code(
+                f"Arquivo : {f.name}\n"
+                f"Nome    : {nome_arq}\n"
+                f"Data    : {data_arq or '(não encontrada)'}\n"
+                f"Patrim. : {c.get('patrimonio', 'N/A')}\n"
+                f"Ret.Mês : {c.get('perf_total', {}).get('mes', 'N/A')}\n"
+                f"Posições: {len(c.get('fundos', []))}"
+            )
 else:
     # Todos os outros → carrega do GitHub
     dados_salvos, _ = github_load(GITHUB_TOKEN, GITHUB_REPO)
