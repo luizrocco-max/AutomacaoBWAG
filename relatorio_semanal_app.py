@@ -3,6 +3,7 @@ Dashboard semanal de fundos BWAG — baseado em PDFs BTG
 Jogue todos os PDFs de uma vez; o app agrupa por fundo e data automaticamente.
 """
 import os
+import re
 import sys
 import tempfile
 from datetime import datetime
@@ -44,11 +45,13 @@ def fmt_pct(v, dec=2):
     return f"{v * 100:.{dec}f}%"
 
 def _nome_fundo(fname: str) -> str:
-    """Extrai nome do fundo a partir do nome do arquivo BTG."""
+    """Extrai nome do fundo a partir do nome do arquivo BTG.
+    Remove prefixo AcompFI_, sufixo de data (_YYYYMMDD) e qualquer
+    coisa depois (ex: ' (1)', ' - copia', etc.).
+    """
     nome = fname.replace("AcompFI_", "").replace(".pdf", "")
-    partes = nome.rsplit("_", 1)
-    if len(partes) == 2 and partes[1].isdigit() and len(partes[1]) == 8:
-        return partes[0].strip()
+    # Remove _YYYYMMDD e tudo que vier depois
+    nome = re.sub(r'_\d{8}.*$', '', nome)
     return nome.strip()
 
 def _parse_data(data_str: str):
