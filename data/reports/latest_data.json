@@ -1,6 +1,286 @@
 [
   {
     "data_base": "15/05/2026",
+    "patrimonio": 222807405.29,
+    "perf_total": {
+      "mes": 0.0017518590000000001,
+      "ano": 0.034462166,
+      "m12": 0.123024647,
+      "m24": null
+    },
+    "pct_bench": {
+      "mes": 0.005352803000000001,
+      "ano": 0.050998184999999994,
+      "m12": 0.148275016,
+      "m24": null
+    },
+    "fundos": [
+      {
+        "nome": "BRAD M PGBLVGBL FICM BRADESCO",
+        "pl": 25.84,
+        "financeiro": 57594567.92,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FICFM FOF CP PV BRADESCO",
+        "pl": 22.6,
+        "financeiro": 50355255.29,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "B FICRF INFLAÇAO PRV BRADESCO",
+        "pl": 12.02,
+        "financeiro": 26798395.91,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD PORT FCFM IE BEM",
+        "pl": 9.81,
+        "financeiro": 21867997.05,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FED FCFIRFFIE 2 BRADESCO",
+        "pl": 7.32,
+        "financeiro": 16318103.87,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FICFM FOF REL P BRADESCO",
+        "pl": 6.28,
+        "financeiro": 13991688.82,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FICM GLOBBRL IE BRADESCO",
+        "pl": 4.68,
+        "financeiro": 10431172.74,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD PRV FICFIRF CP BRADESCO",
+        "pl": 4.46,
+        "financeiro": 9938167.61,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FOF PREV FICFIM BRADESCO",
+        "pl": 3.02,
+        "financeiro": 6728287.59,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BEM TPF FIF CI RF SI BEM",
+        "pl": 1.58,
+        "financeiro": 3515985.56,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAM PORT G EQ FIA BRADESCO",
+        "pl": 1.24,
+        "financeiro": 2755387.34,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRA FOF FICM PGBL/VG BRADESCO",
+        "pl": 0.58,
+        "financeiro": 1295296.24,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FIM GLOBAL IE BRADESCO",
+        "pl": 0.57,
+        "financeiro": 1267302.32,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      }
+    ],
+    "_filename": "LUPA FIC FIM PREV - 15.05.2026.pdf",
+    "_nome": "LUPA FIC FIM PREV",
+    "_raw_p1": "Carteira Diária\nData de Emissão : 19/05/2026 13:17\nData de Posição : 15/05/2026\nCliente : LUPA FIF - CIC MM CRED PRIV - RESP LTDA\nFundos de Investimentos - Outros Fundos\nCódigo Fundo Instituição Quantidade Qtd. Bloq. Valor Cota Valor Aplic./Resg. Valor Atual Impostos Valor Líquido % S/FI % s/Total\n006748 BEM TPF FIF CI RF SI BEM 640.806,04486990 0,00000 5,486817100 0,00 3.515.985,56 0,00 3.515.985,56 1,58% 1,58%\n013640 BRAD FIM GLOBAL IE BRADESCO 605.461,30708262 0,00000 2,093118600 0,00 1.267.302,32 0,00 1.267.302,32 0,57% 0,57%\n014883 BRAD FICM GLOBBRL IE BRADESCO 5.405.210,33588923 0,00000 1,929836600 0,00 10.431.172,74 0,00 10.431.172,74 4,68% 4,68%\n016957 BRAM PORT G EQ FIA BRADESCO 1.196.621,29507329 0,00000 2,302639400 0,00 2.755.387,34 0,00 2.755.387,34 1,24% 1,24%\n017093 B FICRF INFLAÇAO PRV BRADESCO 18.365.994,71843520 0,00000 1,459131200 0,00 26.798.395,91 0,00 26.798.395,91 12,02% 12,03%\n017750 BRAD FICFM FOF CP PV BRADESCO 27.116.213,17711933 0,00000 1,857016500 0,00 50.355.255,29 0,00 50.355.255,29 22,60% 22,60%\n017758 BRAD M PGBLVGBL FICM BRADESCO 36.728.121,23408130 0,00000 1,568132700 0,00 57.594.567,92 0,00 57.594.567,92 25,84% 25,85%\n017761 BRAD FICFM FOF REL P BRADESCO 8.600.251,93812758 0,00000 1,626892900 0,00 13.991.688,82 0,00 13.991.688,82 6,28% 6,28%\n017763 BRA FOF FICM PGBL/VG BRADESCO 910.483,67989830 0,00000 1,422646300 0,00 1.295.296,24 0,00 1.295.296,24 0,58% 0,58%\n018012 BRAD FOF PREV FICFIM BRADESCO 4.117.719,88992038 0,00000 1,633983800 0,00 6.728.287,59 0,00 6.728.287,59 3,02% 3,02%\n018395 BRAD PORT FCFM IE BEM 13.862.022,17962928 0,00000 1,577547400 0,00 21.867.997,05 0,00 21.867.997,05 9,81% 9,81%\n019968 BRAD PRV FICFIRF CP BRADESCO 6.084.832,45223690 0,00000 1,633268900 0,00 9.938.167,61 0,00 9.938.167,61 4,46% 4,46%\n020705 BRAD FED FCFIRFFIE 2 BRADESCO 11.397.169,60617479 0,00000 1,431768100 0,00 16.318.103,87 0,00 16.318.103,87 7,32% 7,32%\nTotal 135.030.907,85853812 222.857.608,26 0,00 222.857.608,26 100,00% 100,02%\nContas a Pagar/Receber\nDescrição Valor % S/TES % s/Total\nDespesa de CUSTO CETIP com pagamento 08/06/26 (2.088,22) 4,08% 0,00%\nDespesa de TAXA FISCALIZAÇÃO CVM com pagamento 31/12/26 19.263,28 (37,62%) 0,01%\nDespesas com Auditoria em 29/12/49 (1.312,19) 2,56% 0,00%\nDiferimento de despesa de TAXA ANBIMA com vencimento 29/05/26 184,00 (0,36%) 0,00%\nTaxa de Administração Apropriada (64.595,24) 126,16% (0,03%)\nTaxa de Custódia Apropriada (2.654,60) 5,18% 0,00%\nTOTAL (51.202,97) 100,00% (0,02%)\nTesouraria\nDescrição Valor % S/TES % s/Total\nSaldo em Tesouraria 1.000,00 100,00% 0,00%\nTOTAL 1.000,00 100,00% 0,00%\nPatrimônio\nTotal do Patrimônio 222.807.405,29\nRentabilidade Acumulada\nIndexador BenchMark Rent. Real Variação Diária Variação Mensal Variação Anual Últimos 6 meses Últimos 12 Meses\nCDI (389,8368%) (0,2614%) 0,05339950% 0,53528030% 5,09981850% 6,91097420% 14,82750160%\nCOTA 0,0000% 0,0000% (0,20817100%) 0,17518590% 3,44621660% 4,96642800% 12,30246470%\nSELIC (389,8368%) (0,2614%) 0,05339950% 0,53528030% 5,09981850% 6,91097420% 14,82750170%\nValor da Cota Bruta de Performance 1,601445500\nQuantidade de Cotas (Líquida) 139.128.928,627845300\nValor da cota unitária (Líquida) 1,601445500\nPágina 1 de 1",
+    "_tabelas_p1": [],
+    "_dt": "2026-05-15 00:00:00"
+  },
+  {
+    "data_base": "20/05/2026",
+    "patrimonio": 223120368.67,
+    "perf_total": {
+      "mes": 0.0031589879999999997,
+      "ano": 0.035915242,
+      "m12": 0.11709897500000001,
+      "m24": null
+    },
+    "pct_bench": {
+      "mes": 0.006964224,
+      "ano": 0.052682768,
+      "m12": 0.143272452,
+      "m24": null
+    },
+    "fundos": [
+      {
+        "nome": "BRAD M PGBLVGBL FICM BRADESCO",
+        "pl": 25.84,
+        "financeiro": 57674069.61,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FICFM FOF CP PV BRADESCO",
+        "pl": 22.61,
+        "financeiro": 50457003.45,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "B FICRF INFLAÇAO PRV BRADESCO",
+        "pl": 12.03,
+        "financeiro": 26843381.58,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD PORT FCFM IE BEM",
+        "pl": 9.81,
+        "financeiro": 21904925.48,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FED FCFIRFFIE 2 BRADESCO",
+        "pl": 7.32,
+        "financeiro": 16343940.12,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FICFM FOF REL P BRADESCO",
+        "pl": 6.28,
+        "financeiro": 14016805.85,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FICM GLOBBRL IE BRADESCO",
+        "pl": 4.68,
+        "financeiro": 10438768.68,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD PRV FICFIRF CP BRADESCO",
+        "pl": 4.46,
+        "financeiro": 9956681.32,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FOF PREV FICFIM BRADESCO",
+        "pl": 3.03,
+        "financeiro": 6755904.73,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BEM TPF FIF CI RF SI BEM",
+        "pl": 1.58,
+        "financeiro": 3521574.16,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAM PORT G EQ FIA BRADESCO",
+        "pl": 1.22,
+        "financeiro": 2727459.52,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRA FOF FICM PGBL/VG BRADESCO",
+        "pl": 0.58,
+        "financeiro": 1298474.28,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BRAD FIM GLOBAL IE BRADESCO",
+        "pl": 0.56,
+        "financeiro": 1252791.6,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      }
+    ],
+    "_filename": "LUPA FIC FIM PREV - 20.05.2026.pdf",
+    "_nome": "LUPA FIC FIM PREV",
+    "_raw_p1": "Carteira Diária\nData de Emissão : 25/05/2026 10:01\nData de Posição : 20/05/2026\nCliente : LUPA FIF - CIC MM CRED PRIV - RESP LTDA\nFundos de Investimentos - Outros Fundos\nCódigo Fundo Instituição Quantidade Qtd. Bloq. Valor Cota Valor Aplic./Resg. Valor Atual Impostos Valor Líquido % S/FI % s/Total\n006748 BEM TPF FIF CI RF SI BEM 640.806,04486990 0,00000 5,495538300 0,00 3.521.574,16 0,00 3.521.574,16 1,58% 1,58%\n013640 BRAD FIM GLOBAL IE BRADESCO 605.461,30708262 0,00000 2,069152200 0,00 1.252.791,60 0,00 1.252.791,60 0,56% 0,56%\n014883 BRAD FICM GLOBBRL IE BRADESCO 5.405.210,33588923 0,00000 1,931241900 0,00 10.438.768,68 0,00 10.438.768,68 4,68% 4,68%\n016957 BRAM PORT G EQ FIA BRADESCO 1.196.621,29507329 0,00000 2,279300500 0,00 2.727.459,52 0,00 2.727.459,52 1,22% 1,22%\n017093 B FICRF INFLAÇAO PRV BRADESCO 18.365.994,71843520 0,00000 1,461580600 0,00 26.843.381,58 0,00 26.843.381,58 12,03% 12,03%\n017750 BRAD FICFM FOF CP PV BRADESCO 27.116.213,17711933 0,00000 1,860768800 0,00 50.457.003,45 0,00 50.457.003,45 22,61% 22,61%\n017758 BRAD M PGBLVGBL FICM BRADESCO 36.728.121,23408130 0,00000 1,570297300 0,00 57.674.069,61 0,00 57.674.069,61 25,84% 25,85%\n017761 BRAD FICFM FOF REL P BRADESCO 8.600.251,93812758 0,00000 1,629813400 0,00 14.016.805,85 0,00 14.016.805,85 6,28% 6,28%\n017763 BRA FOF FICM PGBL/VG BRADESCO 910.483,67989830 0,00000 1,426136800 0,00 1.298.474,28 0,00 1.298.474,28 0,58% 0,58%\n018012 BRAD FOF PREV FICFIM BRADESCO 4.117.719,88992038 0,00000 1,640690700 0,00 6.755.904,73 0,00 6.755.904,73 3,03% 3,03%\n018395 BRAD PORT FCFM IE BEM 13.862.022,17962928 0,00000 1,580211400 0,00 21.904.925,48 0,00 21.904.925,48 9,81% 9,82%\n019968 BRAD PRV FICFIRF CP BRADESCO 6.084.832,45223690 0,00000 1,636311500 0,00 9.956.681,32 0,00 9.956.681,32 4,46% 4,46%\n020705 BRAD FED FCFIRFFIE 2 BRADESCO 11.397.169,60617479 0,00000 1,434035000 0,00 16.343.940,12 0,00 16.343.940,12 7,32% 7,33%\nTotal 135.030.907,85853812 223.191.780,38 0,00 223.191.780,38 100,00% 100,03%\nContas a Pagar/Receber\nDescrição Valor % S/TES % s/Total\nDespesa de CUSTO CETIP com pagamento 08/06/26 (2.714,68) 3,75% 0,00%\nDespesa de TAXA FISCALIZAÇÃO CVM com pagamento 31/12/26 18.897,53 (26,10%) 0,01%\nDespesas com Auditoria em 29/12/49 (1.312,19) 1,81% 0,00%\nDespesas com Correspondência em 22/05/26 (5,17) 0,01% 0,00%\nDiferimento de despesa de TAXA ANBIMA com vencimento 29/05/26 128,80 (0,18%) 0,00%\nTaxa de Administração Apropriada (83.955,76) 115,94% (0,04%)\nTaxa de Custódia Apropriada (3.450,24) 4,76% 0,00%\nTOTAL (72.411,71) 100,00% (0,03%)\nTesouraria\nDescrição Valor % S/TES % s/Total\nSaldo em Tesouraria 1.000,00 100,00% 0,00%\nTOTAL 1.000,00 100,00% 0,00%\nPatrimônio\nTotal do Patrimônio 223.120.368,67\nRentabilidade Acumulada\nIndexador BenchMark Rent. Real Variação Diária Variação Mensal Variação Anual Últimos 6 meses Últimos 12 Meses\nCDI 415,1925% 0,1682% 0,05339950% 0,69642240% 5,26827680% 6,55247650% 14,32724520%\nCOTA 0,0000% 0,0000% 0,22171080% 0,31589880% 3,59152420% 4,35292360% 11,70989750%\nSELIC 415,1925% 0,1682% 0,05339950% 0,69642240% 5,26827680% 6,55247650% 14,32724520%\nValor da Cota Bruta de Performance 1,603695000\nQuantidade de Cotas (Líquida) 139.128.928,627845300\nValor da cota unitária (Líquida) 1,603695000\nPágina 1 de 1",
+    "_tabelas_p1": [],
+    "_dt": "2026-05-20 00:00:00"
+  },
+  {
+    "data_base": "15/05/2026",
     "patrimonio": 26583172.32,
     "perf_total": {
       "mes": -0.0060999999999999995,
@@ -7463,286 +7743,6 @@
       ]
     ],
     "_dt": "2026-05-21 00:00:00"
-  },
-  {
-    "data_base": "15/05/2026",
-    "patrimonio": 222807405.29,
-    "perf_total": {
-      "mes": 0.0017518590000000001,
-      "ano": 0.034462166,
-      "m12": 0.123024647,
-      "m24": null
-    },
-    "pct_bench": {
-      "mes": 0.005352803000000001,
-      "ano": 0.050998184999999994,
-      "m12": 0.148275016,
-      "m24": null
-    },
-    "fundos": [
-      {
-        "nome": "BRAD M PGBLVGBL FICM BRADESCO",
-        "pl": 25.84,
-        "financeiro": 57594567.92,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FICFM FOF CP PV BRADESCO",
-        "pl": 22.6,
-        "financeiro": 50355255.29,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "B FICRF INFLAÇAO PRV BRADESCO",
-        "pl": 12.02,
-        "financeiro": 26798395.91,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD PORT FCFM IE BEM",
-        "pl": 9.81,
-        "financeiro": 21867997.05,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FED FCFIRFFIE 2 BRADESCO",
-        "pl": 7.32,
-        "financeiro": 16318103.87,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FICFM FOF REL P BRADESCO",
-        "pl": 6.28,
-        "financeiro": 13991688.82,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FICM GLOBBRL IE BRADESCO",
-        "pl": 4.68,
-        "financeiro": 10431172.74,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD PRV FICFIRF CP BRADESCO",
-        "pl": 4.46,
-        "financeiro": 9938167.61,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FOF PREV FICFIM BRADESCO",
-        "pl": 3.02,
-        "financeiro": 6728287.59,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BEM TPF FIF CI RF SI BEM",
-        "pl": 1.58,
-        "financeiro": 3515985.56,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAM PORT G EQ FIA BRADESCO",
-        "pl": 1.24,
-        "financeiro": 2755387.34,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRA FOF FICM PGBL/VG BRADESCO",
-        "pl": 0.58,
-        "financeiro": 1295296.24,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FIM GLOBAL IE BRADESCO",
-        "pl": 0.57,
-        "financeiro": 1267302.32,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      }
-    ],
-    "_filename": "LUPA FIC FIM PREV - 15.05.2026.pdf",
-    "_nome": "LUPA FIC FIM PREV",
-    "_raw_p1": "Carteira Diária\nData de Emissão : 19/05/2026 13:17\nData de Posição : 15/05/2026\nCliente : LUPA FIF - CIC MM CRED PRIV - RESP LTDA\nFundos de Investimentos - Outros Fundos\nCódigo Fundo Instituição Quantidade Qtd. Bloq. Valor Cota Valor Aplic./Resg. Valor Atual Impostos Valor Líquido % S/FI % s/Total\n006748 BEM TPF FIF CI RF SI BEM 640.806,04486990 0,00000 5,486817100 0,00 3.515.985,56 0,00 3.515.985,56 1,58% 1,58%\n013640 BRAD FIM GLOBAL IE BRADESCO 605.461,30708262 0,00000 2,093118600 0,00 1.267.302,32 0,00 1.267.302,32 0,57% 0,57%\n014883 BRAD FICM GLOBBRL IE BRADESCO 5.405.210,33588923 0,00000 1,929836600 0,00 10.431.172,74 0,00 10.431.172,74 4,68% 4,68%\n016957 BRAM PORT G EQ FIA BRADESCO 1.196.621,29507329 0,00000 2,302639400 0,00 2.755.387,34 0,00 2.755.387,34 1,24% 1,24%\n017093 B FICRF INFLAÇAO PRV BRADESCO 18.365.994,71843520 0,00000 1,459131200 0,00 26.798.395,91 0,00 26.798.395,91 12,02% 12,03%\n017750 BRAD FICFM FOF CP PV BRADESCO 27.116.213,17711933 0,00000 1,857016500 0,00 50.355.255,29 0,00 50.355.255,29 22,60% 22,60%\n017758 BRAD M PGBLVGBL FICM BRADESCO 36.728.121,23408130 0,00000 1,568132700 0,00 57.594.567,92 0,00 57.594.567,92 25,84% 25,85%\n017761 BRAD FICFM FOF REL P BRADESCO 8.600.251,93812758 0,00000 1,626892900 0,00 13.991.688,82 0,00 13.991.688,82 6,28% 6,28%\n017763 BRA FOF FICM PGBL/VG BRADESCO 910.483,67989830 0,00000 1,422646300 0,00 1.295.296,24 0,00 1.295.296,24 0,58% 0,58%\n018012 BRAD FOF PREV FICFIM BRADESCO 4.117.719,88992038 0,00000 1,633983800 0,00 6.728.287,59 0,00 6.728.287,59 3,02% 3,02%\n018395 BRAD PORT FCFM IE BEM 13.862.022,17962928 0,00000 1,577547400 0,00 21.867.997,05 0,00 21.867.997,05 9,81% 9,81%\n019968 BRAD PRV FICFIRF CP BRADESCO 6.084.832,45223690 0,00000 1,633268900 0,00 9.938.167,61 0,00 9.938.167,61 4,46% 4,46%\n020705 BRAD FED FCFIRFFIE 2 BRADESCO 11.397.169,60617479 0,00000 1,431768100 0,00 16.318.103,87 0,00 16.318.103,87 7,32% 7,32%\nTotal 135.030.907,85853812 222.857.608,26 0,00 222.857.608,26 100,00% 100,02%\nContas a Pagar/Receber\nDescrição Valor % S/TES % s/Total\nDespesa de CUSTO CETIP com pagamento 08/06/26 (2.088,22) 4,08% 0,00%\nDespesa de TAXA FISCALIZAÇÃO CVM com pagamento 31/12/26 19.263,28 (37,62%) 0,01%\nDespesas com Auditoria em 29/12/49 (1.312,19) 2,56% 0,00%\nDiferimento de despesa de TAXA ANBIMA com vencimento 29/05/26 184,00 (0,36%) 0,00%\nTaxa de Administração Apropriada (64.595,24) 126,16% (0,03%)\nTaxa de Custódia Apropriada (2.654,60) 5,18% 0,00%\nTOTAL (51.202,97) 100,00% (0,02%)\nTesouraria\nDescrição Valor % S/TES % s/Total\nSaldo em Tesouraria 1.000,00 100,00% 0,00%\nTOTAL 1.000,00 100,00% 0,00%\nPatrimônio\nTotal do Patrimônio 222.807.405,29\nRentabilidade Acumulada\nIndexador BenchMark Rent. Real Variação Diária Variação Mensal Variação Anual Últimos 6 meses Últimos 12 Meses\nCDI (389,8368%) (0,2614%) 0,05339950% 0,53528030% 5,09981850% 6,91097420% 14,82750160%\nCOTA 0,0000% 0,0000% (0,20817100%) 0,17518590% 3,44621660% 4,96642800% 12,30246470%\nSELIC (389,8368%) (0,2614%) 0,05339950% 0,53528030% 5,09981850% 6,91097420% 14,82750170%\nValor da Cota Bruta de Performance 1,601445500\nQuantidade de Cotas (Líquida) 139.128.928,627845300\nValor da cota unitária (Líquida) 1,601445500\nPágina 1 de 1",
-    "_tabelas_p1": [],
-    "_dt": "2026-05-15 00:00:00"
-  },
-  {
-    "data_base": "20/05/2026",
-    "patrimonio": 223120368.67,
-    "perf_total": {
-      "mes": 0.0031589879999999997,
-      "ano": 0.035915242,
-      "m12": 0.11709897500000001,
-      "m24": null
-    },
-    "pct_bench": {
-      "mes": 0.006964224,
-      "ano": 0.052682768,
-      "m12": 0.143272452,
-      "m24": null
-    },
-    "fundos": [
-      {
-        "nome": "BRAD M PGBLVGBL FICM BRADESCO",
-        "pl": 25.84,
-        "financeiro": 57674069.61,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FICFM FOF CP PV BRADESCO",
-        "pl": 22.61,
-        "financeiro": 50457003.45,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "B FICRF INFLAÇAO PRV BRADESCO",
-        "pl": 12.03,
-        "financeiro": 26843381.58,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD PORT FCFM IE BEM",
-        "pl": 9.81,
-        "financeiro": 21904925.48,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FED FCFIRFFIE 2 BRADESCO",
-        "pl": 7.32,
-        "financeiro": 16343940.12,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FICFM FOF REL P BRADESCO",
-        "pl": 6.28,
-        "financeiro": 14016805.85,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FICM GLOBBRL IE BRADESCO",
-        "pl": 4.68,
-        "financeiro": 10438768.68,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD PRV FICFIRF CP BRADESCO",
-        "pl": 4.46,
-        "financeiro": 9956681.32,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FOF PREV FICFIM BRADESCO",
-        "pl": 3.03,
-        "financeiro": 6755904.73,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BEM TPF FIF CI RF SI BEM",
-        "pl": 1.58,
-        "financeiro": 3521574.16,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAM PORT G EQ FIA BRADESCO",
-        "pl": 1.22,
-        "financeiro": 2727459.52,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRA FOF FICM PGBL/VG BRADESCO",
-        "pl": 0.58,
-        "financeiro": 1298474.28,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BRAD FIM GLOBAL IE BRADESCO",
-        "pl": 0.56,
-        "financeiro": 1252791.6,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      }
-    ],
-    "_filename": "LUPA FIC FIM PREV - 20.05.2026.pdf",
-    "_nome": "LUPA FIC FIM PREV",
-    "_raw_p1": "Carteira Diária\nData de Emissão : 25/05/2026 10:01\nData de Posição : 20/05/2026\nCliente : LUPA FIF - CIC MM CRED PRIV - RESP LTDA\nFundos de Investimentos - Outros Fundos\nCódigo Fundo Instituição Quantidade Qtd. Bloq. Valor Cota Valor Aplic./Resg. Valor Atual Impostos Valor Líquido % S/FI % s/Total\n006748 BEM TPF FIF CI RF SI BEM 640.806,04486990 0,00000 5,495538300 0,00 3.521.574,16 0,00 3.521.574,16 1,58% 1,58%\n013640 BRAD FIM GLOBAL IE BRADESCO 605.461,30708262 0,00000 2,069152200 0,00 1.252.791,60 0,00 1.252.791,60 0,56% 0,56%\n014883 BRAD FICM GLOBBRL IE BRADESCO 5.405.210,33588923 0,00000 1,931241900 0,00 10.438.768,68 0,00 10.438.768,68 4,68% 4,68%\n016957 BRAM PORT G EQ FIA BRADESCO 1.196.621,29507329 0,00000 2,279300500 0,00 2.727.459,52 0,00 2.727.459,52 1,22% 1,22%\n017093 B FICRF INFLAÇAO PRV BRADESCO 18.365.994,71843520 0,00000 1,461580600 0,00 26.843.381,58 0,00 26.843.381,58 12,03% 12,03%\n017750 BRAD FICFM FOF CP PV BRADESCO 27.116.213,17711933 0,00000 1,860768800 0,00 50.457.003,45 0,00 50.457.003,45 22,61% 22,61%\n017758 BRAD M PGBLVGBL FICM BRADESCO 36.728.121,23408130 0,00000 1,570297300 0,00 57.674.069,61 0,00 57.674.069,61 25,84% 25,85%\n017761 BRAD FICFM FOF REL P BRADESCO 8.600.251,93812758 0,00000 1,629813400 0,00 14.016.805,85 0,00 14.016.805,85 6,28% 6,28%\n017763 BRA FOF FICM PGBL/VG BRADESCO 910.483,67989830 0,00000 1,426136800 0,00 1.298.474,28 0,00 1.298.474,28 0,58% 0,58%\n018012 BRAD FOF PREV FICFIM BRADESCO 4.117.719,88992038 0,00000 1,640690700 0,00 6.755.904,73 0,00 6.755.904,73 3,03% 3,03%\n018395 BRAD PORT FCFM IE BEM 13.862.022,17962928 0,00000 1,580211400 0,00 21.904.925,48 0,00 21.904.925,48 9,81% 9,82%\n019968 BRAD PRV FICFIRF CP BRADESCO 6.084.832,45223690 0,00000 1,636311500 0,00 9.956.681,32 0,00 9.956.681,32 4,46% 4,46%\n020705 BRAD FED FCFIRFFIE 2 BRADESCO 11.397.169,60617479 0,00000 1,434035000 0,00 16.343.940,12 0,00 16.343.940,12 7,32% 7,33%\nTotal 135.030.907,85853812 223.191.780,38 0,00 223.191.780,38 100,00% 100,03%\nContas a Pagar/Receber\nDescrição Valor % S/TES % s/Total\nDespesa de CUSTO CETIP com pagamento 08/06/26 (2.714,68) 3,75% 0,00%\nDespesa de TAXA FISCALIZAÇÃO CVM com pagamento 31/12/26 18.897,53 (26,10%) 0,01%\nDespesas com Auditoria em 29/12/49 (1.312,19) 1,81% 0,00%\nDespesas com Correspondência em 22/05/26 (5,17) 0,01% 0,00%\nDiferimento de despesa de TAXA ANBIMA com vencimento 29/05/26 128,80 (0,18%) 0,00%\nTaxa de Administração Apropriada (83.955,76) 115,94% (0,04%)\nTaxa de Custódia Apropriada (3.450,24) 4,76% 0,00%\nTOTAL (72.411,71) 100,00% (0,03%)\nTesouraria\nDescrição Valor % S/TES % s/Total\nSaldo em Tesouraria 1.000,00 100,00% 0,00%\nTOTAL 1.000,00 100,00% 0,00%\nPatrimônio\nTotal do Patrimônio 223.120.368,67\nRentabilidade Acumulada\nIndexador BenchMark Rent. Real Variação Diária Variação Mensal Variação Anual Últimos 6 meses Últimos 12 Meses\nCDI 415,1925% 0,1682% 0,05339950% 0,69642240% 5,26827680% 6,55247650% 14,32724520%\nCOTA 0,0000% 0,0000% 0,22171080% 0,31589880% 3,59152420% 4,35292360% 11,70989750%\nSELIC 415,1925% 0,1682% 0,05339950% 0,69642240% 5,26827680% 6,55247650% 14,32724520%\nValor da Cota Bruta de Performance 1,603695000\nQuantidade de Cotas (Líquida) 139.128.928,627845300\nValor da cota unitária (Líquida) 1,603695000\nPágina 1 de 1",
-    "_tabelas_p1": [],
-    "_dt": "2026-05-20 00:00:00"
   },
   {
     "data_base": "15/05/2026",
