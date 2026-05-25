@@ -457,10 +457,10 @@ with tab_comp:
             df_b2 = df_pos[df_pos["Δ %PL"]!=0].copy()
             df_b2["cor"] = df_b2["Δ %PL"].apply(lambda x: "#2e7d32" if x>=0 else "#c62828")
             fig_pl = go.Figure(go.Bar(x=df_b2["Ativo"], y=df_b2["Δ %PL"], marker_color=df_b2["cor"],
-                                      text=[f"{v:+.2f}p.p." for v in df_b2["Δ %PL"]], textposition="outside"))
+                                      text=[f"{v:+.2f}%" for v in df_b2["Δ %PL"]], textposition="outside"))
             fig_pl.update_layout(title=f"Variação de %PL ({da['data_base']} → {db['data_base']})",
                                  plot_bgcolor="white", paper_bgcolor="white", height=380,
-                                 yaxis_title="Δ %PL (p.p.)", showlegend=False, xaxis_tickangle=-30)
+                                 yaxis_title="Δ %PL (%)", showlegend=False, xaxis_tickangle=-30)
             st.plotly_chart(fig_pl, use_container_width=True)
         with col_ret2:
             df_r2 = df_pos.dropna(subset=["Δ Ret.Mês"]).copy()
@@ -469,17 +469,17 @@ with tab_comp:
                                        text=[f"{v*100:+.2f}%" for v in df_r2["Δ Ret.Mês"]], textposition="outside"))
             fig_ret.update_layout(title="Variação de Retorno Mês por Ativo",
                                   plot_bgcolor="white", paper_bgcolor="white", height=380,
-                                  yaxis_title="Δ Ret.Mês (p.p.)", showlegend=False, xaxis_tickangle=-30)
+                                  yaxis_title="Δ Ret.Mês (%)", showlegend=False, xaxis_tickangle=-30)
             st.plotly_chart(fig_ret, use_container_width=True)
 
         st.subheader("Tabela Detalhada")
         df_tbl = df_pos.copy()
         df_tbl["%PL A"]     = df_tbl["%PL A"].apply(lambda x: f"{x:.2f}%")
         df_tbl["%PL B"]     = df_tbl["%PL B"].apply(lambda x: f"{x:.2f}%")
-        df_tbl["Δ %PL"]     = df_tbl["Δ %PL"].apply(lambda x: f"{x:+.2f}p.p.")
+        df_tbl["Δ %PL"]     = df_tbl["Δ %PL"].apply(lambda x: f"{x:+.2f}%")
         df_tbl["Ret.Mês A"] = df_tbl["Ret.Mês A"].apply(fmt_pct)
         df_tbl["Ret.Mês B"] = df_tbl["Ret.Mês B"].apply(fmt_pct)
-        df_tbl["Δ Ret.Mês"] = df_tbl["Δ Ret.Mês"].apply(lambda x: f"{x*100:+.2f}p.p." if x is not None else "—")
+        df_tbl["Δ Ret.Mês"] = df_tbl["Δ Ret.Mês"].apply(lambda x: f"{x*100:+.2f}%" if x is not None else "—")
         df_tbl["Fin. B"]    = df_tbl["Fin. B"].apply(lambda x: f"R$ {x:,.0f}")
         st.dataframe(df_tbl, use_container_width=True, hide_index=True)
 
@@ -490,8 +490,8 @@ with tab_comp:
         with col_hi:
             st.markdown("**Maiores avanços**")
             for _, row in df_dest.head(3).iterrows():
-                st.success(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}p.p. vs data A)")
+                st.success(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}% vs data A)")
         with col_lo:
             st.markdown("**Maiores quedas**")
             for _, row in df_dest.tail(3).iloc[::-1].iterrows():
-                st.error(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}p.p. vs data A)")
+                st.error(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}% vs data A)")
