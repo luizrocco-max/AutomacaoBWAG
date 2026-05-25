@@ -378,31 +378,21 @@ with tab_top:
             for nome, c in mais_recentes.items()
             if c.get("perf_total",{}).get(pk) is not None
         ]
-        df_f = pd.DataFrame(rows_f).sort_values("Retorno", ascending=False)
-        n = len(df_f)
-        meio = (n + 1) // 2
-        altura = max(300, n * 38)
-        col_t, col_b = st.columns(2)
-        with col_t:
-            st.markdown("#### 🏆 Melhores")
-            top_all = df_f.head(meio).iloc[::-1]
-            fig_t = px.bar(top_all, x="Ret%", y="Fundo", orientation="h",
-                           color="Ret%", color_continuous_scale=["#a5d6a7","#1b5e20"], text_auto=".2f")
-            fig_t.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
-            fig_t.update_layout(showlegend=False, coloraxis_showscale=False, height=altura,
-                                plot_bgcolor="white", paper_bgcolor="white",
-                                xaxis_title="", yaxis_title="", margin=dict(l=0,r=50,t=10,b=10))
-            st.plotly_chart(fig_t, use_container_width=True)
-        with col_b:
-            st.markdown("#### ⚠️ Piores")
-            bot_all = df_f.tail(n - meio)
-            fig_b = px.bar(bot_all, x="Ret%", y="Fundo", orientation="h",
-                           color="Ret%", color_continuous_scale=["#b71c1c","#ef9a9a"], text_auto=".2f")
-            fig_b.update_traces(texttemplate="%{x:.2f}%", textposition="outside")
-            fig_b.update_layout(showlegend=False, coloraxis_showscale=False, height=altura,
-                                plot_bgcolor="white", paper_bgcolor="white",
-                                xaxis_title="", yaxis_title="", margin=dict(l=0,r=50,t=10,b=10))
-            st.plotly_chart(fig_b, use_container_width=True)
+        df_f = pd.DataFrame(rows_f).sort_values("Retorno", ascending=True)
+        df_f["cor"] = df_f["Ret%"].apply(lambda x: "#2e7d32" if x >= 0 else "#c62828")
+        altura = max(300, len(df_f) * 42)
+        fig_rank = go.Figure(go.Bar(
+            x=df_f["Ret%"], y=df_f["Fundo"], orientation="h",
+            marker_color=df_f["cor"],
+            text=[f"{v:.2f}%" for v in df_f["Ret%"]], textposition="outside",
+        ))
+        fig_rank.update_layout(
+            showlegend=False, height=altura,
+            plot_bgcolor="white", paper_bgcolor="white",
+            xaxis_title="", yaxis_title="",
+            margin=dict(l=0, r=60, t=10, b=10),
+        )
+        st.plotly_chart(fig_rank, use_container_width=True)
         st.markdown("---")
 
     st.subheader(f"Top / Bottom Posições por Fundo — {periodo}")
