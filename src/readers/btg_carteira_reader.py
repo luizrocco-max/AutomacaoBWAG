@@ -248,8 +248,8 @@ def _extrair_perf_p1(texto, tabelas=None):
         t2 = matches[meio]
         m12_pct   = float(t2.group(6)) / 100
         m12_bench = float(t2.group(7)) / 100
-        m24_pct   = float(t2.group(8)) / 100
-        m24_bench = float(t2.group(9)) / 100
+        m24_pct   = float(t2.group(8)) / 100 or None
+        m24_bench = float(t2.group(9)) / 100 or None
 
         perf_total = {"mes": mes_pct,   "ano": ano_pct,   "m12": m12_pct,   "m24": m24_pct}
         pct_bench  = {"mes": mes_bench, "ano": ano_bench, "m12": m12_bench, "m24": m24_bench}
@@ -357,7 +357,7 @@ def _extrair_carteira(texto):
                             "mes":  _val(mp.group(2)),
                             "ano":  _val(mp.group(3)),
                             "m12":  _val(mp.group(4)),
-                            "m24":  _val(mp.group(5)),
+                            "m24":  _val(mp.group(5)) or None,
                         })
                     i += 2
                     continue
