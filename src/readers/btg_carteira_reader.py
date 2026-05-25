@@ -65,7 +65,7 @@ def _ler_formato_lupa(texto_p1: str) -> dict:
     pct_bench  = {"mes": None, "ano": None, "m12": None, "m24": None}
 
     def _pcts_linha(linha):
-        """Extrai lista de floats de valores %; negativos quando em (parênteses%)."""
+        """Extrai lista de floats de valores %; negativos quando em (número%)."""
         out = []
         for m in re.finditer(r'\(([\d]+,[\d]+)%\)|([\d]+,[\d]+)%', linha):
             raw = m.group(1) or m.group(2)
@@ -74,16 +74,34 @@ def _ler_formato_lupa(texto_p1: str) -> dict:
                 out.append(-val if m.group(1) else val)
         return out
 
-    for linha in texto_p1.split("\n"):
+    def _coletar_pcts(linhas, idx_inicio, stop_kws=()):
+        """Coleta até 7 valores % a partir da linha idx, podendo avançar linhas."""
+        pcts = []
+        for j in range(idx_inicio, min(idx_inicio + 15, len(linhas))):
+            ls = linhas[j].strip()
+            if j > idx_inicio and any(ls.startswith(kw) for kw in stop_kws):
+                break
+            pcts.extend(_pcts_linha(ls))
+            if len(pcts) >= 7:
+                break
+        return pcts
+
+    linhas = texto_p1.split("\n")
+    in_rent = False
+    for i, linha in enumerate(linhas):
         ls = linha.strip()
+        if "Rentabilidade" in ls:
+            in_rent = True
+        if not in_rent:
+            continue
         if ls.startswith("COTA") and perf_total["mes"] is None:
-            pcts = _pcts_linha(ls)
+            pcts = _coletar_pcts(linhas, i, stop_kws=("SELIC", "Valor da Cota", "Quantidade"))
             if len(pcts) >= 7:
                 perf_total["mes"] = pcts[3] / 100
                 perf_total["ano"] = pcts[4] / 100
                 perf_total["m12"] = pcts[6] / 100
         elif ls.startswith("CDI") and pct_bench["mes"] is None:
-            pcts = _pcts_linha(ls)
+            pcts = _coletar_pcts(linhas, i, stop_kws=("COTA", "SELIC", "Valor da Cota"))
             if len(pcts) >= 7:
                 pct_bench["mes"] = pcts[3] / 100
                 pct_bench["ano"] = pcts[4] / 100
