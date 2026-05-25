@@ -510,9 +510,9 @@ with tab_comp:
         c3.metric("PL (data B)", f"R$ {pl_b/1e6:.2f}M",
                   delta=f"R$ {delta_pl:+,.0f} ({delta_pl/pl_a*100:+.2f}%)" if pl_a else None)
         c4.metric("Retorno Mês", fmt_pct(pb.get("mes")),
-                  delta=fmt_pct((pb.get("mes") or 0)-(pa.get("mes") or 0))+" vs data A")
+                  delta=fmt_pct((pb.get("mes") or 0)-(pa.get("mes") or 0))+" vs {da.get('data_base','A')}")
         c5.metric("Retorno Ano", fmt_pct(pb.get("ano")),
-                  delta=fmt_pct((pb.get("ano") or 0)-(pa.get("ano") or 0))+" vs data A")
+                  delta=fmt_pct((pb.get("ano") or 0)-(pa.get("ano") or 0))+" vs {da.get('data_base','A')}")
         c6.metric("12M (data B)", fmt_pct(pb.get("m12")))
         st.markdown("---")
 
@@ -571,8 +571,8 @@ with tab_comp:
         with col_hi:
             st.markdown("**Maiores avanços**")
             for _, row in df_dest.head(3).iterrows():
-                st.success(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}% vs data A)")
+                st.success(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}% vs {da.get('data_base','A')})")
         with col_lo:
             st.markdown("**Maiores quedas**")
             for _, row in df_dest.tail(3).iloc[::-1].iterrows():
-                st.error(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}% vs data A)")
+                st.error(f"**{row['Ativo']}** — {fmt_pct(row['Ret.Mês B'])}  ({row['Δ Ret.Mês']*100:+.2f}% vs {da.get('data_base','A')})")
