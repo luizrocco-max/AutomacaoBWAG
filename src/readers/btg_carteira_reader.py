@@ -59,31 +59,35 @@ def _ler_formato_lupa(texto_p1: str) -> dict:
         patrimonio = _br2float(m.group(1)) or 0.0
 
     # performance e benchmark — tabela Rentabilidade Acumulada
-    # Colunas: Indexador | BenchMark | Rent.Real | Var.Diária | Var.Mensal | Var.Anual | Últimos 6M | Últimos 12M
+    # Colunas: BenchMark | Rent.Real | Var.Diária | Var.Mensal | Var.Anual | Últimos 6M | Últimos 12M
+    # idx:       0           1           2             3            4           5             6
     perf_total = {"mes": None, "ano": None, "m12": None, "m24": None}
     pct_bench  = {"mes": None, "ano": None, "m12": None, "m24": None}
 
-    _PCT = r'([-\d]+,\d+)%'  # captura um valor percentual BR
+    def _pcts_linha(linha):
+        """Extrai lista de floats de valores %; negativos quando em (parênteses%)."""
+        out = []
+        for m in re.finditer(r'\(([\d]+,[\d]+)%\)|([\d]+,[\d]+)%', linha):
+            raw = m.group(1) or m.group(2)
+            val = _br2float(raw)
+            if val is not None:
+                out.append(-val if m.group(1) else val)
+        return out
 
-    # Linha COTA: "COTA ... % ... % ..."
-    m_cota = re.search(
-        r'COTA\s+\S+\s+\S+\s+' + _PCT + r'\s+' + _PCT + r'\s+' + _PCT + r'\s+' + _PCT + r'\s+' + _PCT,
-        texto_p1
-    )
-    if m_cota:
-        perf_total["mes"] = (_br2float(m_cota.group(1)) or 0) / 100
-        perf_total["ano"] = (_br2float(m_cota.group(2)) or 0) / 100
-        perf_total["m12"] = (_br2float(m_cota.group(5)) or 0) / 100
-
-    # Linha CDI para benchmark
-    m_cdi = re.search(
-        r'CDI\s+\S+\s+\S+\s+' + _PCT + r'\s+' + _PCT + r'\s+' + _PCT + r'\s+' + _PCT + r'\s+' + _PCT,
-        texto_p1
-    )
-    if m_cdi:
-        pct_bench["mes"] = (_br2float(m_cdi.group(1)) or 0) / 100
-        pct_bench["ano"] = (_br2float(m_cdi.group(2)) or 0) / 100
-        pct_bench["m12"] = (_br2float(m_cdi.group(5)) or 0) / 100
+    for linha in texto_p1.split("\n"):
+        ls = linha.strip()
+        if ls.startswith("COTA") and perf_total["mes"] is None:
+            pcts = _pcts_linha(ls)
+            if len(pcts) >= 7:
+                perf_total["mes"] = pcts[3] / 100
+                perf_total["ano"] = pcts[4] / 100
+                perf_total["m12"] = pcts[6] / 100
+        elif ls.startswith("CDI") and pct_bench["mes"] is None:
+            pcts = _pcts_linha(ls)
+            if len(pcts) >= 7:
+                pct_bench["mes"] = pcts[3] / 100
+                pct_bench["ano"] = pcts[4] / 100
+                pct_bench["m12"] = pcts[6] / 100
 
     # posições — linhas: {6-digit-code} {NOME FUNDO+INST} {qty} ... {valor_atual} 0,00 {valor_liq} {%s/fi}% ...
     fundos = []
