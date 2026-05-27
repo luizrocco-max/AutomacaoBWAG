@@ -454,12 +454,13 @@ st.divider()
 
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
-tab_geral, tab_pos, tab_perf, tab_liq, tab_hist = st.tabs([
+tab_geral, tab_pos, tab_perf, tab_liq, tab_hist, tab_comp = st.tabs([
     "🏦 Visão Geral",
     "📋 Posição Detalhada",
     "📈 Performance",
     "💧 Liquidez",
     "📅 Histórico",
+    "🔄 Comparativo",
 ])
 
 
@@ -970,3 +971,236 @@ with tab_hist:
             df_hist_show["Saldo Líquido"] = df_hist_show["Saldo Líquido"].apply(fmt_money)
             df_hist_show["Ganho Mês"]     = df_hist_show["Ganho Mês"].apply(fmt_money)
             st.dataframe(df_hist_show, use_container_width=True, hide_index=True)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 6 — COMPARATIVO ENTRE DATAS
+# ══════════════════════════════════════════════════════════════════════════════
+with tab_comp:
+    col_c, col_a, col_b = st.columns(3)
+    with col_c:
+        cliente_comp = st.selectbox("Cliente", clientes, key="comp_cli")
+    datas_cli = sorted(
+        {d.get("data_extrato","") for d in grupos.get(cliente_comp, [])},
+        reverse=True,
+    )
+    if len(datas_cli) < 2:
+        st.info("Este cliente tem menos de 2 datas — adicione outro PDF para comparar.")
+    else:
+        with col_a:
+            data_a = st.selectbox("Data A (anterior)", datas_cli[1:], key="comp_a")
+        with col_b:
+            datas_b_opts = [d for d in datas_cli if d != data_a]
+            data_b = st.selectbox("Data B (recente)", datas_b_opts, key="comp_b")
+
+        rep_a = next((d for d in grupos[cliente_comp] if d.get("data_extrato") == data_a), None)
+        rep_b = next((d for d in grupos[cliente_comp] if d.get("data_extrato") == data_b), None)
+
+        if not (rep_a and rep_b):
+            st.warning("Não foi possível localizar os relatórios das datas selecionadas.")
+        else:
+            # ── KPIs ──────────────────────────────────────────────────────────
+            sb_a = rep_a.get("saldo_bruto_total") or 0
+            sb_b = rep_b.get("saldo_bruto_total") or 0
+            sl_a = rep_a.get("saldo_liquido_total") or 0
+            sl_b = rep_b.get("saldo_liquido_total") or 0
+            ganho_b = rep_b.get("ganho_mes_total") or 0
+            n_a = len(rep_a.get("ativos", []))
+            n_b = len(rep_b.get("ativos", []))
+
+            def _delta_pct(a, b):
+                if not a:
+                    return None
+                return (b - a) / a * 100
+
+            k1, k2, k3, k4 = st.columns(4)
+            with k1:
+                d_sb = sb_b - sb_a
+                dp_sb = _delta_pct(sb_a, sb_b)
+                st.metric(
+                    "Δ Saldo Bruto",
+                    fmt_money(sb_b, abbrev=True),
+                    delta=f"{fmt_money(d_sb, abbrev=True)} ({fmt_pct(dp_sb)})" if dp_sb is not None else None,
+                )
+            with k2:
+                d_sl = sl_b - sl_a
+                dp_sl = _delta_pct(sl_a, sl_b)
+                st.metric(
+                    "Δ Saldo Líquido",
+                    fmt_money(sl_b, abbrev=True),
+                    delta=f"{fmt_money(d_sl, abbrev=True)} ({fmt_pct(dp_sl)})" if dp_sl is not None else None,
+                )
+            with k3:
+                st.metric("Ganho Mês (B)", fmt_money(ganho_b, abbrev=True))
+            with k4:
+                st.metric(
+                    "Nº Ativos",
+                    f"{n_b}",
+                    delta=f"{n_b - n_a:+d}" if n_a else None,
+                )
+
+            st.divider()
+
+            # ── Comparativo por Estratégia ────────────────────────────────────
+            st.markdown("### Por Estratégia")
+
+            def _subt_dict(rep):
+                out = {}
+                for s in rep.get("subtotais", []):
+                    est = s.get("estrategia") or ""
+                    out[est] = s.get("saldo_liquido") or 0
+                return out
+
+            sub_a = _subt_dict(rep_a)
+            sub_b = _subt_dict(rep_b)
+            estr_keys = sorted(set(sub_a) | set(sub_b))
+
+            rows_est = []
+            for e in estr_keys:
+                va = sub_a.get(e, 0)
+                vb = sub_b.get(e, 0)
+                rows_est.append({
+                    "Estratégia": e,
+                    "Saldo A": va,
+                    "Saldo B": vb,
+                    "Δ R$": vb - va,
+                    "Δ %": _delta_pct(va, vb),
+                })
+            df_est = pd.DataFrame(rows_est).sort_values("Δ R$", ascending=False)
+
+            # Gráfico de barras dos deltas por estratégia
+            df_chart = df_est[df_est["Δ R$"].abs() > 0].copy()
+            if not df_chart.empty:
+                df_chart["cor"] = df_chart["Δ R$"].apply(lambda v: VERDE if v >= 0 else VERMELHO)
+                fig_est = go.Figure(go.Bar(
+                    x=df_chart["Estratégia"],
+                    y=df_chart["Δ R$"],
+                    marker_color=df_chart["cor"],
+                    text=[fmt_money(v, abbrev=True) for v in df_chart["Δ R$"]],
+                    textposition="outside",
+                    cliponaxis=False,
+                ))
+                fig_est.update_layout(
+                    title=f"Δ Saldo Líquido por Estratégia  ({data_a} → {data_b})",
+                    height=380,
+                    plot_bgcolor="white", paper_bgcolor="white",
+                    yaxis_title="R$", xaxis_title="",
+                    margin=dict(t=60, b=40),
+                )
+                st.plotly_chart(fig_est, use_container_width=True)
+
+            # Tabela formatada
+            df_est_show = df_est.copy()
+            df_est_show["Saldo A"] = df_est_show["Saldo A"].apply(fmt_money)
+            df_est_show["Saldo B"] = df_est_show["Saldo B"].apply(fmt_money)
+            df_est_show["Δ R$"]   = df_est_show["Δ R$"].apply(fmt_money)
+            df_est_show["Δ %"]    = df_est_show["Δ %"].apply(lambda v: fmt_pct(v) if v is not None else "—")
+            st.dataframe(df_est_show, use_container_width=True, hide_index=True)
+
+            st.divider()
+
+            # ── Comparativo de Ativos ─────────────────────────────────────────
+            st.markdown("### Ativos — Entradas, Saídas e Variações")
+
+            def _ativos_dict(rep):
+                out = {}
+                for a in rep.get("ativos", []):
+                    key = (a.get("estrategia") or "", a.get("nome") or "")
+                    out[key] = {
+                        "saldo_liq": a.get("saldo_liquido") or 0,
+                        "part_pct": a.get("part_pct"),
+                        "ret_mes": a.get("rentabilidade_mes"),
+                    }
+                return out
+
+            at_a = _ativos_dict(rep_a)
+            at_b = _ativos_dict(rep_b)
+            novos = [k for k in at_b if k not in at_a]
+            removidos = [k for k in at_a if k not in at_b]
+            comuns = [k for k in at_b if k in at_a]
+
+            c_nov, c_rem = st.columns(2)
+            with c_nov:
+                st.markdown(f"**🟢 Novos ativos** ({len(novos)})")
+                if novos:
+                    df_nov = pd.DataFrame([
+                        {
+                            "Estratégia": k[0],
+                            "Ativo": k[1],
+                            "Saldo": fmt_money(at_b[k]["saldo_liq"]),
+                            "% PL": fmt_pct(at_b[k]["part_pct"]),
+                        }
+                        for k in novos
+                    ]).sort_values("Estratégia")
+                    st.dataframe(df_nov, use_container_width=True, hide_index=True, height=280)
+                else:
+                    st.caption("Nenhum ativo novo no período.")
+            with c_rem:
+                st.markdown(f"**🔴 Ativos removidos** ({len(removidos)})")
+                if removidos:
+                    df_rem = pd.DataFrame([
+                        {
+                            "Estratégia": k[0],
+                            "Ativo": k[1],
+                            "Saldo (A)": fmt_money(at_a[k]["saldo_liq"]),
+                            "% PL (A)": fmt_pct(at_a[k]["part_pct"]),
+                        }
+                        for k in removidos
+                    ]).sort_values("Estratégia")
+                    st.dataframe(df_rem, use_container_width=True, hide_index=True, height=280)
+                else:
+                    st.caption("Nenhum ativo removido no período.")
+
+            # Top variações entre ativos comuns
+            if comuns:
+                rows_var = []
+                for k in comuns:
+                    va = at_a[k]["saldo_liq"]
+                    vb = at_b[k]["saldo_liq"]
+                    rows_var.append({
+                        "Estratégia": k[0],
+                        "Ativo": k[1],
+                        "Saldo A": va,
+                        "Saldo B": vb,
+                        "Δ R$": vb - va,
+                        "Δ %": _delta_pct(va, vb),
+                    })
+                df_var = pd.DataFrame(rows_var)
+                df_var = df_var[df_var["Δ R$"].abs() > 0.01]
+
+                if not df_var.empty:
+                    st.markdown(f"**🔀 Top variações** (ativos em ambas as datas)")
+                    df_top = df_var.reindex(
+                        df_var["Δ R$"].abs().sort_values(ascending=False).index
+                    ).head(15).copy()
+                    df_top["Saldo A"] = df_top["Saldo A"].apply(fmt_money)
+                    df_top["Saldo B"] = df_top["Saldo B"].apply(fmt_money)
+                    df_top["Δ R$"]   = df_top["Δ R$"].apply(fmt_money)
+                    df_top["Δ %"]    = df_top["Δ %"].apply(lambda v: fmt_pct(v) if v is not None else "—")
+                    st.dataframe(df_top, use_container_width=True, hide_index=True)
+
+            st.divider()
+
+            # ── Comparativo de Rentabilidade por Estratégia ───────────────────
+            st.markdown("### Retorno do Mês por Estratégia")
+
+            def _ret_mes_dict(rep):
+                return {
+                    (r.get("estrategia") or ""): r.get("ret_mes")
+                    for r in rep.get("rentabilidades_estrategia", [])
+                }
+
+            r_a = _ret_mes_dict(rep_a)
+            r_b = _ret_mes_dict(rep_b)
+            estr_r = sorted(set(r_a) | set(r_b))
+            rows_r = []
+            for e in estr_r:
+                rows_r.append({
+                    "Estratégia": e,
+                    f"Ret.Mês {data_a}": r_a.get(e),
+                    f"Ret.Mês {data_b}": r_b.get(e),
+                })
+            df_r = pd.DataFrame(rows_r)
+            for col in df_r.columns[1:]:
+                df_r[col] = df_r[col].apply(lambda v: fmt_pct(v) if v is not None else "—")
+            st.dataframe(df_r, use_container_width=True, hide_index=True)
