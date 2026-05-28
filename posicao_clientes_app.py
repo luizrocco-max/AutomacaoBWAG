@@ -273,6 +273,80 @@ def fmt_estrategia(s):
     return " ".join(s.split())
 
 
+# Prefixos de tipos de ativos para separar do emissor
+# (mais longos primeiro pra evitar match prematuro: 'LCICAIXA' antes de 'LCI')
+_ATIVO_PREFIX_SPLITS = [
+    ("LCICAIXA",     "LCI CAIXA"),
+    ("LCIITAÚ",      "LCI ITAÚ"),
+    ("LCIITAU",      "LCI ITAU"),
+    ("LCIBRADESCO",  "LCI BRADESCO"),
+    ("LCISANTANDER", "LCI SANTANDER"),
+    ("LIGITAÚ",      "LIG ITAÚ"),
+    ("LIGITAU",      "LIG ITAU"),
+    ("LIGBRADESCO",  "LIG BRADESCO"),
+    ("LIGCAIXA",     "LIG CAIXA"),
+    ("LIGBANCO",     "LIG BANCO"),
+    ("LIGBTG",       "LIG BTG"),
+    ("CDBITAÚ",      "CDB ITAÚ"),
+    ("CDBITAU",      "CDB ITAU"),
+    ("CDBBTG",       "CDB BTG"),
+    ("CDBBRADESCO",  "CDB BRADESCO"),
+    ("CDBSANTANDER", "CDB SANTANDER"),
+    ("CRIBARI",      "CRI BARI"),
+    ("CRIBR",        "CRI BR"),
+    ("CRIECO",       "CRI ECO"),
+    ("CRIRB",        "CRI RB"),
+    ("CRITRUE",      "CRI TRUE"),
+    ("CRIVIRGO",     "CRI VIRGO"),
+    ("CRIOPEA",      "CRI OPEA"),
+    ("CRAECO",       "CRA ECO"),
+    ("CRATRUE",      "CRA TRUE"),
+    ("CRAVERT",      "CRA VERT"),
+    ("BTGPACTUAL",   "BTG PACTUAL"),
+]
+
+
+def fmt_ativo(s):
+    """Formata nome de ativo (LCI/LCA/CRI/CRA/CDB/Deb./LIG etc.) para exibição.
+
+    Ex: 'LCICAIXA94%CDI-19/02/2026A22/07/2027'
+        -> 'LCI CAIXA 94% CDI - 19/02/2026 A 22/07/2027'
+        'Deb.TAEB15IPCA+5.85%GrossUp 051121-TEREOS06/2027'
+        -> 'Deb. TAEB 15 IPCA + 5.85% GrossUp 051121 - TEREOS 06/2027'
+    """
+    if not s or not isinstance(s, str):
+        return s
+    s = s.strip()
+    if not s:
+        return ""
+
+    # 1) Prefixos conhecidos: separa "LCI"/"CRA"/"CDB"/etc. do emissor
+    for old, new in _ATIVO_PREFIX_SPLITS:
+        s = s.replace(old, new)
+
+    # 2) "Deb.X" -> "Deb. X" (mas evita duplicar espaço se já tem)
+    s = re.sub(r"Deb\.(?!\s|$)", "Deb. ", s)
+
+    # 3) Letra ↔ dígito: insere espaço em transições
+    #    [^\W\d_] = letras Unicode (ASCII + acentuadas como Í/Á/Ê)
+    s = re.sub(r"([^\W\d_])(\d)", r"\1 \2", s)  # BARI1 -> BARI 1
+    s = re.sub(r"(\d)([^\W\d_])", r"\1 \2", s)  # 8CDI -> 8 CDI, 2026A -> 2026 A
+
+    # 4) Operadores +/- entre alfanum: insere espaços
+    s = re.sub(r"([^\W\d_])([+\-])(\d)", r"\1 \2 \3", s)   # IPCA+5 -> IPCA + 5
+    s = re.sub(r"(\d)([+\-])([^\W\d_])", r"\1 \2 \3", s)   # 051121-TEREOS -> 051121 - TEREOS
+
+    # 4b) "letra/dígito + dash" colado em final de palavra (ex: "CDI-" antes de espaço)
+    s = re.sub(r"(\S)-(?=\s)", r"\1 -", s)                 # CDI- 25 -> CDI - 25
+    s = re.sub(r"(?<=\s)-(\S)", r"- \1", s)
+
+    # 5) "%" + letra: insere espaço
+    s = re.sub(r"(%)([^\W\d_])", r"\1 \2", s)
+
+    # 6) Normaliza espaços
+    return " ".join(s.split())
+
+
 def _parse_data(data_str: str):
     try:
         return datetime.strptime(data_str, "%d/%m/%Y")
@@ -524,13 +598,14 @@ st.divider()
 
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
-tab_geral, tab_pos, tab_perf, tab_liq, tab_hist, tab_comp = st.tabs([
+tab_geral, tab_pos, tab_perf, tab_liq, tab_hist, tab_comp, tab_mov = st.tabs([
     "🏦 Visão Geral",
     "📋 Posição Detalhada",
     "📈 Performance",
     "💧 Liquidez",
     "📅 Histórico",
     "🔄 Comparativo",
+    "💸 Movimentações",
 ])
 
 
@@ -725,6 +800,10 @@ with tab_pos:
             # Formata coluna Estratégia (display)
             if "Estratégia" in df_show.columns:
                 df_show["Estratégia"] = df_show["Estratégia"].apply(fmt_estrategia)
+
+            # Formata coluna Ativo (display)
+            if "Ativo" in df_show.columns:
+                df_show["Ativo"] = df_show["Ativo"].apply(fmt_ativo)
 
             # Formata colunas monetárias e percentuais
             money_cols = ["Saldo Ant.", "Aplicações", "Resgates", "Rendimentos",
@@ -1195,9 +1274,7 @@ with tab_comp:
 
             st.divider()
 
-            # ── Comparativo de Ativos ─────────────────────────────────────────
-            st.markdown("### Ativos — Entradas, Saídas e Variações")
-
+            # ── Top variações por Ativo (em ambas as datas) ──────────────────
             def _ativos_dict(rep):
                 out = {}
                 for a in rep.get("ativos", []):
@@ -1211,43 +1288,8 @@ with tab_comp:
 
             at_a = _ativos_dict(rep_a)
             at_b = _ativos_dict(rep_b)
-            novos = [k for k in at_b if k not in at_a]
-            removidos = [k for k in at_a if k not in at_b]
             comuns = [k for k in at_b if k in at_a]
 
-            c_nov, c_rem = st.columns(2)
-            with c_nov:
-                st.markdown(f"**🟢 Novos ativos** ({len(novos)})")
-                if novos:
-                    df_nov = pd.DataFrame([
-                        {
-                            "Estratégia": fmt_estrategia(k[0]),
-                            "Ativo": k[1],
-                            "Saldo": fmt_money(at_b[k]["saldo_liq"]),
-                            "% PL": fmt_pct(at_b[k]["part_pct"]),
-                        }
-                        for k in novos
-                    ]).sort_values("Estratégia")
-                    st.dataframe(df_nov, use_container_width=True, hide_index=True, height=280)
-                else:
-                    st.caption("Nenhum ativo novo no período.")
-            with c_rem:
-                st.markdown(f"**🔴 Ativos removidos** ({len(removidos)})")
-                if removidos:
-                    df_rem = pd.DataFrame([
-                        {
-                            "Estratégia": fmt_estrategia(k[0]),
-                            "Ativo": k[1],
-                            "Saldo (A)": fmt_money(at_a[k]["saldo_liq"]),
-                            "% PL (A)": fmt_pct(at_a[k]["part_pct"]),
-                        }
-                        for k in removidos
-                    ]).sort_values("Estratégia")
-                    st.dataframe(df_rem, use_container_width=True, hide_index=True, height=280)
-                else:
-                    st.caption("Nenhum ativo removido no período.")
-
-            # Top variações entre ativos comuns
             if comuns:
                 rows_var = []
                 for k in comuns:
@@ -1255,7 +1297,7 @@ with tab_comp:
                     vb = at_b[k]["saldo_liq"]
                     rows_var.append({
                         "Estratégia": fmt_estrategia(k[0]),
-                        "Ativo": k[1],
+                        "Ativo": fmt_ativo(k[1]),
                         "Saldo A": va,
                         "Saldo B": vb,
                         "Δ R$": vb - va,
@@ -1265,7 +1307,7 @@ with tab_comp:
                 df_var = df_var[df_var["Δ R$"].abs() > 0.01]
 
                 if not df_var.empty:
-                    st.markdown(f"**🔀 Top variações** (ativos em ambas as datas)")
+                    st.markdown("### Top variações por Ativo")
                     df_top = df_var.reindex(
                         df_var["Δ R$"].abs().sort_values(ascending=False).index
                     ).head(15).copy()
@@ -1274,8 +1316,7 @@ with tab_comp:
                     df_top["Δ R$"]   = df_top["Δ R$"].apply(fmt_money)
                     df_top["Δ %"]    = df_top["Δ %"].apply(lambda v: fmt_pct(v) if v is not None else "—")
                     st.dataframe(df_top, use_container_width=True, hide_index=True)
-
-            st.divider()
+                    st.divider()
 
             # ── Comparativo de Rentabilidade por Estratégia ───────────────────
             st.markdown("### Retorno do Mês por Estratégia")
@@ -1300,3 +1341,160 @@ with tab_comp:
             for col in df_r.columns[1:]:
                 df_r[col] = df_r[col].apply(lambda v: fmt_pct(v) if v is not None else "—")
             st.dataframe(df_r, use_container_width=True, hide_index=True)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 7 — MOVIMENTAÇÕES (Aplicações, Resgates, Rendimentos, Imposto)
+# ══════════════════════════════════════════════════════════════════════════════
+with tab_mov:
+    col_mc, col_md = st.columns([2, 2])
+    with col_mc:
+        cliente_mov = st.selectbox("Cliente", clientes, key="mov_cliente")
+    with col_md:
+        datas_mov = sorted(datas_por_cliente.get(cliente_mov, []),
+                           key=_parse_data, reverse=True)
+        data_mov  = st.selectbox("Data", datas_mov, key="mov_data")
+
+    dado_mov = next(
+        (d for d in grupos.get(cliente_mov, []) if d.get("data_extrato") == data_mov),
+        None,
+    )
+
+    if dado_mov is None:
+        st.warning("Nenhum dado encontrado para a seleção.")
+    else:
+        ativos_mov = dado_mov.get("ativos") or []
+
+        # Filtra apenas ativos com movimentação (algum dos campos != 0)
+        def _tem_mov(a):
+            return any(
+                (a.get(k) or 0) != 0
+                for k in ("aplicacoes", "resgates", "rendimentos", "imposto_pago")
+            )
+
+        ativos_com_mov = [a for a in ativos_mov if _tem_mov(a)]
+
+        # ── KPIs no topo ──────────────────────────────────────────────────────
+        total_apl = sum((a.get("aplicacoes") or 0) for a in ativos_mov)
+        total_res = sum((a.get("resgates") or 0) for a in ativos_mov)
+        total_rend = sum((a.get("rendimentos") or 0) for a in ativos_mov)
+        total_imp = sum((a.get("imposto_pago") or 0) for a in ativos_mov)
+        fluxo_liq = total_apl + total_res + total_rend + total_imp
+
+        k1, k2, k3, k4, k5 = st.columns(5)
+        k1.metric("Aplicações", fmt_money(total_apl, abbrev=True))
+        k2.metric("Resgates", fmt_money(total_res, abbrev=True))
+        k3.metric("Rendimentos", fmt_money(total_rend, abbrev=True))
+        k4.metric("Imposto Pago", fmt_money(total_imp, abbrev=True))
+        k5.metric("Fluxo Líquido", fmt_money(fluxo_liq, abbrev=True))
+
+        st.divider()
+
+        if not ativos_com_mov:
+            st.info("Nenhuma movimentação registrada nesta data.")
+        else:
+            # ── Por Estratégia ─────────────────────────────────────────────────
+            st.markdown("### Movimentações por Estratégia")
+            from collections import defaultdict
+            agg = defaultdict(lambda: {"aplicacoes":0,"resgates":0,"rendimentos":0,"imposto_pago":0})
+            for a in ativos_com_mov:
+                est = a.get("estrategia") or "?"
+                agg[est]["aplicacoes"]   += (a.get("aplicacoes") or 0)
+                agg[est]["resgates"]     += (a.get("resgates") or 0)
+                agg[est]["rendimentos"]  += (a.get("rendimentos") or 0)
+                agg[est]["imposto_pago"] += (a.get("imposto_pago") or 0)
+
+            rows_est = []
+            for est, v in agg.items():
+                liq = v["aplicacoes"] + v["resgates"] + v["rendimentos"] + v["imposto_pago"]
+                rows_est.append({
+                    "Estratégia": fmt_estrategia(est),
+                    "Aplicações": v["aplicacoes"],
+                    "Resgates":   v["resgates"],
+                    "Rendimentos": v["rendimentos"],
+                    "Imposto Pago": v["imposto_pago"],
+                    "Fluxo Líquido": liq,
+                })
+            df_est_mov = pd.DataFrame(rows_est).sort_values("Fluxo Líquido", ascending=False)
+            df_est_mov_show = df_est_mov.copy()
+            for col in ("Aplicações","Resgates","Rendimentos","Imposto Pago","Fluxo Líquido"):
+                df_est_mov_show[col] = df_est_mov_show[col].apply(fmt_money)
+            st.dataframe(df_est_mov_show, use_container_width=True, hide_index=True)
+
+            st.divider()
+
+            # ── Filtros pra tabela detalhada ───────────────────────────────────
+            st.markdown("### Detalhamento por Ativo")
+            cf1, cf2 = st.columns([2, 2])
+            with cf1:
+                estr_uniq = sorted({a.get("estrategia","") for a in ativos_com_mov})
+                est_filtro = st.selectbox(
+                    "Estratégia",
+                    ["Todas"] + estr_uniq,
+                    key="mov_est_filtro",
+                    format_func=lambda v: v if v == "Todas" else fmt_estrategia(v),
+                )
+            with cf2:
+                tipo_filtro = st.multiselect(
+                    "Tipo de movimentação",
+                    ["Aplicações", "Resgates", "Rendimentos", "Imposto Pago"],
+                    default=["Aplicações", "Resgates", "Rendimentos", "Imposto Pago"],
+                    key="mov_tipo_filtro",
+                )
+
+            # Aplica filtros
+            ativos_filt = ativos_com_mov
+            if est_filtro != "Todas":
+                ativos_filt = [a for a in ativos_filt if a.get("estrategia") == est_filtro]
+
+            tipo_map = {
+                "Aplicações": "aplicacoes",
+                "Resgates": "resgates",
+                "Rendimentos": "rendimentos",
+                "Imposto Pago": "imposto_pago",
+            }
+            tipos_ativos = {tipo_map[t] for t in tipo_filtro}
+            if tipos_ativos:
+                ativos_filt = [
+                    a for a in ativos_filt
+                    if any((a.get(k) or 0) != 0 for k in tipos_ativos)
+                ]
+
+            if not ativos_filt:
+                st.info("Nenhum ativo corresponde aos filtros selecionados.")
+            else:
+                rows_at = []
+                for a in ativos_filt:
+                    rows_at.append({
+                        "Estratégia": fmt_estrategia(a.get("estrategia") or ""),
+                        "Ativo": fmt_ativo(a.get("nome") or ""),
+                        "Aplicações": a.get("aplicacoes") or 0,
+                        "Resgates":   a.get("resgates") or 0,
+                        "Rendimentos": a.get("rendimentos") or 0,
+                        "Imposto Pago": a.get("imposto_pago") or 0,
+                        "Saldo Líquido": a.get("saldo_liquido") or 0,
+                    })
+                df_at_mov = pd.DataFrame(rows_at)
+                df_at_mov["Fluxo Líquido"] = (
+                    df_at_mov["Aplicações"] + df_at_mov["Resgates"]
+                    + df_at_mov["Rendimentos"] + df_at_mov["Imposto Pago"]
+                )
+                df_at_mov = df_at_mov.sort_values(
+                    ["Estratégia", "Fluxo Líquido"], ascending=[True, False]
+                )
+
+                df_at_mov_show = df_at_mov.copy()
+                for col in ("Aplicações","Resgates","Rendimentos","Imposto Pago",
+                            "Saldo Líquido","Fluxo Líquido"):
+                    df_at_mov_show[col] = df_at_mov_show[col].apply(fmt_money)
+                st.dataframe(df_at_mov_show, use_container_width=True, hide_index=True,
+                             height=480)
+
+                # Download CSV
+                csv_data = df_at_mov.to_csv(index=False).encode("utf-8-sig")
+                st.download_button(
+                    label="📥 Baixar movimentações (CSV)",
+                    data=csv_data,
+                    file_name=f"movimentacoes_{cliente_mov}_{data_mov.replace('/','-')}.csv",
+                    mime="text/csv",
+                )
