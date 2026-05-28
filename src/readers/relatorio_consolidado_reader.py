@@ -78,21 +78,55 @@ def _normalize_estrategia(text: str) -> str:
 
 
 def _is_strategy_start(line: str) -> bool:
-    """True se a linha parece ser cabeçalho de estratégia."""
+    """True se a linha parece ser cabeçalho de estratégia.
+
+    Cabeçalhos reais ('Previdência', 'Multimercado', 'FundosImobiliários') vêm
+    em mixed case. Linhas ALL-UPPERCASE com mesmo prefixo (ex: 'PREVIDÊNCIA',
+    'CARTEIRAITAUINTERNACIONALDE') são fragmentos de NOME DE ATIVO — rejeita.
+    """
     n = _norm(line)
-    return n.startswith(_STRATEGY_PREFIXES)
+    if not n.startswith(_STRATEGY_PREFIXES):
+        return False
+    alpha = [c for c in line if c.isalpha()]
+    if alpha and sum(1 for c in alpha if c.isupper()) / len(alpha) >= 0.9:
+        return False
+    return True
 
 
 def _is_name_continuation(line: str) -> bool:
-    """True se a linha parece ser continuação de nome de ativo."""
+    """True se a linha parece ser continuação de nome de ativo.
+
+    Rejeita explicitamente headers/footers de página (contêm '/' nas datas
+    mas NÃO são continuação de nome). Limita continuações em UPPERCASE a
+    ≤12 chars — strings maiores são nomes completos de OUTROS ativos.
+    """
     s = line.strip()
     if not s:
         return False
+    n = _norm(s)
+    # Page header/footer markers — nunca são continuação
+    if n.startswith((
+        'cliente:', 'dataextrato', 'datainicio', 'indicede',
+        'posicaodeativos', 'saldoanterior', 'aplicacoes',
+        'ativos', 'bruto', 'compras', 'nomes', 'ativosbr',
+        'rentabilidadeno',
+    )):
+        return False
+    if s.startswith('('):  # footer "(31/03/2026) no mês"
+        return False
+    # UPPER curta (PRIVC, ACCESS, IEFICFI, MULTIMERCADO, PREVIDÊNCIA, etc.) — ≤12 chars,
+    # Unicode-aware (aceita acentos como Ê em PREVIDÊNCIA)
+    stripped = s.replace(' ', '')
+    is_short_upper = (
+        2 <= len(stripped) <= 12
+        and stripped.isalpha()
+        and stripped.isupper()
+    )
     return bool(
         '/' in s                     # date codes like 05/2031
         or s[:2].isdigit()           # starts with digits
         or s.lower().startswith('gross')
-        or re.match(r'^[A-Z]{2,}\s*$', s)  # short uppercase abbreviation (PRIV FC, etc.)
+        or is_short_upper
     )
 
 
@@ -228,12 +262,13 @@ def _parse_posicao_ativos(pages: list) -> tuple:
 
         nl = _norm(line)
 
-        # Pula cabeçalhos de página e de coluna
+        # Pula cabeçalhos de página, colunas e footers
         if (nl.startswith(('cliente:', 'dataextrato', 'datainicio', 'indicede'))
                 or nl in _POS_SKIP
                 or any(nl.startswith(p) for p in (
                     'posicaodeativos', 'saldoanterior', 'aplicacoes',
-                    'compras', 'nomes', 'ativosbr'))):
+                    'compras', 'nomes', 'ativosbr'))
+                or line.startswith('(')):  # footer "(31/03/2026) no mês"
             continue
 
         nums = _FIND_NUMS.findall(line)
@@ -263,7 +298,9 @@ def _parse_posicao_ativos(pages: list) -> tuple:
                 ativos.append(rec)
                 skip_next_text = False
                 waiting_strategy = False
-                # Verifica continuação de nome na próxima linha
+                # Verifica continuação de nome: apenas a PRIMEIRA linha não-vazia
+                # após o data row. Pegar mais que isso confunde com o nome do
+                # PRÓXIMO ativo (todos os assets têm no máx. 1 linha de wrap).
                 while i < len(all_lines):
                     nxt = all_lines[i].strip()
                     if not nxt:
@@ -274,8 +311,7 @@ def _parse_posicao_ativos(pages: list) -> tuple:
                     if _is_name_continuation(nxt):
                         rec['nome'] = (rec['nome'] + ' ' + nxt).strip()
                         i += 1
-                    else:
-                        break
+                    break  # única continuação considerada
 
         elif len(nums) == 0:
             # Linha só de texto

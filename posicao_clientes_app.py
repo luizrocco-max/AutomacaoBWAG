@@ -203,6 +203,76 @@ def fmt_money(v, abbrev=False):
     return f"{'−' if neg else ''}R$ {s}"
 
 
+# Correções manuais para casos ALLCAPS com múltiplas palavras grudadas sem separador,
+# que o algoritmo automático não consegue desfazer.
+_ESTRATEGIA_OVERRIDES = {
+    "carteiraitauinternacional": "Carteira Itaú Internacional",
+}
+
+
+def fmt_estrategia(s):
+    """Formata nome de estratégia para exibição: insere espaços e aplica Title Case.
+
+    Ex: 'RFPósFixada'                 -> 'RF Pós Fixada'
+        'FundosdeInvestimentoemParticipações' -> 'Fundos de Investimento em Participações'
+        'PREVIDÊNCIA'                  -> 'Previdência'
+        'AtivosIsentosIndexadosaInflação' -> 'Ativos Isentos Indexados a Inflação'
+    """
+    if not s or not isinstance(s, str):
+        return s
+    s = s.replace("�", "")
+    if not s:
+        return ""
+
+    # Override manual (case-insensitive)
+    ov = _ESTRATEGIA_OVERRIDES.get(s.lower())
+    if ov:
+        return ov
+
+    # 1) Preposições grudadas em minúscula entre lower e UPPER → insere espaços ao redor.
+    # Só "de" e "em": outras (da/do/das/dos) também aparecem como sufixo de palavras reais
+    # (Renda, Fundos), causando falso positivo. Caso "a" é tratado depois.
+    for prep in ("de", "em"):
+        i = 0
+        out = []
+        while i < len(s):
+            if (i > 0 and i + len(prep) < len(s)
+                and s[i-1].islower()
+                and s[i:i+len(prep)] == prep
+                and s[i+len(prep)].isupper()):
+                out.append(" ")
+                out.append(prep)
+                out.append(" ")
+                i += len(prep)
+            else:
+                out.append(s[i])
+                i += 1
+        s = "".join(out)
+
+    # 2) Se >= 70% do alfa é UPPER, aplica Title Case (PREVIDÊNCIA → Previdência)
+    alpha = [c for c in s if c.isalpha()]
+    if alpha and sum(1 for c in alpha if c.isupper()) / len(alpha) >= 0.7:
+        s = s.title()
+
+    # 3) Insere espaço em fronteiras camelCase
+    out = [s[0]] if s else []
+    for i in range(1, len(s)):
+        c, p = s[i], s[i-1]
+        if c.isupper() and p.islower():
+            out.append(" ")
+        elif (c.isupper() and p.isupper()
+              and i+1 < len(s) and s[i+1].islower()):
+            out.append(" ")
+        out.append(c)
+    s = "".join(out)
+
+    # 4) Caso específico: "Indexadosa Inflação" → "Indexados a Inflação"
+    s = re.sub(r"\b(\w+s)a (?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ])", r"\1 a ", s)
+
+    # 5) Normaliza múltiplos espaços
+    return " ".join(s.split())
+
+
 def _parse_data(data_str: str):
     try:
         return datetime.strptime(data_str, "%d/%m/%Y")
@@ -448,7 +518,7 @@ datas_por_cliente = {
 }
 
 # Info de atualização
-todas_datas = sorted({d.get("data_extrato","") for d in dados_raw if d.get("data_extrato")})
+todas_datas = sorted({d.get("data_extrato","") for d in dados_raw if d.get("data_extrato")}, key=_parse_data)
 st.caption(f"Dados de: **{' · '.join(todas_datas)}**  |  {len(dados_raw)} relatório(s) · {len(clientes)} cliente(s)")
 st.divider()
 
@@ -473,7 +543,7 @@ with tab_geral:
     with col_dt:
         data_ref = st.selectbox(
             "Data de referência",
-            options=sorted(todas_datas, reverse=True),
+            options=sorted(todas_datas, key=_parse_data, reverse=True),
             key="data_ref_geral",
         )
 
@@ -527,7 +597,7 @@ with tab_geral:
             subtotais_all = []
             for d in dados_data:
                 for st_rec in (d.get("subtotais") or []):
-                    est = st_rec.get("estrategia") or "Outros"
+                    est = fmt_estrategia(st_rec.get("estrategia")) or "Outros"
                     sl = st_rec.get("saldo_liquido") or 0
                     subtotais_all.append({"Estratégia": est, "Saldo": sl})
 
@@ -590,7 +660,7 @@ with tab_pos:
     with col_c:
         cliente_sel = st.selectbox("Cliente", clientes, key="pos_cliente")
     with col_d:
-        datas_disp = sorted(datas_por_cliente.get(cliente_sel, []), reverse=True)
+        datas_disp = sorted(datas_por_cliente.get(cliente_sel, []), key=_parse_data, reverse=True)
         data_sel = st.selectbox("Data", datas_disp, key="pos_data")
     with col_f:
         est_opcoes = ["Todas as estratégias"]
@@ -606,11 +676,14 @@ with tab_pos:
         ativos = dado.get("ativos") or []
         subtotais = dado.get("subtotais") or []
 
-        # Filtro de estratégia
+        # Filtro de estratégia (mantém valor raw para filtrar; formata para exibir)
         estrategias_disp = sorted({a.get("estrategia","") for a in ativos if a.get("estrategia")})
         est_opcoes = ["Todas"] + estrategias_disp
         with col_f:
-            est_sel = st.selectbox("Estratégia", est_opcoes, key="pos_estrategia")
+            est_sel = st.selectbox(
+                "Estratégia", est_opcoes, key="pos_estrategia",
+                format_func=lambda v: v if v == "Todas" else fmt_estrategia(v),
+            )
 
         if est_sel != "Todas":
             ativos = [a for a in ativos if a.get("estrategia") == est_sel]
@@ -648,6 +721,10 @@ with tab_pos:
             }
             cols_exist = [c for c in cols_show if c in df_ativos.columns]
             df_show = df_ativos[cols_exist].rename(columns=cols_show)
+
+            # Formata coluna Estratégia (display)
+            if "Estratégia" in df_show.columns:
+                df_show["Estratégia"] = df_show["Estratégia"].apply(fmt_estrategia)
 
             # Formata colunas monetárias e percentuais
             money_cols = ["Saldo Ant.", "Aplicações", "Resgates", "Rendimentos",
@@ -690,6 +767,8 @@ with tab_pos:
             }
             sub_exist = [c for c in sub_cols if c in df_sub.columns]
             df_sub_show = df_sub[sub_exist].rename(columns=sub_cols)
+            if "Estratégia" in df_sub_show.columns:
+                df_sub_show["Estratégia"] = df_sub_show["Estratégia"].apply(fmt_estrategia)
             for col in ["Saldo Bruto", "Saldo Líquido", "Ganho"]:
                 if col in df_sub_show.columns:
                     df_sub_show[col] = df_sub_show[col].apply(fmt_money)
@@ -707,7 +786,7 @@ with tab_perf:
     with col_pc:
         cliente_perf = st.selectbox("Cliente", clientes, key="perf_cliente")
     with col_pd:
-        datas_perf = sorted(datas_por_cliente.get(cliente_perf, []), reverse=True)
+        datas_perf = sorted(datas_por_cliente.get(cliente_perf, []), key=_parse_data, reverse=True)
         data_perf  = st.selectbox("Data", datas_perf, key="perf_data")
 
     dado_perf = next(
@@ -734,6 +813,8 @@ with tab_perf:
             }
             exist_re = [c for c in cols_re if c in df_re.columns]
             df_re_show = df_re[exist_re].rename(columns=cols_re)
+            if "Estratégia" in df_re_show.columns:
+                df_re_show["Estratégia"] = df_re_show["Estratégia"].apply(fmt_estrategia)
             pct_re = [v for k, v in cols_re.items() if k in exist_re and k != "estrategia"]
             for col in pct_re:
                 if col in df_re_show.columns:
@@ -797,7 +878,7 @@ with tab_liq:
     with col_lc:
         cliente_liq = st.selectbox("Cliente", clientes, key="liq_cliente")
     with col_ld:
-        datas_liq = sorted(datas_por_cliente.get(cliente_liq, []), reverse=True)
+        datas_liq = sorted(datas_por_cliente.get(cliente_liq, []), key=_parse_data, reverse=True)
         data_liq  = st.selectbox("Data", datas_liq, key="liq_data")
 
     dado_liq = next(
@@ -982,6 +1063,7 @@ with tab_comp:
         cliente_comp = st.selectbox("Cliente", clientes, key="comp_cli")
     datas_cli = sorted(
         {d.get("data_extrato","") for d in grupos.get(cliente_comp, [])},
+        key=_parse_data,
         reverse=True,
     )
     if len(datas_cli) < 2:
@@ -1013,6 +1095,19 @@ with tab_comp:
                     return None
                 return (b - a) / a * 100
 
+            def _fmt_delta(valor, pct):
+                """Sinal ASCII no início para Streamlit detectar cor (+verde / -vermelho)."""
+                if valor is None:
+                    return None
+                sign = '-' if valor < 0 else '+'
+                money_part = fmt_money(abs(valor), abbrev=True).replace('R$ ', 'R$ ')
+                if pct is None:
+                    return f"{sign}{money_part}"
+                # fmt_pct dá ex "1,07%" — colocamos sinal manual entre parênteses
+                pct_sign = '-' if pct < 0 else '+'
+                pct_str = fmt_pct(abs(pct))
+                return f"{sign}{money_part} ({pct_sign}{pct_str})"
+
             k1, k2, k3, k4 = st.columns(4)
             with k1:
                 d_sb = sb_b - sb_a
@@ -1020,7 +1115,7 @@ with tab_comp:
                 st.metric(
                     "Δ Saldo Bruto",
                     fmt_money(sb_b, abbrev=True),
-                    delta=f"{fmt_money(d_sb, abbrev=True)} ({fmt_pct(dp_sb)})" if dp_sb is not None else None,
+                    delta=_fmt_delta(d_sb, dp_sb),
                 )
             with k2:
                 d_sl = sl_b - sl_a
@@ -1028,7 +1123,7 @@ with tab_comp:
                 st.metric(
                     "Δ Saldo Líquido",
                     fmt_money(sl_b, abbrev=True),
-                    delta=f"{fmt_money(d_sl, abbrev=True)} ({fmt_pct(dp_sl)})" if dp_sl is not None else None,
+                    delta=_fmt_delta(d_sl, dp_sl),
                 )
             with k3:
                 st.metric("Ganho Mês (B)", fmt_money(ganho_b, abbrev=True))
@@ -1073,7 +1168,7 @@ with tab_comp:
             if not df_chart.empty:
                 df_chart["cor"] = df_chart["Δ R$"].apply(lambda v: VERDE if v >= 0 else VERMELHO)
                 fig_est = go.Figure(go.Bar(
-                    x=df_chart["Estratégia"],
+                    x=df_chart["Estratégia"].apply(fmt_estrategia),
                     y=df_chart["Δ R$"],
                     marker_color=df_chart["cor"],
                     text=[fmt_money(v, abbrev=True) for v in df_chart["Δ R$"]],
@@ -1091,6 +1186,7 @@ with tab_comp:
 
             # Tabela formatada
             df_est_show = df_est.copy()
+            df_est_show["Estratégia"] = df_est_show["Estratégia"].apply(fmt_estrategia)
             df_est_show["Saldo A"] = df_est_show["Saldo A"].apply(fmt_money)
             df_est_show["Saldo B"] = df_est_show["Saldo B"].apply(fmt_money)
             df_est_show["Δ R$"]   = df_est_show["Δ R$"].apply(fmt_money)
@@ -1125,7 +1221,7 @@ with tab_comp:
                 if novos:
                     df_nov = pd.DataFrame([
                         {
-                            "Estratégia": k[0],
+                            "Estratégia": fmt_estrategia(k[0]),
                             "Ativo": k[1],
                             "Saldo": fmt_money(at_b[k]["saldo_liq"]),
                             "% PL": fmt_pct(at_b[k]["part_pct"]),
@@ -1140,7 +1236,7 @@ with tab_comp:
                 if removidos:
                     df_rem = pd.DataFrame([
                         {
-                            "Estratégia": k[0],
+                            "Estratégia": fmt_estrategia(k[0]),
                             "Ativo": k[1],
                             "Saldo (A)": fmt_money(at_a[k]["saldo_liq"]),
                             "% PL (A)": fmt_pct(at_a[k]["part_pct"]),
@@ -1158,7 +1254,7 @@ with tab_comp:
                     va = at_a[k]["saldo_liq"]
                     vb = at_b[k]["saldo_liq"]
                     rows_var.append({
-                        "Estratégia": k[0],
+                        "Estratégia": fmt_estrategia(k[0]),
                         "Ativo": k[1],
                         "Saldo A": va,
                         "Saldo B": vb,
@@ -1196,7 +1292,7 @@ with tab_comp:
             rows_r = []
             for e in estr_r:
                 rows_r.append({
-                    "Estratégia": e,
+                    "Estratégia": fmt_estrategia(e),
                     f"Ret.Mês {data_a}": r_a.get(e),
                     f"Ret.Mês {data_b}": r_b.get(e),
                 })
