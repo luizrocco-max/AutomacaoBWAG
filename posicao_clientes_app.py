@@ -649,23 +649,48 @@ with tab_geral:
                     "Cliente": d.get("cliente","?"),
                     "Saldo Líquido": d.get("saldo_liquido_total") or 0,
                     "SL_MM": (d.get("saldo_liquido_total") or 0) / 1e6,
+                    "N_Ativos": len(d.get("ativos") or []),
+                    "Ganho": d.get("ganho_mes_total") or 0,
                 }
                 for d in dados_data
             ]).sort_values("Saldo Líquido", ascending=True)
+            total_aum = df_cl["Saldo Líquido"].sum()
+            df_cl["Pct"] = df_cl["Saldo Líquido"] / total_aum * 100 if total_aum else 0
+            media_aum = df_cl["SL_MM"].mean() if len(df_cl) else 0
             fig_bar = go.Figure(go.Bar(
                 x=df_cl["SL_MM"], y=df_cl["Cliente"], orientation="h",
                 marker_color=ELECTRIC,
                 text=[fmt_money(v * 1e6, abbrev=True) for v in df_cl["SL_MM"]],
                 textposition="outside",
+                customdata=df_cl[["Saldo Líquido","Pct","N_Ativos","Ganho"]].values,
+                hovertemplate=(
+                    "<b>%{y}</b><br>"
+                    "Saldo Líquido: R$ %{customdata[0]:,.2f}<br>"
+                    "Participação: %{customdata[1]:.1f}%<br>"
+                    "Ativos: %{customdata[2]}<br>"
+                    "Ganho do Mês: R$ %{customdata[3]:,.2f}"
+                    "<extra></extra>"
+                ),
             ))
+            # Linha de referência: média
+            if len(df_cl) > 1:
+                fig_bar.add_vline(
+                    x=media_aum, line_dash="dot", line_color=LAVA,
+                    annotation_text=f"Média: {fmt_money(media_aum * 1e6, abbrev=True)}",
+                    annotation_position="top",
+                )
             fig_bar.update_layout(
                 title="Saldo Líquido por Cliente (R$ MM)",
                 showlegend=False, height=max(300, len(df_cl) * 55),
                 plot_bgcolor="white", paper_bgcolor="white",
                 xaxis_title="R$ Milhões", yaxis_title="",
                 margin=dict(l=0, r=80, t=40, b=20),
+                hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
             )
-            st.plotly_chart(fig_bar, use_container_width=True)
+            sel_bar = st.plotly_chart(
+                fig_bar, use_container_width=True,
+                key="vg_bar", on_select="rerun", selection_mode="points",
+            )
 
         # Pizza: alocação por estratégia (todos os clientes somados)
         with col_pie:
@@ -702,13 +727,53 @@ with tab_geral:
                     color_discrete_sequence=BWAG_COLORS,
                     hole=0.35,
                 )
-                fig_pie.update_traces(textposition="inside", textinfo="percent")
+                fig_pie.update_traces(
+                    textposition="inside", textinfo="percent",
+                    hovertemplate=(
+                        "<b>%{label}</b><br>"
+                        "Saldo: R$ %{value:,.2f}<br>"
+                        "Participação: %{percent}"
+                        "<extra></extra>"
+                    ),
+                )
                 fig_pie.update_layout(
                     height=380, paper_bgcolor="white",
-                    legend=dict(orientation="v", x=1.0, y=0.5),
+                    legend=dict(
+                        orientation="v", x=1.0, y=0.5,
+                        title=dict(text="Clique para filtrar →", font=dict(size=10, color=CINZA_TX)),
+                    ),
                     margin=dict(l=0, r=0, t=40, b=0),
+                    hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
                 )
-                st.plotly_chart(fig_pie, use_container_width=True)
+                sel_pie = st.plotly_chart(
+                    fig_pie, use_container_width=True,
+                    key="vg_pie", on_select="rerun", selection_mode="points",
+                )
+
+                # Drill-down: se uma fatia for clicada, mostra tabela detalhada
+                if sel_pie and sel_pie.selection and sel_pie.selection.points:
+                    estr_clicada = sel_pie.selection.points[0].get("label")
+                    if estr_clicada and estr_clicada != "Outros":
+                        st.markdown(f"#### 🎯 Detalhes — **{estr_clicada}**")
+                        rows_drill = []
+                        for d in dados_data:
+                            for a in (d.get("ativos") or []):
+                                if fmt_estrategia(a.get("estrategia") or "") == estr_clicada:
+                                    rows_drill.append({
+                                        "Cliente": d.get("cliente","?"),
+                                        "Ativo": fmt_ativo(a.get("nome") or ""),
+                                        "Saldo Líquido": a.get("saldo_liquido") or 0,
+                                        "% PL": a.get("part_pct"),
+                                        "Rent. Mês": a.get("rentabilidade_mes"),
+                                    })
+                        if rows_drill:
+                            df_drill = pd.DataFrame(rows_drill).sort_values(
+                                "Saldo Líquido", ascending=False
+                            )
+                            df_drill["Saldo Líquido"] = df_drill["Saldo Líquido"].apply(fmt_money)
+                            df_drill["% PL"]      = df_drill["% PL"].apply(fmt_pct)
+                            df_drill["Rent. Mês"] = df_drill["Rent. Mês"].apply(fmt_pct)
+                            st.dataframe(df_drill, use_container_width=True, hide_index=True)
 
         # Tabela resumo por cliente
         st.markdown("### Resumo por Cliente")
@@ -1089,41 +1154,60 @@ with tab_hist:
         else:
             # Evolução do saldo líquido
             if df_ts["Saldo Líquido"].notna().any():
+                df_sl = df_ts.dropna(subset=["Saldo Líquido"]).copy()
                 fig_ts = px.line(
-                    df_ts.dropna(subset=["Saldo Líquido"]),
-                    x="Data", y="Saldo Líquido", color="Cliente",
+                    df_sl, x="Data", y="Saldo Líquido", color="Cliente",
                     markers=True,
-                    title="Evolução do Saldo Líquido",
+                    title="Evolução do Saldo Líquido  (dica: clique na legenda p/ ocultar)",
                     color_discrete_sequence=BWAG_COLORS,
                 )
                 fig_ts.update_layout(
-                    height=380,
+                    height=400,
                     plot_bgcolor="white", paper_bgcolor="white",
                     yaxis_title="R$", xaxis_title="",
                     hovermode="x unified",
-                    legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0),
+                    legend=dict(
+                        orientation="h", yanchor="bottom", y=1.02, x=0,
+                        itemclick="toggle", itemdoubleclick="toggleothers",
+                    ),
+                    hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
                 )
                 fig_ts.update_traces(
-                    hovertemplate="%{y:,.2f}",
+                    hovertemplate="<b>%{fullData.name}</b><br>Saldo: R$ %{y:,.2f}<extra></extra>",
                 )
-                st.plotly_chart(fig_ts, use_container_width=True)
+                # Linha de referência: média geral
+                media_sl = df_sl["Saldo Líquido"].mean()
+                fig_ts.add_hline(
+                    y=media_sl, line_dash="dot", line_color=LAVA,
+                    annotation_text=f"Média: {fmt_money(media_sl, abbrev=True)}",
+                    annotation_position="top left",
+                )
+                st.plotly_chart(fig_ts, use_container_width=True, key="hist_ts")
 
             # Evolução do ganho mensal
             if df_ts["Ganho Mês"].notna().any():
+                df_gm = df_ts.dropna(subset=["Ganho Mês"]).copy()
                 fig_gm = px.bar(
-                    df_ts.dropna(subset=["Ganho Mês"]),
-                    x="Data", y="Ganho Mês", color="Cliente",
+                    df_gm, x="Data", y="Ganho Mês", color="Cliente",
                     barmode="group",
                     title="Ganho Mensal por Período",
                     color_discrete_sequence=BWAG_COLORS,
                 )
                 fig_gm.update_layout(
-                    height=340,
+                    height=360,
                     plot_bgcolor="white", paper_bgcolor="white",
                     yaxis_title="R$", xaxis_title="",
-                    legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0),
+                    legend=dict(
+                        orientation="h", yanchor="bottom", y=1.02, x=0,
+                        itemclick="toggle", itemdoubleclick="toggleothers",
+                    ),
+                    hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
                 )
-                st.plotly_chart(fig_gm, use_container_width=True)
+                fig_gm.update_traces(
+                    hovertemplate="<b>%{fullData.name}</b><br>%{x}<br>Ganho: R$ %{y:,.2f}<extra></extra>",
+                )
+                fig_gm.add_hline(y=0, line_color=CINZA_TX, line_width=1)
+                st.plotly_chart(fig_gm, use_container_width=True, key="hist_gm")
 
             # Tabela resumo do histórico
             st.markdown("### Histórico Completo")
@@ -1246,22 +1330,46 @@ with tab_comp:
             df_chart = df_est[df_est["Δ R$"].abs() > 0].copy()
             if not df_chart.empty:
                 df_chart["cor"] = df_chart["Δ R$"].apply(lambda v: VERDE if v >= 0 else VERMELHO)
+                df_chart["EstrFmt"] = df_chart["Estratégia"].apply(fmt_estrategia)
                 fig_est = go.Figure(go.Bar(
-                    x=df_chart["Estratégia"].apply(fmt_estrategia),
+                    x=df_chart["EstrFmt"],
                     y=df_chart["Δ R$"],
                     marker_color=df_chart["cor"],
                     text=[fmt_money(v, abbrev=True) for v in df_chart["Δ R$"]],
                     textposition="outside",
                     cliponaxis=False,
+                    customdata=df_chart[["Saldo A","Saldo B","Δ %"]].values,
+                    hovertemplate=(
+                        "<b>%{x}</b><br>"
+                        f"Saldo {data_a}: " + "R$ %{customdata[0]:,.2f}<br>"
+                        f"Saldo {data_b}: " + "R$ %{customdata[1]:,.2f}<br>"
+                        "Δ R$: %{y:,.2f}<br>"
+                        "Δ %: %{customdata[2]:.2f}%"
+                        "<extra></extra>"
+                    ),
                 ))
+                # Linha de referência: zero
+                fig_est.add_hline(
+                    y=0, line_color=CINZA_TX, line_width=1,
+                )
+                # Linha de referência: variação total
+                delta_total = df_chart["Δ R$"].sum()
+                if abs(delta_total) > 1:
+                    fig_est.add_hline(
+                        y=delta_total / len(df_chart),
+                        line_dash="dot", line_color=PERIW,
+                        annotation_text=f"Δ médio: {fmt_money(delta_total / len(df_chart), abbrev=True)}",
+                        annotation_position="top right",
+                    )
                 fig_est.update_layout(
                     title=f"Δ Saldo Líquido por Estratégia  ({data_a} → {data_b})",
                     height=380,
                     plot_bgcolor="white", paper_bgcolor="white",
                     yaxis_title="R$", xaxis_title="",
                     margin=dict(t=60, b=40),
+                    hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
                 )
-                st.plotly_chart(fig_est, use_container_width=True)
+                st.plotly_chart(fig_est, use_container_width=True, key="comp_bar")
 
             # Tabela formatada
             df_est_show = df_est.copy()
