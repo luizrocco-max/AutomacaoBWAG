@@ -659,7 +659,10 @@ with tab_geral:
             media_aum = df_cl["SL_MM"].mean() if len(df_cl) else 0
             fig_bar = go.Figure(go.Bar(
                 x=df_cl["SL_MM"], y=df_cl["Cliente"], orientation="h",
-                marker_color=ELECTRIC,
+                marker=dict(
+                    color=ELECTRIC,
+                    line=dict(color=NAVY, width=1),
+                ),
                 text=[fmt_money(v * 1e6, abbrev=True) for v in df_cl["SL_MM"]],
                 textposition="outside",
                 customdata=df_cl[["Saldo Líquido","Pct","N_Ativos","Ganho"]].values,
@@ -685,7 +688,16 @@ with tab_geral:
                 plot_bgcolor="white", paper_bgcolor="white",
                 xaxis_title="R$ Milhões", yaxis_title="",
                 margin=dict(l=0, r=80, t=40, b=20),
-                hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
+                hovermode="y",  # destaca a barra inteira no hover
+                hoverdistance=100,  # detecta hover a até 100px
+                hoverlabel=dict(
+                    bgcolor=NAVY, bordercolor=ELECTRIC, font_size=13,
+                    font_color="white",
+                ),
+                xaxis=dict(
+                    showspikes=True, spikecolor=ELECTRIC, spikedash="dot",
+                    spikethickness=1, spikemode="across",
+                ),
             )
             sel_bar = st.plotly_chart(
                 fig_bar, use_container_width=True,
@@ -729,6 +741,8 @@ with tab_geral:
                 )
                 fig_pie.update_traces(
                     textposition="inside", textinfo="percent",
+                    marker=dict(line=dict(color="white", width=2)),
+                    pull=[0.04] * len(df_main),  # destaca todas as fatias levemente
                     hovertemplate=(
                         "<b>%{label}</b><br>"
                         "Saldo: R$ %{value:,.2f}<br>"
@@ -740,10 +754,13 @@ with tab_geral:
                     height=380, paper_bgcolor="white",
                     legend=dict(
                         orientation="v", x=1.0, y=0.5,
-                        title=dict(text="Clique para filtrar →", font=dict(size=10, color=CINZA_TX)),
+                        title=dict(text="Clique p/ filtrar →", font=dict(size=10, color=CINZA_TX)),
                     ),
                     margin=dict(l=0, r=0, t=40, b=0),
-                    hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
+                    hoverlabel=dict(
+                        bgcolor=NAVY, bordercolor=ELECTRIC, font_size=13,
+                        font_color="white",
+                    ),
                 )
                 sel_pie = st.plotly_chart(
                     fig_pie, use_container_width=True,
@@ -1158,7 +1175,7 @@ with tab_hist:
                 fig_ts = px.line(
                     df_sl, x="Data", y="Saldo Líquido", color="Cliente",
                     markers=True,
-                    title="Evolução do Saldo Líquido  (dica: clique na legenda p/ ocultar)",
+                    title="Evolução do Saldo Líquido",
                     color_discrete_sequence=BWAG_COLORS,
                 )
                 fig_ts.update_layout(
@@ -1166,14 +1183,28 @@ with tab_hist:
                     plot_bgcolor="white", paper_bgcolor="white",
                     yaxis_title="R$", xaxis_title="",
                     hovermode="x unified",
+                    hoverdistance=100,
                     legend=dict(
                         orientation="h", yanchor="bottom", y=1.02, x=0,
                         itemclick="toggle", itemdoubleclick="toggleothers",
                     ),
-                    hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
+                    hoverlabel=dict(
+                        bgcolor=NAVY, bordercolor=ELECTRIC, font_size=13,
+                        font_color="white",
+                    ),
+                    xaxis=dict(
+                        showspikes=True, spikecolor=ELECTRIC, spikedash="dot",
+                        spikethickness=1, spikemode="across+marker",
+                    ),
+                    yaxis=dict(
+                        showspikes=True, spikecolor=ELECTRIC, spikedash="dot",
+                        spikethickness=1, spikemode="across",
+                    ),
                 )
                 fig_ts.update_traces(
-                    hovertemplate="<b>%{fullData.name}</b><br>Saldo: R$ %{y:,.2f}<extra></extra>",
+                    hovertemplate="<b>%{fullData.name}</b><br>R$ %{y:,.2f}<extra></extra>",
+                    marker=dict(size=10, line=dict(width=2, color="white")),
+                    line=dict(width=3),
                 )
                 # Linha de referência: média geral
                 media_sl = df_sl["Saldo Líquido"].mean()
@@ -1197,14 +1228,24 @@ with tab_hist:
                     height=360,
                     plot_bgcolor="white", paper_bgcolor="white",
                     yaxis_title="R$", xaxis_title="",
+                    hovermode="x",
+                    hoverdistance=100,
                     legend=dict(
                         orientation="h", yanchor="bottom", y=1.02, x=0,
                         itemclick="toggle", itemdoubleclick="toggleothers",
                     ),
-                    hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
+                    hoverlabel=dict(
+                        bgcolor=NAVY, bordercolor=ELECTRIC, font_size=13,
+                        font_color="white",
+                    ),
+                    yaxis=dict(
+                        showspikes=True, spikecolor=ELECTRIC, spikedash="dot",
+                        spikethickness=1, spikemode="across",
+                    ),
                 )
                 fig_gm.update_traces(
-                    hovertemplate="<b>%{fullData.name}</b><br>%{x}<br>Ganho: R$ %{y:,.2f}<extra></extra>",
+                    hovertemplate="<b>%{fullData.name}</b><br>%{x}<br>R$ %{y:,.2f}<extra></extra>",
+                    marker=dict(line=dict(color=NAVY, width=1)),
                 )
                 fig_gm.add_hline(y=0, line_color=CINZA_TX, line_width=1)
                 st.plotly_chart(fig_gm, use_container_width=True, key="hist_gm")
@@ -1334,7 +1375,10 @@ with tab_comp:
                 fig_est = go.Figure(go.Bar(
                     x=df_chart["EstrFmt"],
                     y=df_chart["Δ R$"],
-                    marker_color=df_chart["cor"],
+                    marker=dict(
+                        color=df_chart["cor"],
+                        line=dict(color=NAVY, width=1),
+                    ),
                     text=[fmt_money(v, abbrev=True) for v in df_chart["Δ R$"]],
                     textposition="outside",
                     cliponaxis=False,
@@ -1367,7 +1411,16 @@ with tab_comp:
                     plot_bgcolor="white", paper_bgcolor="white",
                     yaxis_title="R$", xaxis_title="",
                     margin=dict(t=60, b=40),
-                    hoverlabel=dict(bgcolor="white", bordercolor=ELECTRIC, font_size=12),
+                    hovermode="x",
+                    hoverdistance=100,
+                    hoverlabel=dict(
+                        bgcolor=NAVY, bordercolor=ELECTRIC, font_size=13,
+                        font_color="white",
+                    ),
+                    yaxis=dict(
+                        showspikes=True, spikecolor=ELECTRIC, spikedash="dot",
+                        spikethickness=1, spikemode="across",
+                    ),
                 )
                 st.plotly_chart(fig_est, use_container_width=True, key="comp_bar")
 
