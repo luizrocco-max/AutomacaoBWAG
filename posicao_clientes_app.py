@@ -733,26 +733,46 @@ with tab_geral:
                             "pct": df_outros["pct"].sum(),
                         }])
                     ])
-                # Constrói o pie via go.Figure pra ter controle de pull/opacity
-                # quando uma fatia for selecionada
-                sel_idx = st.session_state.get("vg_pie_sel_idx", None)
+                # Selectbox p/ destacar uma estratégia (Plotly pie não suporta
+                # click event no Streamlit, então usamos selectbox)
+                estr_opcoes = ["— Nenhuma —"] + df_main["Estratégia"].tolist()
+                estr_destaque = st.selectbox(
+                    "Destacar estratégia",
+                    estr_opcoes,
+                    key="vg_pie_destaque",
+                )
+                sel_idx = None
+                if estr_destaque != "— Nenhuma —":
+                    try:
+                        sel_idx = df_main["Estratégia"].tolist().index(estr_destaque)
+                    except ValueError:
+                        sel_idx = None
+
                 pulls = [0.0] * len(df_main)
-                opacities = [1.0] * len(df_main)
-                if sel_idx is not None and 0 <= sel_idx < len(df_main):
-                    pulls[sel_idx] = 0.12         # fatia selecionada salta pra fora
-                    opacities = [0.25] * len(df_main)
-                    opacities[sel_idx] = 1.0      # outras esmaecem
+                if sel_idx is not None:
+                    pulls[sel_idx] = 0.15  # fatia selecionada salta pra fora
+
+                # Cores com alpha se houver destaque
+                def _hex_to_rgba(hexc, alpha):
+                    h = hexc.lstrip("#")
+                    r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+                    return f"rgba({r},{g},{b},{alpha})"
+
+                if sel_idx is not None:
+                    colors = [
+                        _hex_to_rgba(BWAG_COLORS[i % len(BWAG_COLORS)],
+                                     1.0 if i == sel_idx else 0.2)
+                        for i in range(len(df_main))
+                    ]
+                else:
+                    colors = BWAG_COLORS[:len(df_main)]
 
                 fig_pie = go.Figure(go.Pie(
                     values=df_main["Saldo"].tolist(),
                     labels=df_main["Estratégia"].tolist(),
                     hole=0.35,
                     pull=pulls,
-                    marker=dict(
-                        colors=BWAG_COLORS[:len(df_main)],
-                        line=dict(color="white", width=2),
-                    ),
-                    opacity=1.0,
+                    marker=dict(colors=colors, line=dict(color="white", width=2)),
                     sort=False,
                     textposition="inside",
                     textinfo="percent",
@@ -763,24 +783,8 @@ with tab_geral:
                         "<extra></extra>"
                     ),
                 ))
-                # Aplica opacidades por fatia (precisa via marker.colors com alpha)
-                if sel_idx is not None:
-                    import re as _re
-                    def _hex_to_rgba(hexc, alpha):
-                        h = hexc.lstrip("#")
-                        r, g, b = int(h[0:2],16), int(h[2:4],16), int(h[4:6],16)
-                        return f"rgba({r},{g},{b},{alpha})"
-                    colors_with_alpha = [
-                        _hex_to_rgba(BWAG_COLORS[i % len(BWAG_COLORS)], opacities[i])
-                        for i in range(len(df_main))
-                    ]
-                    fig_pie.update_traces(marker=dict(
-                        colors=colors_with_alpha,
-                        line=dict(color="white", width=2),
-                    ))
-
                 fig_pie.update_layout(
-                    title="Alocação por Estratégia  (clique numa fatia p/ destacar)",
+                    title="Alocação por Estratégia",
                     height=380, paper_bgcolor="white",
                     legend=dict(
                         orientation="v", x=1.0, y=0.5,
@@ -793,28 +797,10 @@ with tab_geral:
                     ),
                 )
 
-                sel_pie = st.plotly_chart(
-                    fig_pie, use_container_width=True,
-                    key="vg_pie", on_select="rerun", selection_mode="points",
-                )
+                st.plotly_chart(fig_pie, use_container_width=True, key="vg_pie")
 
-                # Captura clique e armazena o índice da fatia selecionada
-                if sel_pie and sel_pie.selection and sel_pie.selection.points:
-                    pt = sel_pie.selection.points[0]
-                    new_idx = pt.get("point_index", pt.get("pointIndex"))
-                    if new_idx is not None and new_idx != sel_idx:
-                        st.session_state["vg_pie_sel_idx"] = int(new_idx)
-                        st.rerun()
-                    estr_clicada = pt.get("label")
-                else:
-                    estr_clicada = None
-                    # Botão pra limpar seleção
-                    if sel_idx is not None:
-                        if st.button("✕ Limpar seleção", key="vg_pie_clear"):
-                            st.session_state.pop("vg_pie_sel_idx", None)
-                            st.rerun()
-
-                # Drill-down: se uma fatia for clicada, mostra tabela detalhada
+                # Drill-down: se uma estratégia for destacada, mostra tabela
+                estr_clicada = estr_destaque if estr_destaque != "— Nenhuma —" else None
                 if estr_clicada:
                     if estr_clicada and estr_clicada != "Outros":
                         st.markdown(f"#### 🎯 Detalhes — **{estr_clicada}**")
