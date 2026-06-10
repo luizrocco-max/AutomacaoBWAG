@@ -175,11 +175,19 @@ def fmt_pct(v, dec=2):
     return f"{v * 100:.{dec}f}%"
 
 def _nome_fundo(fname: str) -> str:
-    nome = fname.replace("AcompFI_", "").replace(".pdf", "").strip()
+    nome = re.sub(r'\.pdf$', '', fname, flags=re.IGNORECASE).strip()
+    # Formato acompfi_NOME_Cota_Normal/Gerencial_YYYY_MM_DD
+    m = re.match(r'^acompfi_(.+?)_Cota_(?:Normal|Gerencial)_\d{4}[_-]\d{2}[_-]\d{2}', nome, re.IGNORECASE)
+    if m:
+        return m.group(1).replace('_', ' ').strip()
+    # Formato Bradesco_DDMMYYYY_NNNNN → nome vem do PDF, retorna placeholder
+    if re.match(r'^Bradesco_\d+', nome, re.IGNORECASE):
+        return nome  # será sobrescrito pelo nome interno do PDF
+    # Formatos BTG antigos
+    nome = re.sub(r'^AcompFI_', '', nome, flags=re.IGNORECASE)
     nome = re.sub(r'[_ ]\d{8}.*$', '', nome)
     nome = re.sub(r'[_ ]\d{2}[./]\d{2}[./]\d{4}.*$', '', nome)
     nome = re.sub(r'[_ ]\d{2}[./]\d{2}[./]\d{2}.*$', '', nome)
-    # Remove separadores residuais no final (ex: " - " ou "_" antes da data)
     nome = re.sub(r'[\s\-_]+$', '', nome)
     return nome.strip()
 
@@ -284,7 +292,19 @@ def load_btg(raw: bytes, fname: str):
             data_tabelas_p1 = _pdf.pages[0].extract_tables() or []
         data = ler_carteira_btg(path)
         data["_filename"]    = fname
-        data["_nome"]        = _nome_fundo(fname)
+        # Tenta extrair nome do fundo de dentro do PDF
+        _nome_pdf = None
+        if re.match(r'^acompfi_', fname, re.IGNORECASE):
+            # BTG Performance Diário: linha 2 da pág 1 é o nome do fundo
+            linhas = [l.strip() for l in data_raw_p1.split('\n') if l.strip()]
+            if len(linhas) >= 2:
+                _nome_pdf = linhas[1]
+        elif re.match(r'^Bradesco_', fname, re.IGNORECASE):
+            # Bradesco: "Cliente : NOME DO FUNDO"
+            m_cli = re.search(r'Cliente\s*:\s*(.+)', data_raw_p1)
+            if m_cli:
+                _nome_pdf = m_cli.group(1).strip()
+        data["_nome"] = _nome_pdf or _nome_fundo(fname)
         data["_raw_p1"]      = data_raw_p1
         data["_tabelas_p1"]  = data_tabelas_p1
         # Data do arquivo é mais confiável que a data interna do PDF
