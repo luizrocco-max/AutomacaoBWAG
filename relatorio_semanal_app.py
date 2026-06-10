@@ -337,6 +337,36 @@ def agrupar(carteiras: list) -> dict:
 ADMIN_PWD    = st.secrets.get("ADMIN_PASSWORD", "")
 GITHUB_TOKEN = st.secrets.get("GITHUB_TOKEN", "")
 GITHUB_REPO  = st.secrets.get("GITHUB_REPO", "")
+LOGIN_USER   = st.secrets.get("LOGIN_USER", "")
+LOGIN_PWD    = st.secrets.get("LOGIN_PWD", "")
+
+
+# ── Login gate ────────────────────────────────────────────────────────────────
+if "autenticado" not in st.session_state:
+    st.session_state.autenticado = False
+
+if not st.session_state.autenticado:
+    _logo_login = f'<img src="data:image/png;base64,{_LOGO}" style="height:48px;">' if _LOGO else '<span style="font-size:2rem;font-weight:800;">BWAG.</span>'
+    st.markdown(f"""
+    <div style="display:flex;flex-direction:column;align-items:center;margin-top:80px;margin-bottom:32px;">
+        {_logo_login}
+        <h2 style="margin-top:16px;font-weight:700;color:#1C0845;">Acesso Restrito</h2>
+        <p style="color:#888;font-size:.95rem;">Insira suas credenciais para continuar</p>
+    </div>
+    """, unsafe_allow_html=True)
+    col_c, col_f, col_d = st.columns([1, 1.2, 1])
+    with col_f:
+        with st.form("login_form"):
+            usuario = st.text_input("Usuário", placeholder="usuário")
+            senha_login = st.text_input("Senha", type="password", placeholder="••••••••")
+            entrar = st.form_submit_button("Entrar", use_container_width=True)
+            if entrar:
+                if LOGIN_USER and usuario == LOGIN_USER and senha_login == LOGIN_PWD:
+                    st.session_state.autenticado = True
+                    st.rerun()
+                else:
+                    st.error("Usuário ou senha incorretos.")
+    st.stop()
 
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
