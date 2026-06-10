@@ -496,52 +496,67 @@ tab_geral, tab_top, tab_detalhe, tab_comp = st.tabs([
 # TAB 1 — VISÃO GERAL
 # ══════════════════════════════════════════════════════════════════════════════
 with tab_geral:
-    rows = []
-    for nome, c in mais_recentes.items():
-        p = c.get("perf_total", {})
-        rows.append({
-            "Fundo": nome,
-            "PL":    c.get("patrimonio", 0),
-            "Data":  c.get("data_base", ""),
-            "Mês":   p.get("mes"),
-            "Ano":   p.get("ano"),
-            "12M":   p.get("m12"),
-            "24M":   p.get("m24"),
-        })
-    df = pd.DataFrame(rows).sort_values("PL", ascending=False)
-    aum_total = df["PL"].sum()
+    datas_disponiveis = sorted(set(c.get("data_base","") for c in carteiras_raw if c.get("data_base")), reverse=True)
 
-    c1, c2 = st.columns(2)
-    c1.metric("AUM Total", f"R$ {aum_total / 1e6:.1f}M")
-    c2.metric("Data(s) base", " / ".join(sorted(df["Data"].unique())))
-    st.markdown("---")
+    if not datas_disponiveis:
+        st.info("Nenhum dado disponível. Faça o upload dos PDFs na barra lateral.")
+    else:
+        data_sel = st.selectbox("Data de referência", datas_disponiveis, index=0, key="geral_data")
 
-    col_bar, col_tbl = st.columns([3, 2])
-    with col_bar:
-        df_bar = df.copy()
-        df_bar["PL (R$MM)"] = df_bar["PL"] / 1e6
-        fig = px.bar(
-            df_bar.sort_values("PL (R$MM)"),
-            x="PL (R$MM)", y="Fundo", orientation="h",
-            title="Patrimônio por Fundo (R$ MM)",
-            color="PL (R$MM)", color_continuous_scale=[LAVA, NAVY],
-            text_auto=".0f",
-        )
-        fig.update_traces(texttemplate="R$ %{x:.0f}MM", textposition="outside")
-        fig.update_layout(
-            showlegend=False, coloraxis_showscale=False,
-            height=max(360, len(df) * 50),
-            plot_bgcolor="white", paper_bgcolor="white",
-            yaxis_title="", xaxis_title="R$ Milhões",
-        )
-        st.plotly_chart(fig, use_container_width=True)
+        carteiras_data = {}
+        for c in carteiras_raw:
+            if c.get("data_base") == data_sel:
+                nome = c.get("_nome") or c.get("_filename","?")
+                carteiras_data[nome] = c
 
-    with col_tbl:
-        df_show = df[["Fundo","PL","Data","Mês","Ano","12M","24M"]].copy()
-        df_show["PL"]  = df_show["PL"].apply(lambda x: f"R$ {x/1e6:.1f}M")
-        for col in ["Mês","Ano","12M","24M"]:
-            df_show[col] = df_show[col].apply(fmt_pct)
-        st.dataframe(df_show, use_container_width=True, hide_index=True, height=420)
+        rows = []
+        for nome, c in carteiras_data.items():
+            p = c.get("perf_total", {})
+            rows.append({
+                "Fundo": nome,
+                "PL":    c.get("patrimonio", 0),
+                "Data":  c.get("data_base", ""),
+                "Mês":   p.get("mes"),
+                "Ano":   p.get("ano"),
+                "12M":   p.get("m12"),
+                "24M":   p.get("m24"),
+            })
+        df = pd.DataFrame(rows).sort_values("PL", ascending=False) if rows else pd.DataFrame()
+        aum_total = df["PL"].sum() if not df.empty else 0
+
+        c1, c2 = st.columns(2)
+        c1.metric("AUM Total", f"R$ {aum_total / 1e6:.1f}M")
+        c2.metric("Fundos na data", len(rows))
+        st.markdown("---")
+
+        if df.empty:
+            st.warning(f"Nenhum fundo encontrado para {data_sel}.")
+        else:
+            col_bar, col_tbl = st.columns([3, 2])
+            with col_bar:
+                df_bar = df.copy()
+                df_bar["PL (R$MM)"] = df_bar["PL"] / 1e6
+                fig = px.bar(
+                    df_bar.sort_values("PL (R$MM)"),
+                    x="PL (R$MM)", y="Fundo", orientation="h",
+                    title="Patrimônio por Fundo (R$ MM)",
+                    color="PL (R$MM)", color_continuous_scale=[LAVA, NAVY],
+                    text_auto=".0f",
+                )
+                fig.update_traces(texttemplate="R$ %{x:.0f}MM", textposition="outside")
+                fig.update_layout(
+                    showlegend=False, coloraxis_showscale=False,
+                    height=max(360, len(df) * 50),
+                    plot_bgcolor="white", paper_bgcolor="white",
+                    yaxis_title="", xaxis_title="R$ Milhões",
+                )
+                st.plotly_chart(fig, use_container_width=True)
+            with col_tbl:
+                df_show = df[["Fundo","PL","Data","Mês","Ano","12M","24M"]].copy()
+                df_show["PL"]  = df_show["PL"].apply(lambda x: f"R$ {x/1e6:.1f}M")
+                for col in ["Mês","Ano","12M","24M"]:
+                    df_show[col] = df_show[col].apply(fmt_pct)
+                st.dataframe(df_show, use_container_width=True, hide_index=True, height=420)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
