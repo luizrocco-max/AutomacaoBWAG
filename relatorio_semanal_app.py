@@ -193,6 +193,10 @@ def _nome_fundo(fname: str) -> str:
 
 def _data_do_arquivo(fname: str) -> str:
     """Extrai data do nome do arquivo. Mais confiável que o conteúdo do PDF."""
+    # Formato YYYY_MM_DD  ex: _2026_06_05  (acompfi_XXXX_Cota_Normal_2026_06_05)
+    m = re.search(r'[_-](\d{4})[_-](\d{2})[_-](\d{2})(?:\.pdf|$)', fname, re.IGNORECASE)
+    if m:
+        return f"{m.group(3)}/{m.group(2)}/{m.group(1)}"
     # Formato YYYYMMDD  ex: _20260515.pdf
     m = re.search(r'[_ -](\d{8})(?:\s|\.|$|\()', fname)
     if m:
