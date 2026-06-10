@@ -1,5 +1,6 @@
 # Dados sensíveis — nunca versionar
 .env
+.streamlit/secrets.toml
 data/input/
 data/processed/
 output/
