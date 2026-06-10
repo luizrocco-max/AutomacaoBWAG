@@ -372,6 +372,8 @@ with st.sidebar:
 
 # ── Carregar dados ────────────────────────────────────────────────────────────
 if is_admin and f_pdfs:
+    # Limpa cache para garantir que datas/nomes do nome do arquivo sejam relidos
+    load_btg.clear()
     # Admin com arquivos carregados → usa os uploads
     carteiras_raw = [
         c for f in f_pdfs
