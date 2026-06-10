@@ -536,19 +536,28 @@ with tab_geral:
             with col_bar:
                 df_bar = df.copy()
                 df_bar["PL (R$MM)"] = df_bar["PL"] / 1e6
+                # Trunca nomes muito longos para não cortar as barras
+                df_bar["Fundo_label"] = df_bar["Fundo"].apply(lambda n: n[:30] + "…" if len(n) > 30 else n)
+                pl_max = df_bar["PL (R$MM)"].max()
                 fig = px.bar(
                     df_bar.sort_values("PL (R$MM)"),
-                    x="PL (R$MM)", y="Fundo", orientation="h",
+                    x="PL (R$MM)", y="Fundo_label", orientation="h",
                     title="Patrimônio por Fundo (R$ MM)",
                     color="PL (R$MM)", color_continuous_scale=[LAVA, NAVY],
-                    text_auto=".0f",
                 )
-                fig.update_traces(texttemplate="R$ %{x:.0f}MM", textposition="outside")
+                fig.update_traces(
+                    text=df_bar.sort_values("PL (R$MM)")["PL (R$MM)"].apply(lambda v: f"R$ {v:.0f}MM"),
+                    textposition="inside",
+                    insidetextanchor="end",
+                    cliponaxis=False,
+                )
                 fig.update_layout(
                     showlegend=False, coloraxis_showscale=False,
-                    height=max(360, len(df) * 50),
+                    height=max(360, len(df) * 46),
                     plot_bgcolor="white", paper_bgcolor="white",
                     yaxis_title="", xaxis_title="R$ Milhões",
+                    xaxis=dict(range=[0, pl_max * 1.05]),
+                    margin=dict(l=10, r=20, t=40, b=30),
                 )
                 st.plotly_chart(fig, use_container_width=True)
             with col_tbl:
