@@ -654,8 +654,14 @@ with tab_detalhe:
     c1,c2,c3,c4,c5 = st.columns(5)
     c1.metric("Data Base",   cart.get("data_base","—"))
     c2.metric("Patrimônio",  f"R$ {cart.get('patrimonio',0)/1e6:.2f}M")
-    c3.metric("Retorno Mês", fmt_pct(perf.get("mes")), delta=f"bench {fmt_pct(bench.get('mes'))}")
-    c4.metric("Retorno Ano", fmt_pct(perf.get("ano")), delta=f"bench {fmt_pct(bench.get('ano'))}")
+    b_mes = bench.get("mes")
+    b_ano = bench.get("ano")
+    c3.metric("Retorno Mês", fmt_pct(perf.get("mes")),
+              delta=f"bench {fmt_pct(b_mes)}" if b_mes is not None else None,
+              delta_color="inverse" if (b_mes or 0) < 0 else "normal")
+    c4.metric("Retorno Ano", fmt_pct(perf.get("ano")),
+              delta=f"bench {fmt_pct(b_ano)}" if b_ano is not None else None,
+              delta_color="inverse" if (b_ano or 0) < 0 else "normal")
     c5.metric("12M",         fmt_pct(perf.get("m12")))
     st.markdown("---")
 
