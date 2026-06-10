@@ -426,7 +426,6 @@ if is_admin and fonte == "upload":
                 if atualizados: partes.append(f"{atualizados} atualizado(s)")
                 detalhe = f" ({', '.join(partes)})" if partes else ""
                 st.success(f"Publicado{detalhe}! Histórico total: {len(dados_merged)} relatório(s).")
-                github_load.clear()
             else:
                 st.error("Erro ao salvar. Verifique o token do GitHub.")
     with col_sub:
@@ -435,7 +434,6 @@ if is_admin and fonte == "upload":
                 ok = github_save(carteiras_raw, GITHUB_TOKEN, GITHUB_REPO)
             if ok:
                 st.success(f"Histórico substituído. {len(carteiras_raw)} relatório(s) salvos.")
-                github_load.clear()
             else:
                 st.error("Erro ao salvar.")
 
