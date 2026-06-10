@@ -1,2377 +1,5 @@
 [
   {
-    "data_base": "29/05/2026",
-    "patrimonio": 69599764.18,
-    "perf_total": {
-      "mes": 0.0023,
-      "ano": 0.0368,
-      "m12": 0.1326,
-      "m24": 0.2748
-    },
-    "pct_bench": {
-      "mes": 0.2097,
-      "ano": 0.6501,
-      "m12": 0.8948,
-      "m24": 0.97
-    },
-    "fundos": [
-      {
-        "nome": "ABSOLUTEPACE LB FIA",
-        "pl": 10.23,
-        "financeiro": 7120894.98,
-        "mes": -0.0358,
-        "ano": 0.0557,
-        "m12": 0.1808,
-        "m24": 0.4122
-      },
-      {
-        "nome": "K ZETA FFIM",
-        "pl": 8.26,
-        "financeiro": 5747218.46,
-        "mes": 0.0297,
-        "ano": 0.010700000000000001,
-        "m12": 0.1452,
-        "m24": 0.3552
-      },
-      {
-        "nome": "SPXR FIQ FIM CP IE",
-        "pl": 7.2,
-        "financeiro": 5012762.43,
-        "mes": 0.015,
-        "ano": -0.0335,
-        "m12": 0.07429999999999999,
-        "m24": 0.2978
-      },
-      {
-        "nome": "RF CDB I",
-        "pl": 6.94,
-        "financeiro": 4827818.16,
-        "mes": 0.0108,
-        "ano": 0.057,
-        "m12": 0.1487,
-        "m24": null
-      },
-      {
-        "nome": "ACS LEGACY C FIC FIM",
-        "pl": 6.84,
-        "financeiro": 4759999.74,
-        "mes": 0.0147,
-        "ano": 0.037200000000000004,
-        "m12": 0.1335,
-        "m24": 0.24309999999999998
-      },
-      {
-        "nome": "PIMCO INCOME FIM IE",
-        "pl": 6.35,
-        "financeiro": 4421649.02,
-        "mes": 0.0138,
-        "ano": 0.0395,
-        "m12": 0.17600000000000002,
-        "m24": 0.3307
-      },
-      {
-        "nome": "TESOURO IPCA LONGORF",
-        "pl": 5.97,
-        "financeiro": 4158536.32,
-        "mes": -0.0024,
-        "ano": 0.042800000000000005,
-        "m12": 0.0883,
-        "m24": 0.11720000000000001
-      },
-      {
-        "nome": "JP GLOBAL MAC OPPFIM",
-        "pl": 5.84,
-        "financeiro": 4067506.7,
-        "mes": 0.0336,
-        "ano": 0.027200000000000002,
-        "m12": 0.1041,
-        "m24": 0.228
-      },
-      {
-        "nome": "ACS IBIUNA STH FC",
-        "pl": 5.73,
-        "financeiro": 3984782.17,
-        "mes": 0.015600000000000001,
-        "ano": 0.0176,
-        "m12": 0.0947,
-        "m24": 0.2087
-      },
-      {
-        "nome": "ARMOR AXE FC FIM",
-        "pl": 5.31,
-        "financeiro": 3698973.36,
-        "mes": 0.016399999999999998,
-        "ano": 0.061399999999999996,
-        "m12": 0.1426,
-        "m24": 0.29100000000000004
-      },
-      {
-        "nome": "BTGP MFS FIC FIM IE",
-        "pl": 5.27,
-        "financeiro": 3665800.96,
-        "mes": 0.013999999999999999,
-        "ano": 0.0173,
-        "m12": 0.08289999999999999,
-        "m24": 0.3048
-      },
-      {
-        "nome": "TREND IBOV ALAV FIA",
-        "pl": 4.28,
-        "financeiro": 2977735.35,
-        "mes": -0.1497,
-        "ano": 0.0873,
-        "m12": 0.35259999999999997,
-        "m24": 0.5324
-      },
-      {
-        "nome": "BTGP PICTET FC FM IE",
-        "pl": 4.1,
-        "financeiro": 2851688.45,
-        "mes": 0.084,
-        "ano": 0.0852,
-        "m12": 0.2324,
-        "m24": 0.3155
-      },
-      {
-        "nome": "BTG T PRE RF IRFM1+",
-        "pl": 3.91,
-        "financeiro": 2723198.82,
-        "mes": 0.0043,
-        "ano": 0.036699999999999997,
-        "m12": 0.1211,
-        "m24": 0.20550000000000002
-      },
-      {
-        "nome": "PACTUAL CAMBIAL FI",
-        "pl": 3.4,
-        "financeiro": 2365234.67,
-        "mes": 0.0208,
-        "ano": -0.0623,
-        "m12": -0.0668,
-        "m24": 0.0698
-      },
-      {
-        "nome": "PIMCO GLBCRED FIM IE",
-        "pl": 2.24,
-        "financeiro": 1557729.42,
-        "mes": 0.0131,
-        "ano": 0.0425,
-        "m12": 0.17170000000000002,
-        "m24": 0.3443
-      },
-      {
-        "nome": "TESOURO IPCA GERALRF",
-        "pl": 2.12,
-        "financeiro": 1472690.62,
-        "mes": 0.0016,
-        "ano": 0.0524,
-        "m12": 0.1042,
-        "m24": 0.16
-      },
-      {
-        "nome": "DAHLIA TOTAL RET FIA",
-        "pl": 1.75,
-        "financeiro": 1218436.48,
-        "mes": -0.0436,
-        "ano": 0.031,
-        "m12": 0.14429999999999998,
-        "m24": null
-      },
-      {
-        "nome": "SPRINGS EH FIC",
-        "pl": 1.74,
-        "financeiro": 1208378.81,
-        "mes": 0.0235,
-        "ano": 0.0732,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "SHIFT ALPHA I FIP A",
-        "pl": 1.55,
-        "financeiro": 1080428.37,
-        "mes": -0.0006,
-        "ano": 0.0556,
-        "m12": 0.0542,
-        "m24": 0.55
-      },
-      {
-        "nome": "BTAG13",
-        "pl": 1.03,
-        "financeiro": 717248.0,
-        "mes": -0.0191,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BTAG11",
-        "pl": 0.59,
-        "financeiro": 413202.09,
-        "mes": -0.0191,
-        "ano": 0.0298,
-        "m12": 0.18,
-        "m24": 0.1162
-      },
-      {
-        "nome": "INFRA II FIC FIP",
-        "pl": 0.04,
-        "financeiro": 27559.38,
-        "mes": -0.0001,
-        "ano": 0.08470000000000001,
-        "m12": 0.316,
-        "m24": null
-      }
-    ],
-    "_filename": "SABIA FIQ FIM CP - 29.05.2026.pdf",
-    "_nome": "SABIA FIQ FIM CP",
-    "_raw_p1": "Relatório de Performance Diário\nSABIA FIQ FIM CP\nData da geração do relatório: 01/06/2026 - 19:41\nPatrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 29/05/2026\n69,599,764.18 4.7700382\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(03/11/2014)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 69,599,764.18 4.770038200000 0.15 277.64 0.23 20.97 3.68 65.01 185.73 94.15\n28/05/2026 69,972,151.39 4.762976600000 0.06 108.06 0.08 7.52 3.53 62.92 185.31 94.01\n27/05/2026 69,931,800.11 4.760229900000 -0.01 -11.97 0.02 1.97 3.47 62.49 185.14 94.00\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 69,599,764.18 4.770038200000 -1.80 -52.69 4.64 66.75 13.26 89.48 27.48 97.00\n28/05/2026 69,972,151.39 4.762976600000 -1.94 -57.88 4.49 65.05 13.09 88.36 26.85 94.85\n27/05/2026 69,931,800.11 4.760229900000 -2.00 -60.56 4.69 67.99 12.98 87.56 26.53 93.76\nRentabilidade Histórica\n240%\n210%\n180%\n150%\n120%\n90%\n60%\n30%\n0%\n-30%\nJan-16 Jan-18 Jan-20 Jan-22 Jan-24 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 3.41% 2.10% -3.64% 1.68% 0.23% 3.68%\n2026 %CDI 292.78% 210.73% - 153.93% 20.97% 65.01%\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 5.66%\nPORTFÓLIO 1.36% 0.23% 0.87% 2.68% 1.82% 1.62% -0.83% 2.37% 1.80% 1.42% 1.82% 0.92% 17.28%\n2025 %CDI 135.05% 23.30% 90.57% 253.89% 159.71% 147.85% - 203.87% 147.32% 111.70% 172.72% 75.82% 120.71%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 15.95% 7.64% 11.36% 10.77% 13.91% 7.36% 1.00% 4.92% 12.53% 4.61% 17.28% 3.68% 185.73%\n%CDI 120.56% 54.55% 114.10% 167.75% 233.02% 265.77% 22.70% 39.76% 96.03% 42.37% 120.71% 65.01% 94.15%\nCDI 13.23% 14.00% 9.95% 6.42% 5.97% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.66% 197.27%\nEm atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante.",
-    "_tabelas_p1": [
-      [
-        [
-          "Relatório de Performance Diário\nSABIA FIQ FIM CP\nData da geração do relatório: 01/06/2026 - 19:41"
-        ],
-        [
-          "Patrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 29/05/2026\n69,599,764.18 4.7700382\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(03/11/2014)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 69,599,764.18 4.770038200000 0.15 277.64 0.23 20.97 3.68 65.01 185.73 94.15\n28/05/2026 69,972,151.39 4.762976600000 0.06 108.06 0.08 7.52 3.53 62.92 185.31 94.01\n27/05/2026 69,931,800.11 4.760229900000 -0.01 -11.97 0.02 1.97 3.47 62.49 185.14 94.00\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 69,599,764.18 4.770038200000 -1.80 -52.69 4.64 66.75 13.26 89.48 27.48 97.00\n28/05/2026 69,972,151.39 4.762976600000 -1.94 -57.88 4.49 65.05 13.09 88.36 26.85 94.85\n27/05/2026 69,931,800.11 4.760229900000 -2.00 -60.56 4.69 67.99 12.98 87.56 26.53 93.76\nRentabilidade Histórica\n240%\n210%\n180%\n150%\n120%\n90%\n60%\n30%\n0%\n-30%\nJan-16 Jan-18 Jan-20 Jan-22 Jan-24 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 3.41% 2.10% -3.64% 1.68% 0.23% 3.68%\n2026 %CDI 292.78% 210.73% - 153.93% 20.97% 65.01%\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 5.66%\nPORTFÓLIO 1.36% 0.23% 0.87% 2.68% 1.82% 1.62% -0.83% 2.37% 1.80% 1.42% 1.82% 0.92% 17.28%\n2025 %CDI 135.05% 23.30% 90.57% 253.89% 159.71% 147.85% - 203.87% 147.32% 111.70% 172.72% 75.82% 120.71%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 15.95% 7.64% 11.36% 10.77% 13.91% 7.36% 1.00% 4.92% 12.53% 4.61% 17.28% 3.68% 185.73%\n%CDI 120.56% 54.55% 114.10% 167.75% 233.02% 265.77% 22.70% 39.76% 96.03% 42.37% 120.71% 65.01% 94.15%\nCDI 13.23% 14.00% 9.95% 6.42% 5.97% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.66% 197.27%"
-        ],
-        [
-          "Em atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante."
-        ]
-      ],
-      [
-        [
-          "",
-          ""
-        ]
-      ],
-      [
-        [
-          "Data",
-          "Patrimônio",
-          "Cota",
-          "Dia",
-          null,
-          "Mês",
-          null,
-          "Ano",
-          null,
-          "Desde o Início\n(03/11/2014)",
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI"
-        ],
-        [
-          "29/05/2026",
-          "69,599,764.18",
-          "4.770038200000",
-          "0.15",
-          "277.64",
-          "0.23",
-          "20.97",
-          "3.68",
-          "65.01",
-          "185.73",
-          "94.15"
-        ],
-        [
-          "28/05/2026",
-          "69,972,151.39",
-          "4.762976600000",
-          "0.06",
-          "108.06",
-          "0.08",
-          "7.52",
-          "3.53",
-          "62.92",
-          "185.31",
-          "94.01"
-        ],
-        [
-          "27/05/2026",
-          "69,931,800.11",
-          "4.760229900000",
-          "-0.01",
-          "-11.97",
-          "0.02",
-          "1.97",
-          "3.47",
-          "62.49",
-          "185.14",
-          "94.00"
-        ]
-      ],
-      [
-        [
-          "Data",
-          "Patrimônio",
-          "Cota",
-          "3 Meses",
-          null,
-          "6 Meses",
-          null,
-          "12 Meses",
-          null,
-          "24 Meses",
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI"
-        ],
-        [
-          "29/05/2026",
-          "69,599,764.18",
-          "4.770038200000",
-          "-1.80",
-          "-52.69",
-          "4.64",
-          "66.75",
-          "13.26",
-          "89.48",
-          "27.48",
-          "97.00"
-        ],
-        [
-          "28/05/2026",
-          "69,972,151.39",
-          "4.762976600000",
-          "-1.94",
-          "-57.88",
-          "4.49",
-          "65.05",
-          "13.09",
-          "88.36",
-          "26.85",
-          "94.85"
-        ],
-        [
-          "27/05/2026",
-          "69,931,800.11",
-          "4.760229900000",
-          "-2.00",
-          "-60.56",
-          "4.69",
-          "67.99",
-          "12.98",
-          "87.56",
-          "26.53",
-          "93.76"
-        ]
-      ],
-      [
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ]
-      ],
-      [
-        [
-          "Retorno Mensal",
-          null,
-          "JAN",
-          "FEV",
-          "MAR",
-          "ABR",
-          "MAI",
-          "JUN",
-          "JUL",
-          "AGO",
-          "SET",
-          "OUT",
-          "NOV",
-          "DEZ",
-          "no Ano"
-        ],
-        [
-          "2026",
-          "PORTFÓLIO",
-          "3.41%",
-          "2.10%",
-          "-3.64%",
-          "1.68%",
-          "0.23%",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "3.68%"
-        ],
-        [
-          null,
-          "%CDI",
-          "292.78%",
-          "210.73%",
-          "-",
-          "153.93%",
-          "20.97%",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "65.01%"
-        ],
-        [
-          null,
-          "CDI",
-          "1.16%",
-          "1.00%",
-          "1.21%",
-          "1.09%",
-          "1.07%",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "5.66%"
-        ],
-        [
-          "2025",
-          "PORTFÓLIO",
-          "1.36%",
-          "0.23%",
-          "0.87%",
-          "2.68%",
-          "1.82%",
-          "1.62%",
-          "-0.83%",
-          "2.37%",
-          "1.80%",
-          "1.42%",
-          "1.82%",
-          "0.92%",
-          "17.28%"
-        ],
-        [
-          null,
-          "%CDI",
-          "135.05%",
-          "23.30%",
-          "90.57%",
-          "253.89%",
-          "159.71%",
-          "147.85%",
-          "-",
-          "203.87%",
-          "147.32%",
-          "111.70%",
-          "172.72%",
-          "75.82%",
-          "120.71%"
-        ],
-        [
-          null,
-          "CDI",
-          "1.01%",
-          "0.99%",
-          "0.96%",
-          "1.06%",
-          "1.14%",
-          "1.10%",
-          "1.28%",
-          "1.16%",
-          "1.22%",
-          "1.28%",
-          "1.05%",
-          "1.22%",
-          "14.31%"
-        ]
-      ],
-      [
-        [
-          "Retorno Anual",
-          null,
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "2023",
-          "2024",
-          "2025",
-          "2026",
-          "Desde\no início"
-        ],
-        [
-          "",
-          "PORTFÓLIO",
-          "15.95%",
-          "7.64%",
-          "11.36%",
-          "10.77%",
-          "13.91%",
-          "7.36%",
-          "1.00%",
-          "4.92%",
-          "12.53%",
-          "4.61%",
-          "17.28%",
-          "3.68%",
-          "185.73%"
-        ],
-        [
-          null,
-          "%CDI",
-          "120.56%",
-          "54.55%",
-          "114.10%",
-          "167.75%",
-          "233.02%",
-          "265.77%",
-          "22.70%",
-          "39.76%",
-          "96.03%",
-          "42.37%",
-          "120.71%",
-          "65.01%",
-          "94.15%"
-        ],
-        [
-          null,
-          "CDI",
-          "13.23%",
-          "14.00%",
-          "9.95%",
-          "6.42%",
-          "5.97%",
-          "2.77%",
-          "4.40%",
-          "12.37%",
-          "13.05%",
-          "10.87%",
-          "14.31%",
-          "5.66%",
-          "197.27%"
-        ]
-      ]
-    ],
-    "_dt": "2026-05-29 00:00:00"
-  },
-  {
-    "data_base": "22/05/2026",
-    "patrimonio": 69694895.66,
-    "perf_total": {
-      "mes": -0.0032,
-      "ano": 0.031200000000000002,
-      "m12": 0.1336,
-      "m24": 0.2595
-    },
-    "pct_bench": {
-      "mes": -0.3978,
-      "ano": 0.5793,
-      "m12": 0.9014,
-      "m24": 0.919
-    },
-    "fundos": [
-      {
-        "nome": "ABSOLUTEPACE LB FIA",
-        "pl": 10.22,
-        "financeiro": 7125918.35,
-        "mes": -0.0351,
-        "ano": 0.0564,
-        "m12": 0.2112,
-        "m24": 0.395
-      },
-      {
-        "nome": "K ZETA FFIM",
-        "pl": 8.12,
-        "financeiro": 5658995.7,
-        "mes": 0.0139,
-        "ano": -0.0048,
-        "m12": 0.1391,
-        "m24": 0.3207
-      },
-      {
-        "nome": "SPXR FIQ FIM CP IE",
-        "pl": 7.15,
-        "financeiro": 4979980.4,
-        "mes": 0.0084,
-        "ano": -0.0398,
-        "m12": 0.0658,
-        "m24": 0.2893
-      },
-      {
-        "nome": "RF CDB I",
-        "pl": 6.91,
-        "financeiro": 4815307.34,
-        "mes": 0.008100000000000001,
-        "ano": 0.0541,
-        "m12": 0.1487,
-        "m24": null
-      },
-      {
-        "nome": "ACS LEGACY C FIC FIM",
-        "pl": 6.77,
-        "financeiro": 4718260.0,
-        "mes": 0.0058,
-        "ano": 0.0281,
-        "m12": 0.1268,
-        "m24": 0.2322
-      },
-      {
-        "nome": "PIMCO INCOME FIM IE",
-        "pl": 6.29,
-        "financeiro": 4380908.51,
-        "mes": 0.0044,
-        "ano": 0.029900000000000003,
-        "m12": 0.17629999999999998,
-        "m24": 0.3118
-      },
-      {
-        "nome": "TESOURO IPCA LONGORF",
-        "pl": 5.93,
-        "financeiro": 4131316.17,
-        "mes": -0.0089,
-        "ano": 0.0359,
-        "m12": 0.0855,
-        "m24": 0.10769999999999999
-      },
-      {
-        "nome": "JP GLOBAL MAC OPPFIM",
-        "pl": 5.77,
-        "financeiro": 4019972.35,
-        "mes": 0.0215,
-        "ano": 0.0152,
-        "m12": 0.08810000000000001,
-        "m24": 0.21109999999999998
-      },
-      {
-        "nome": "ACS IBIUNA STH FC",
-        "pl": 5.65,
-        "financeiro": 3941210.25,
-        "mes": 0.0045000000000000005,
-        "ano": 0.006500000000000001,
-        "m12": 0.09050000000000001,
-        "m24": 0.1902
-      },
-      {
-        "nome": "ARMOR AXE FC FIM",
-        "pl": 5.28,
-        "financeiro": 3681028.33,
-        "mes": 0.011399999999999999,
-        "ano": 0.0562,
-        "m12": 0.1411,
-        "m24": 0.2812
-      },
-      {
-        "nome": "BTGP MFS FIC FIM IE",
-        "pl": 5.2,
-        "financeiro": 3621096.67,
-        "mes": 0.0017000000000000001,
-        "ano": 0.0049,
-        "m12": 0.0742,
-        "m24": 0.2734
-      },
-      {
-        "nome": "TREND IBOV ALAV FIA",
-        "pl": 4.4,
-        "financeiro": 3063217.74,
-        "mes": -0.1253,
-        "ano": 0.1185,
-        "m12": 0.4156,
-        "m24": 0.4997
-      },
-      {
-        "nome": "BTGP PICTET FC FM IE",
-        "pl": 4.01,
-        "financeiro": 2792460.98,
-        "mes": 0.061500000000000006,
-        "ano": 0.06269999999999999,
-        "m12": 0.2133,
-        "m24": 0.2577
-      },
-      {
-        "nome": "BTG T PRE RF IRFM1+",
-        "pl": 3.89,
-        "financeiro": 2713418.91,
-        "mes": 0.0007000000000000001,
-        "ano": 0.033,
-        "m12": 0.1229,
-        "m24": 0.20079999999999998
-      },
-      {
-        "nome": "PACTUAL CAMBIAL FI",
-        "pl": 3.38,
-        "financeiro": 2355256.83,
-        "mes": 0.0165,
-        "ano": -0.0662,
-        "m12": -0.0665,
-        "m24": 0.07719999999999999
-      },
-      {
-        "nome": "PIMCO GLBCRED FIM IE",
-        "pl": 2.22,
-        "financeiro": 1547519.31,
-        "mes": 0.0064,
-        "ano": 0.035699999999999996,
-        "m12": 0.17149999999999999,
-        "m24": 0.33380000000000004
-      },
-      {
-        "nome": "TESOURO IPCA GERALRF",
-        "pl": 2.1,
-        "financeiro": 1465724.78,
-        "mes": -0.0031,
-        "ano": 0.047400000000000005,
-        "m12": 0.10220000000000001,
-        "m24": 0.1539
-      },
-      {
-        "nome": "DAHLIA TOTAL RET FIA",
-        "pl": 1.76,
-        "financeiro": 1228230.41,
-        "mes": -0.0359,
-        "ano": 0.0393,
-        "m12": 0.16820000000000002,
-        "m24": null
-      },
-      {
-        "nome": "SPRINGS EH FIC",
-        "pl": 1.71,
-        "financeiro": 1191718.62,
-        "mes": 0.009399999999999999,
-        "ano": 0.0584,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "SHIFT ALPHA I FIP A",
-        "pl": 1.55,
-        "financeiro": 1080321.28,
-        "mes": -0.0007000000000000001,
-        "ano": 0.0555,
-        "m12": 0.054000000000000006,
-        "m24": 0.5501
-      },
-      {
-        "nome": "BTAG13",
-        "pl": 1.05,
-        "financeiro": 729280.0,
-        "mes": -0.0026,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "BTAG11",
-        "pl": 0.6,
-        "financeiro": 420133.65,
-        "mes": -0.0026,
-        "ano": 0.0471,
-        "m12": 0.2052,
-        "m24": 0.13720000000000002
-      },
-      {
-        "nome": "INFRA II FIC FIP",
-        "pl": 0.04,
-        "financeiro": 27557.65,
-        "mes": -0.0002,
-        "ano": 0.08460000000000001,
-        "m12": 0.2919,
-        "m24": null
-      }
-    ],
-    "_filename": "SABIA FIQ FIM CP - 22.05.2026.pdf",
-    "_nome": "SABIA FIQ FIM CP",
-    "_raw_p1": "Relatório de Performance Diário\nSABIA FIQ FIM CP\nData da geração do relatório: 25/05/2026 - 13:24\nPatrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 22/05/2026\n69,694,895.66 4.7441039\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(03/11/2014)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n22/05/2026 69,694,895.66 4.744103900000 -0.07 -131.38 -0.32 -39.78 3.12 57.93 184.18 93.74\n21/05/2026 69,743,823.99 4.747434500000 0.14 253.39 -0.25 -33.31 3.19 59.91 184.38 93.91\n20/05/2026 69,649,583.24 4.741019500000 0.56 1,050.25 -0.38 -55.23 3.05 57.90 183.99 93.79\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n22/05/2026 69,694,895.66 4.744103900000 -1.87 -54.72 5.77 82.93 13.36 90.14 25.95 91.90\n21/05/2026 69,743,823.99 4.747434500000 -1.80 -53.57 5.85 84.69 13.47 90.84 25.43 90.10\n20/05/2026 69,649,583.24 4.741019500000 -1.94 -58.47 5.49 79.47 12.80 86.35 25.11 89.04\nRentabilidade Histórica\n240%\n210%\n180%\n150%\n120%\n90%\n60%\n30%\n0%\n-30%\nJan-16 Jan-18 Jan-20 Jan-22 Jan-24 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 3.41% 2.10% -3.64% 1.68% -0.32% 3.12%\n2026 %CDI 292.78% 210.73% - 153.93% - 57.93%\nCDI 1.16% 1.00% 1.21% 1.09% 0.80% 5.38%\nPORTFÓLIO 1.36% 0.23% 0.87% 2.68% 1.82% 1.62% -0.83% 2.37% 1.80% 1.42% 1.82% 0.92% 17.28%\n2025 %CDI 135.05% 23.30% 90.57% 253.89% 159.71% 147.85% - 203.87% 147.32% 111.70% 172.72% 75.82% 120.71%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 15.95% 7.64% 11.36% 10.77% 13.91% 7.36% 1.00% 4.92% 12.53% 4.61% 17.28% 3.12% 184.18%\n%CDI 120.56% 54.55% 114.10% 167.75% 233.02% 265.77% 22.70% 39.76% 96.03% 42.37% 120.71% 57.93% 93.74%\nCDI 13.23% 14.00% 9.95% 6.42% 5.97% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.38% 196.48%\nEm atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante.",
-    "_tabelas_p1": [
-      [
-        [
-          "Relatório de Performance Diário\nSABIA FIQ FIM CP\nData da geração do relatório: 25/05/2026 - 13:24"
-        ],
-        [
-          "Patrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 22/05/2026\n69,694,895.66 4.7441039\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(03/11/2014)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n22/05/2026 69,694,895.66 4.744103900000 -0.07 -131.38 -0.32 -39.78 3.12 57.93 184.18 93.74\n21/05/2026 69,743,823.99 4.747434500000 0.14 253.39 -0.25 -33.31 3.19 59.91 184.38 93.91\n20/05/2026 69,649,583.24 4.741019500000 0.56 1,050.25 -0.38 -55.23 3.05 57.90 183.99 93.79\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n22/05/2026 69,694,895.66 4.744103900000 -1.87 -54.72 5.77 82.93 13.36 90.14 25.95 91.90\n21/05/2026 69,743,823.99 4.747434500000 -1.80 -53.57 5.85 84.69 13.47 90.84 25.43 90.10\n20/05/2026 69,649,583.24 4.741019500000 -1.94 -58.47 5.49 79.47 12.80 86.35 25.11 89.04\nRentabilidade Histórica\n240%\n210%\n180%\n150%\n120%\n90%\n60%\n30%\n0%\n-30%\nJan-16 Jan-18 Jan-20 Jan-22 Jan-24 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 3.41% 2.10% -3.64% 1.68% -0.32% 3.12%\n2026 %CDI 292.78% 210.73% - 153.93% - 57.93%\nCDI 1.16% 1.00% 1.21% 1.09% 0.80% 5.38%\nPORTFÓLIO 1.36% 0.23% 0.87% 2.68% 1.82% 1.62% -0.83% 2.37% 1.80% 1.42% 1.82% 0.92% 17.28%\n2025 %CDI 135.05% 23.30% 90.57% 253.89% 159.71% 147.85% - 203.87% 147.32% 111.70% 172.72% 75.82% 120.71%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 15.95% 7.64% 11.36% 10.77% 13.91% 7.36% 1.00% 4.92% 12.53% 4.61% 17.28% 3.12% 184.18%\n%CDI 120.56% 54.55% 114.10% 167.75% 233.02% 265.77% 22.70% 39.76% 96.03% 42.37% 120.71% 57.93% 93.74%\nCDI 13.23% 14.00% 9.95% 6.42% 5.97% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.38% 196.48%"
-        ],
-        [
-          "Em atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante."
-        ]
-      ],
-      [
-        [
-          "",
-          ""
-        ]
-      ],
-      [
-        [
-          "Data",
-          "Patrimônio",
-          "Cota",
-          "Dia",
-          null,
-          "Mês",
-          null,
-          "Ano",
-          null,
-          "Desde o Início\n(03/11/2014)",
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI"
-        ],
-        [
-          "22/05/2026",
-          "69,694,895.66",
-          "4.744103900000",
-          "-0.07",
-          "-131.38",
-          "-0.32",
-          "-39.78",
-          "3.12",
-          "57.93",
-          "184.18",
-          "93.74"
-        ],
-        [
-          "21/05/2026",
-          "69,743,823.99",
-          "4.747434500000",
-          "0.14",
-          "253.39",
-          "-0.25",
-          "-33.31",
-          "3.19",
-          "59.91",
-          "184.38",
-          "93.91"
-        ],
-        [
-          "20/05/2026",
-          "69,649,583.24",
-          "4.741019500000",
-          "0.56",
-          "1,050.25",
-          "-0.38",
-          "-55.23",
-          "3.05",
-          "57.90",
-          "183.99",
-          "93.79"
-        ]
-      ],
-      [
-        [
-          "Data",
-          "Patrimônio",
-          "Cota",
-          "3 Meses",
-          null,
-          "6 Meses",
-          null,
-          "12 Meses",
-          null,
-          "24 Meses",
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI"
-        ],
-        [
-          "22/05/2026",
-          "69,694,895.66",
-          "4.744103900000",
-          "-1.87",
-          "-54.72",
-          "5.77",
-          "82.93",
-          "13.36",
-          "90.14",
-          "25.95",
-          "91.90"
-        ],
-        [
-          "21/05/2026",
-          "69,743,823.99",
-          "4.747434500000",
-          "-1.80",
-          "-53.57",
-          "5.85",
-          "84.69",
-          "13.47",
-          "90.84",
-          "25.43",
-          "90.10"
-        ],
-        [
-          "20/05/2026",
-          "69,649,583.24",
-          "4.741019500000",
-          "-1.94",
-          "-58.47",
-          "5.49",
-          "79.47",
-          "12.80",
-          "86.35",
-          "25.11",
-          "89.04"
-        ]
-      ],
-      [
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ]
-      ],
-      [
-        [
-          "Retorno Mensal",
-          null,
-          "JAN",
-          "FEV",
-          "MAR",
-          "ABR",
-          "MAI",
-          "JUN",
-          "JUL",
-          "AGO",
-          "SET",
-          "OUT",
-          "NOV",
-          "DEZ",
-          "no Ano"
-        ],
-        [
-          "2026",
-          "PORTFÓLIO",
-          "3.41%",
-          "2.10%",
-          "-3.64%",
-          "1.68%",
-          "-0.32%",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "3.12%"
-        ],
-        [
-          null,
-          "%CDI",
-          "292.78%",
-          "210.73%",
-          "-",
-          "153.93%",
-          "-",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "57.93%"
-        ],
-        [
-          null,
-          "CDI",
-          "1.16%",
-          "1.00%",
-          "1.21%",
-          "1.09%",
-          "0.80%",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "5.38%"
-        ],
-        [
-          "2025",
-          "PORTFÓLIO",
-          "1.36%",
-          "0.23%",
-          "0.87%",
-          "2.68%",
-          "1.82%",
-          "1.62%",
-          "-0.83%",
-          "2.37%",
-          "1.80%",
-          "1.42%",
-          "1.82%",
-          "0.92%",
-          "17.28%"
-        ],
-        [
-          null,
-          "%CDI",
-          "135.05%",
-          "23.30%",
-          "90.57%",
-          "253.89%",
-          "159.71%",
-          "147.85%",
-          "-",
-          "203.87%",
-          "147.32%",
-          "111.70%",
-          "172.72%",
-          "75.82%",
-          "120.71%"
-        ],
-        [
-          null,
-          "CDI",
-          "1.01%",
-          "0.99%",
-          "0.96%",
-          "1.06%",
-          "1.14%",
-          "1.10%",
-          "1.28%",
-          "1.16%",
-          "1.22%",
-          "1.28%",
-          "1.05%",
-          "1.22%",
-          "14.31%"
-        ]
-      ],
-      [
-        [
-          "Retorno Anual",
-          null,
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "2023",
-          "2024",
-          "2025",
-          "2026",
-          "Desde\no início"
-        ],
-        [
-          "",
-          "PORTFÓLIO",
-          "15.95%",
-          "7.64%",
-          "11.36%",
-          "10.77%",
-          "13.91%",
-          "7.36%",
-          "1.00%",
-          "4.92%",
-          "12.53%",
-          "4.61%",
-          "17.28%",
-          "3.12%",
-          "184.18%"
-        ],
-        [
-          null,
-          "%CDI",
-          "120.56%",
-          "54.55%",
-          "114.10%",
-          "167.75%",
-          "233.02%",
-          "265.77%",
-          "22.70%",
-          "39.76%",
-          "96.03%",
-          "42.37%",
-          "120.71%",
-          "57.93%",
-          "93.74%"
-        ],
-        [
-          null,
-          "CDI",
-          "13.23%",
-          "14.00%",
-          "9.95%",
-          "6.42%",
-          "5.97%",
-          "2.77%",
-          "4.40%",
-          "12.37%",
-          "13.05%",
-          "10.87%",
-          "14.31%",
-          "5.38%",
-          "196.48%"
-        ]
-      ]
-    ],
-    "_dt": "2026-05-22 00:00:00"
-  },
-  {
-    "data_base": "05/06/2026",
-    "patrimonio": 10326621.25,
-    "perf_total": {
-      "mes": -0.0021,
-      "ano": -0.0325,
-      "m12": 0.008,
-      "m24": 0.1232
-    },
-    "pct_bench": {
-      "mes": -1.9602000000000002,
-      "ano": -0.5621,
-      "m12": 0.053899999999999997,
-      "m24": 0.4334
-    },
-    "fundos": [
-      {
-        "nome": "RF CDB I",
-        "pl": 12.08,
-        "financeiro": 1247070.05,
-        "mes": 0.0021,
-        "ano": 0.0592,
-        "m12": 0.1481,
-        "m24": null
-      },
-      {
-        "nome": "ATMP FC FIA",
-        "pl": 11.43,
-        "financeiro": 1180676.22,
-        "mes": -0.0436,
-        "ano": -0.028900000000000002,
-        "m12": 0.0688,
-        "m24": null
-      },
-      {
-        "nome": "VBBR3",
-        "pl": 7.16,
-        "financeiro": 739555.11,
-        "mes": -0.028900000000000002,
-        "ano": 0.15259999999999999,
-        "m12": 0.5898,
-        "m24": null
-      },
-      {
-        "nome": "BPAC11",
-        "pl": 5.98,
-        "financeiro": 617930.0,
-        "mes": -0.057699999999999994,
-        "ano": -0.036699999999999997,
-        "m12": 0.29469999999999996,
-        "m24": null
-      },
-      {
-        "nome": "ITSA4",
-        "pl": 5.98,
-        "financeiro": 617858.34,
-        "mes": -0.0276,
-        "ano": 0.08689999999999999,
-        "m12": 0.31170000000000003,
-        "m24": null
-      },
-      {
-        "nome": "KLBN11",
-        "pl": 5.58,
-        "financeiro": 576528.7,
-        "mes": 0.022799999999999997,
-        "ano": -0.09119999999999999,
-        "m12": -0.0037,
-        "m24": null
-      },
-      {
-        "nome": "EQTL3",
-        "pl": 5.53,
-        "financeiro": 571159.89,
-        "mes": 0.009300000000000001,
-        "ano": 0.0106,
-        "m12": 0.1057,
-        "m24": null
-      },
-      {
-        "nome": "BBDC4",
-        "pl": 5.08,
-        "financeiro": 524100.0,
-        "mes": -0.011899999999999999,
-        "ano": -0.019799999999999998,
-        "m12": 0.1696,
-        "m24": null
-      },
-      {
-        "nome": "MELI34",
-        "pl": 4.92,
-        "financeiro": 507703.8,
-        "mes": -0.0315,
-        "ano": -0.2588,
-        "m12": -0.43229999999999996,
-        "m24": null
-      },
-      {
-        "nome": "RAIL3",
-        "pl": 4.83,
-        "financeiro": 499052.0,
-        "mes": 0.016,
-        "ano": -0.0489,
-        "m12": -0.2395,
-        "m24": null
-      },
-      {
-        "nome": "BOVA11",
-        "pl": 4.82,
-        "financeiro": 497250.0,
-        "mes": -0.029300000000000003,
-        "ano": 0.049100000000000005,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "SMAL11",
-        "pl": 4.59,
-        "financeiro": 473924.0,
-        "mes": -0.0296,
-        "ano": -0.042199999999999994,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "VULC3",
-        "pl": 4.35,
-        "financeiro": 449337.6,
-        "mes": -0.028300000000000002,
-        "ano": -0.2818,
-        "m12": -0.0537,
-        "m24": null
-      },
-      {
-        "nome": "EMBJ3",
-        "pl": 3.92,
-        "financeiro": 405048.0,
-        "mes": -0.0143,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "POMO4",
-        "pl": 3.53,
-        "financeiro": 364990.0,
-        "mes": -0.0677,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "AZZA3",
-        "pl": 2.69,
-        "financeiro": 277506.0,
-        "mes": -0.11289999999999999,
-        "ano": -0.31920000000000004,
-        "m12": -0.5664,
-        "m24": null
-      },
-      {
-        "nome": "TUESDAY VINTAGE FIA",
-        "pl": 2.4,
-        "financeiro": 247921.43,
-        "mes": 0.0528,
-        "ano": -0.022400000000000003,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "HBOR3",
-        "pl": 2.19,
-        "financeiro": 225680.0,
-        "mes": -0.1457,
-        "ano": -0.0819,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "PASS3",
-        "pl": 1.09,
-        "financeiro": 112200.0,
-        "mes": -0.047400000000000005,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "TREND IBOV ALAV FIA",
-        "pl": 1.04,
-        "financeiro": 107466.42,
-        "mes": -0.059000000000000004,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "AMER3",
-        "pl": 0.44,
-        "financeiro": 45600.0,
-        "mes": -0.0495,
-        "ano": -0.0643,
-        "m12": -0.10949999999999999,
-        "m24": null
-      }
-    ],
-    "_filename": "MEMMO FIM - 05.06.2026.pdf",
-    "_nome": "MEMMO FIM",
-    "_raw_p1": "Relatório de Performance Diário\nMEMMO FIM\nData da geração do relatório: 08/06/2026 - 11:47\nPatrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 05/06/2026\n10,326,621.25 1.4928741\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(22/04/2019)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n05/06/2026 10,326,621.25 1.492874100000 -0.27 -500.60 -2.58 -1,206.64 -5.54 -94.16 49.29 54.62\n03/06/2026 10,354,299.83 1.496875500000 -2.11 -3,957.57 -2.32 -1,446.37 -5.29 -90.73 49.69 55.13\n02/06/2026 10,577,844.28 1.529192300000 0.18 345.32 -0.21 -196.02 -3.25 -56.21 52.92 58.78\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n05/06/2026 10,326,621.25 1.492874100000 -8.33 -244.51 -5.11 -74.20 1.41 9.57 12.23 43.05\n03/06/2026 10,354,299.83 1.496875500000 -8.44 -243.46 -7.51 -108.18 0.80 5.39 12.32 43.34\n02/06/2026 10,577,844.28 1.529192300000 -9.14 -263.39 -5.49 -79.05 3.66 24.74 14.74 51.87\nRentabilidade Histórica\n96%\n84%\n72%\n60%\n48%\n36%\n24%\n12%\n0%\n-12%\nJan-20 Jan-21 Jan-22 Jan-23 Jan-24 Jan-25 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 5.22% 1.31% -3.16% -1.01% -5.11% -2.58% -5.54%\n2026 %CDI 448.32% 131.10% - - - - -\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 0.21% 5.89%\nPORTFÓLIO 4.78% -2.45% 3.17% 8.82% 4.46% 1.76% -4.63% 6.08% 0.81% 1.01% 3.92% -1.64% 28.46%\n2025 %CDI 473.62% - 329.88% 835.54% 392.59% 160.46% - 522.06% 66.69% 79.36% 372.18% - 198.80%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 4.63% 7.05% -3.23% 5.91% 14.08% -6.05% 28.46% -5.54% 49.29%\n%CDI 115.72% 254.71% - 47.80% 107.88% - 198.80% - 54.62%\nCDI 4.00% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.89% 90.23%\nEm atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante.",
-    "_tabelas_p1": [
-      [
-        [
-          "Relatório de Performance Diário\nMEMMO FIM\nData da geração do relatório: 08/06/2026 - 11:47"
-        ],
-        [
-          "Patrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 05/06/2026\n10,326,621.25 1.4928741\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(22/04/2019)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n05/06/2026 10,326,621.25 1.492874100000 -0.27 -500.60 -2.58 -1,206.64 -5.54 -94.16 49.29 54.62\n03/06/2026 10,354,299.83 1.496875500000 -2.11 -3,957.57 -2.32 -1,446.37 -5.29 -90.73 49.69 55.13\n02/06/2026 10,577,844.28 1.529192300000 0.18 345.32 -0.21 -196.02 -3.25 -56.21 52.92 58.78\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n05/06/2026 10,326,621.25 1.492874100000 -8.33 -244.51 -5.11 -74.20 1.41 9.57 12.23 43.05\n03/06/2026 10,354,299.83 1.496875500000 -8.44 -243.46 -7.51 -108.18 0.80 5.39 12.32 43.34\n02/06/2026 10,577,844.28 1.529192300000 -9.14 -263.39 -5.49 -79.05 3.66 24.74 14.74 51.87\nRentabilidade Histórica\n96%\n84%\n72%\n60%\n48%\n36%\n24%\n12%\n0%\n-12%\nJan-20 Jan-21 Jan-22 Jan-23 Jan-24 Jan-25 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 5.22% 1.31% -3.16% -1.01% -5.11% -2.58% -5.54%\n2026 %CDI 448.32% 131.10% - - - - -\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 0.21% 5.89%\nPORTFÓLIO 4.78% -2.45% 3.17% 8.82% 4.46% 1.76% -4.63% 6.08% 0.81% 1.01% 3.92% -1.64% 28.46%\n2025 %CDI 473.62% - 329.88% 835.54% 392.59% 160.46% - 522.06% 66.69% 79.36% 372.18% - 198.80%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 4.63% 7.05% -3.23% 5.91% 14.08% -6.05% 28.46% -5.54% 49.29%\n%CDI 115.72% 254.71% - 47.80% 107.88% - 198.80% - 54.62%\nCDI 4.00% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.89% 90.23%"
-        ],
-        [
-          "Em atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante."
-        ]
-      ],
-      [
-        [
-          "",
-          ""
-        ]
-      ],
-      [
-        [
-          "Data",
-          "Patrimônio",
-          "Cota",
-          "Dia",
-          null,
-          "Mês",
-          null,
-          "Ano",
-          null,
-          "Desde o Início\n(22/04/2019)",
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI"
-        ],
-        [
-          "05/06/2026",
-          "10,326,621.25",
-          "1.492874100000",
-          "-0.27",
-          "-500.60",
-          "-2.58",
-          "-1,206.64",
-          "-5.54",
-          "-94.16",
-          "49.29",
-          "54.62"
-        ],
-        [
-          "03/06/2026",
-          "10,354,299.83",
-          "1.496875500000",
-          "-2.11",
-          "-3,957.57",
-          "-2.32",
-          "-1,446.37",
-          "-5.29",
-          "-90.73",
-          "49.69",
-          "55.13"
-        ],
-        [
-          "02/06/2026",
-          "10,577,844.28",
-          "1.529192300000",
-          "0.18",
-          "345.32",
-          "-0.21",
-          "-196.02",
-          "-3.25",
-          "-56.21",
-          "52.92",
-          "58.78"
-        ]
-      ],
-      [
-        [
-          "Data",
-          "Patrimônio",
-          "Cota",
-          "3 Meses",
-          null,
-          "6 Meses",
-          null,
-          "12 Meses",
-          null,
-          "24 Meses",
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI"
-        ],
-        [
-          "05/06/2026",
-          "10,326,621.25",
-          "1.492874100000",
-          "-8.33",
-          "-244.51",
-          "-5.11",
-          "-74.20",
-          "1.41",
-          "9.57",
-          "12.23",
-          "43.05"
-        ],
-        [
-          "03/06/2026",
-          "10,354,299.83",
-          "1.496875500000",
-          "-8.44",
-          "-243.46",
-          "-7.51",
-          "-108.18",
-          "0.80",
-          "5.39",
-          "12.32",
-          "43.34"
-        ],
-        [
-          "02/06/2026",
-          "10,577,844.28",
-          "1.529192300000",
-          "-9.14",
-          "-263.39",
-          "-5.49",
-          "-79.05",
-          "3.66",
-          "24.74",
-          "14.74",
-          "51.87"
-        ]
-      ],
-      [
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ]
-      ],
-      [
-        [
-          "Retorno Mensal",
-          null,
-          "JAN",
-          "FEV",
-          "MAR",
-          "ABR",
-          "MAI",
-          "JUN",
-          "JUL",
-          "AGO",
-          "SET",
-          "OUT",
-          "NOV",
-          "DEZ",
-          "no Ano"
-        ],
-        [
-          "2026",
-          "PORTFÓLIO",
-          "5.22%",
-          "1.31%",
-          "-3.16%",
-          "-1.01%",
-          "-5.11%",
-          "-2.58%",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "-5.54%"
-        ],
-        [
-          null,
-          "%CDI",
-          "448.32%",
-          "131.10%",
-          "-",
-          "-",
-          "-",
-          "-",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "-"
-        ],
-        [
-          null,
-          "CDI",
-          "1.16%",
-          "1.00%",
-          "1.21%",
-          "1.09%",
-          "1.07%",
-          "0.21%",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "5.89%"
-        ],
-        [
-          "2025",
-          "PORTFÓLIO",
-          "4.78%",
-          "-2.45%",
-          "3.17%",
-          "8.82%",
-          "4.46%",
-          "1.76%",
-          "-4.63%",
-          "6.08%",
-          "0.81%",
-          "1.01%",
-          "3.92%",
-          "-1.64%",
-          "28.46%"
-        ],
-        [
-          null,
-          "%CDI",
-          "473.62%",
-          "-",
-          "329.88%",
-          "835.54%",
-          "392.59%",
-          "160.46%",
-          "-",
-          "522.06%",
-          "66.69%",
-          "79.36%",
-          "372.18%",
-          "-",
-          "198.80%"
-        ],
-        [
-          null,
-          "CDI",
-          "1.01%",
-          "0.99%",
-          "0.96%",
-          "1.06%",
-          "1.14%",
-          "1.10%",
-          "1.28%",
-          "1.16%",
-          "1.22%",
-          "1.28%",
-          "1.05%",
-          "1.22%",
-          "14.31%"
-        ]
-      ],
-      [
-        [
-          "Retorno Anual",
-          null,
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "2023",
-          "2024",
-          "2025",
-          "2026",
-          "Desde\no início"
-        ],
-        [
-          "",
-          "PORTFÓLIO",
-          "",
-          "",
-          "",
-          "",
-          "4.63%",
-          "7.05%",
-          "-3.23%",
-          "5.91%",
-          "14.08%",
-          "-6.05%",
-          "28.46%",
-          "-5.54%",
-          "49.29%"
-        ],
-        [
-          null,
-          "%CDI",
-          "",
-          "",
-          "",
-          "",
-          "115.72%",
-          "254.71%",
-          "-",
-          "47.80%",
-          "107.88%",
-          "-",
-          "198.80%",
-          "-",
-          "54.62%"
-        ],
-        [
-          null,
-          "CDI",
-          "",
-          "",
-          "",
-          "",
-          "4.00%",
-          "2.77%",
-          "4.40%",
-          "12.37%",
-          "13.05%",
-          "10.87%",
-          "14.31%",
-          "5.89%",
-          "90.23%"
-        ]
-      ]
-    ],
-    "_dt": "2026-06-05 00:00:00"
-  },
-  {
-    "data_base": "29/05/2026",
-    "patrimonio": 10600041.01,
-    "perf_total": {
-      "mes": -0.044000000000000004,
-      "ano": -0.0232,
-      "m12": 0.0321,
-      "m24": 0.152
-    },
-    "pct_bench": {
-      "mes": -4.3189,
-      "ano": -0.41450000000000004,
-      "m12": 0.2165,
-      "m24": 0.5365
-    },
-    "fundos": [
-      {
-        "nome": "ATMP FC FIA",
-        "pl": 11.65,
-        "financeiro": 1234555.98,
-        "mes": -0.0452,
-        "ano": 0.0154,
-        "m12": 0.1091,
-        "m24": null
-      },
-      {
-        "nome": "RF CDB I",
-        "pl": 7.58,
-        "financeiro": 803602.17,
-        "mes": 0.0108,
-        "ano": 0.057,
-        "m12": 0.1487,
-        "m24": null
-      },
-      {
-        "nome": "VBBR3",
-        "pl": 7.18,
-        "financeiro": 761570.25,
-        "mes": -0.1066,
-        "ano": 0.187,
-        "m12": 0.6023,
-        "m24": null
-      },
-      {
-        "nome": "BPAC11",
-        "pl": 6.19,
-        "financeiro": 655750.0,
-        "mes": -0.0942,
-        "ano": 0.0223,
-        "m12": 0.36,
-        "m24": null
-      },
-      {
-        "nome": "ITSA4",
-        "pl": 6.01,
-        "financeiro": 636581.32,
-        "mes": -0.0718,
-        "ano": 0.1177,
-        "m12": 0.3201,
-        "m24": null
-      },
-      {
-        "nome": "EQTL3",
-        "pl": 5.34,
-        "financeiro": 565875.45,
-        "mes": -0.0891,
-        "ano": 0.0013,
-        "m12": 0.08449999999999999,
-        "m24": null
-      },
-      {
-        "nome": "BBDC4",
-        "pl": 5.01,
-        "financeiro": 531000.0,
-        "mes": -0.08289999999999999,
-        "ano": -0.008,
-        "m12": 0.177,
-        "m24": null
-      },
-      {
-        "nome": "MELI34",
-        "pl": 4.95,
-        "financeiro": 524193.96,
-        "mes": -0.0496,
-        "ano": -0.2348,
-        "m12": -0.4092,
-        "m24": null
-      },
-      {
-        "nome": "BOVA11",
-        "pl": 4.83,
-        "financeiro": 512250.0,
-        "mes": -0.0725,
-        "ano": 0.08070000000000001,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "RAIL3",
-        "pl": 4.63,
-        "financeiro": 491176.0,
-        "mes": -0.1278,
-        "ano": -0.064,
-        "m12": -0.2484,
-        "m24": null
-      },
-      {
-        "nome": "SMAL11",
-        "pl": 4.61,
-        "financeiro": 488356.0,
-        "mes": -0.0412,
-        "ano": -0.013000000000000001,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "KLBN11",
-        "pl": 4.36,
-        "financeiro": 461992.38,
-        "mes": -0.0463,
-        "ano": -0.1114,
-        "m12": -0.0508,
-        "m24": null
-      },
-      {
-        "nome": "VULC3",
-        "pl": 4.36,
-        "financeiro": 462443.28,
-        "mes": -0.0608,
-        "ano": -0.2608,
-        "m12": -0.0513,
-        "m24": null
-      },
-      {
-        "nome": "AZZA3",
-        "pl": 2.95,
-        "financeiro": 312822.0,
-        "mes": -0.10679999999999999,
-        "ano": -0.2325,
-        "m12": -0.4997,
-        "m24": null
-      },
-      {
-        "nome": "EMBJ3",
-        "pl": 2.91,
-        "financeiro": 308196.0,
-        "mes": -0.047400000000000005,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "POMO4",
-        "pl": 2.74,
-        "financeiro": 290880.0,
-        "mes": -0.06480000000000001,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "HBOR3",
-        "pl": 2.49,
-        "financeiro": 264160.0,
-        "mes": 0.0809,
-        "ano": 0.0747,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "TUESDAY VINTAGE FIA",
-        "pl": 2.22,
-        "financeiro": 235479.22,
-        "mes": 0.0033,
-        "ano": -0.07139999999999999,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "PASS3",
-        "pl": 1.11,
-        "financeiro": 117788.0,
-        "mes": null,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "TREND IBOV ALAV FIA",
-        "pl": 1.08,
-        "financeiro": 114200.12,
-        "mes": -0.1497,
-        "ano": null,
-        "m12": null,
-        "m24": null
-      },
-      {
-        "nome": "AMER3",
-        "pl": 0.45,
-        "financeiro": 47975.0,
-        "mes": -0.1202,
-        "ano": -0.015600000000000001,
-        "m12": -0.027000000000000003,
-        "m24": null
-      }
-    ],
-    "_filename": "MEMMO FIM - 29.05.2026.pdf",
-    "_nome": "MEMMO FIM",
-    "_raw_p1": "Relatório de Performance Diário\nMEMMO FIM\nData da geração do relatório: 01/06/2026 - 12:16\nPatrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 29/05/2026\n10,600,041.01 1.5324012\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(22/04/2019)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 10,600,041.01 1.532401200000 -0.74 -1,379.24 -5.11 -475.78 -3.04 -53.74 53.24 59.27\n28/05/2026 10,678,690.32 1.543771200000 -0.41 -776.94 -4.40 -431.89 -2.32 -41.45 54.38 60.60\n27/05/2026 10,723,179.06 1.550202700000 -0.01 -25.33 -4.00 -414.76 -1.92 -34.54 55.02 61.39\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 10,600,041.01 1.532401200000 -9.04 -264.73 -4.63 -66.63 3.21 21.65 15.20 53.65\n28/05/2026 10,678,690.32 1.543771200000 -8.37 -248.99 -3.92 -56.92 3.79 25.58 15.91 56.19\n27/05/2026 10,723,179.06 1.550202700000 -7.98 -241.59 -2.86 -41.43 4.14 27.95 16.46 58.19\nRentabilidade Histórica\n96%\n84%\n72%\n60%\n48%\n36%\n24%\n12%\n0%\n-12%\nJan-20 Jan-21 Jan-22 Jan-23 Jan-24 Jan-25 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 5.22% 1.31% -3.16% -1.01% -5.11% -3.04%\n2026 %CDI 448.32% 131.10% - - - -\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 5.66%\nPORTFÓLIO 4.78% -2.45% 3.17% 8.82% 4.46% 1.76% -4.63% 6.08% 0.81% 1.01% 3.92% -1.64% 28.46%\n2025 %CDI 473.62% - 329.88% 835.54% 392.59% 160.46% - 522.06% 66.69% 79.36% 372.18% - 198.80%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 4.63% 7.05% -3.23% 5.91% 14.08% -6.05% 28.46% -3.04% 53.24%\n%CDI 115.72% 254.71% - 47.80% 107.88% - 198.80% - 59.27%\nCDI 4.00% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.66% 89.83%\nEm atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante.",
-    "_tabelas_p1": [
-      [
-        [
-          "Relatório de Performance Diário\nMEMMO FIM\nData da geração do relatório: 01/06/2026 - 12:16"
-        ],
-        [
-          "Patrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 29/05/2026\n10,600,041.01 1.5324012\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(22/04/2019)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 10,600,041.01 1.532401200000 -0.74 -1,379.24 -5.11 -475.78 -3.04 -53.74 53.24 59.27\n28/05/2026 10,678,690.32 1.543771200000 -0.41 -776.94 -4.40 -431.89 -2.32 -41.45 54.38 60.60\n27/05/2026 10,723,179.06 1.550202700000 -0.01 -25.33 -4.00 -414.76 -1.92 -34.54 55.02 61.39\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 10,600,041.01 1.532401200000 -9.04 -264.73 -4.63 -66.63 3.21 21.65 15.20 53.65\n28/05/2026 10,678,690.32 1.543771200000 -8.37 -248.99 -3.92 -56.92 3.79 25.58 15.91 56.19\n27/05/2026 10,723,179.06 1.550202700000 -7.98 -241.59 -2.86 -41.43 4.14 27.95 16.46 58.19\nRentabilidade Histórica\n96%\n84%\n72%\n60%\n48%\n36%\n24%\n12%\n0%\n-12%\nJan-20 Jan-21 Jan-22 Jan-23 Jan-24 Jan-25 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 5.22% 1.31% -3.16% -1.01% -5.11% -3.04%\n2026 %CDI 448.32% 131.10% - - - -\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 5.66%\nPORTFÓLIO 4.78% -2.45% 3.17% 8.82% 4.46% 1.76% -4.63% 6.08% 0.81% 1.01% 3.92% -1.64% 28.46%\n2025 %CDI 473.62% - 329.88% 835.54% 392.59% 160.46% - 522.06% 66.69% 79.36% 372.18% - 198.80%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 4.63% 7.05% -3.23% 5.91% 14.08% -6.05% 28.46% -3.04% 53.24%\n%CDI 115.72% 254.71% - 47.80% 107.88% - 198.80% - 59.27%\nCDI 4.00% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.66% 89.83%"
-        ],
-        [
-          "Em atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante."
-        ]
-      ],
-      [
-        [
-          "",
-          ""
-        ]
-      ],
-      [
-        [
-          "Data",
-          "Patrimônio",
-          "Cota",
-          "Dia",
-          null,
-          "Mês",
-          null,
-          "Ano",
-          null,
-          "Desde o Início\n(22/04/2019)",
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI"
-        ],
-        [
-          "29/05/2026",
-          "10,600,041.01",
-          "1.532401200000",
-          "-0.74",
-          "-1,379.24",
-          "-5.11",
-          "-475.78",
-          "-3.04",
-          "-53.74",
-          "53.24",
-          "59.27"
-        ],
-        [
-          "28/05/2026",
-          "10,678,690.32",
-          "1.543771200000",
-          "-0.41",
-          "-776.94",
-          "-4.40",
-          "-431.89",
-          "-2.32",
-          "-41.45",
-          "54.38",
-          "60.60"
-        ],
-        [
-          "27/05/2026",
-          "10,723,179.06",
-          "1.550202700000",
-          "-0.01",
-          "-25.33",
-          "-4.00",
-          "-414.76",
-          "-1.92",
-          "-34.54",
-          "55.02",
-          "61.39"
-        ]
-      ],
-      [
-        [
-          "Data",
-          "Patrimônio",
-          "Cota",
-          "3 Meses",
-          null,
-          "6 Meses",
-          null,
-          "12 Meses",
-          null,
-          "24 Meses",
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI",
-          "%",
-          "%CDI"
-        ],
-        [
-          "29/05/2026",
-          "10,600,041.01",
-          "1.532401200000",
-          "-9.04",
-          "-264.73",
-          "-4.63",
-          "-66.63",
-          "3.21",
-          "21.65",
-          "15.20",
-          "53.65"
-        ],
-        [
-          "28/05/2026",
-          "10,678,690.32",
-          "1.543771200000",
-          "-8.37",
-          "-248.99",
-          "-3.92",
-          "-56.92",
-          "3.79",
-          "25.58",
-          "15.91",
-          "56.19"
-        ],
-        [
-          "27/05/2026",
-          "10,723,179.06",
-          "1.550202700000",
-          "-7.98",
-          "-241.59",
-          "-2.86",
-          "-41.43",
-          "4.14",
-          "27.95",
-          "16.46",
-          "58.19"
-        ]
-      ],
-      [
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ],
-        [
-          ""
-        ]
-      ],
-      [
-        [
-          "Retorno Mensal",
-          null,
-          "JAN",
-          "FEV",
-          "MAR",
-          "ABR",
-          "MAI",
-          "JUN",
-          "JUL",
-          "AGO",
-          "SET",
-          "OUT",
-          "NOV",
-          "DEZ",
-          "no Ano"
-        ],
-        [
-          "2026",
-          "PORTFÓLIO",
-          "5.22%",
-          "1.31%",
-          "-3.16%",
-          "-1.01%",
-          "-5.11%",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "-3.04%"
-        ],
-        [
-          null,
-          "%CDI",
-          "448.32%",
-          "131.10%",
-          "-",
-          "-",
-          "-",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "-"
-        ],
-        [
-          null,
-          "CDI",
-          "1.16%",
-          "1.00%",
-          "1.21%",
-          "1.09%",
-          "1.07%",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "5.66%"
-        ],
-        [
-          "2025",
-          "PORTFÓLIO",
-          "4.78%",
-          "-2.45%",
-          "3.17%",
-          "8.82%",
-          "4.46%",
-          "1.76%",
-          "-4.63%",
-          "6.08%",
-          "0.81%",
-          "1.01%",
-          "3.92%",
-          "-1.64%",
-          "28.46%"
-        ],
-        [
-          null,
-          "%CDI",
-          "473.62%",
-          "-",
-          "329.88%",
-          "835.54%",
-          "392.59%",
-          "160.46%",
-          "-",
-          "522.06%",
-          "66.69%",
-          "79.36%",
-          "372.18%",
-          "-",
-          "198.80%"
-        ],
-        [
-          null,
-          "CDI",
-          "1.01%",
-          "0.99%",
-          "0.96%",
-          "1.06%",
-          "1.14%",
-          "1.10%",
-          "1.28%",
-          "1.16%",
-          "1.22%",
-          "1.28%",
-          "1.05%",
-          "1.22%",
-          "14.31%"
-        ]
-      ],
-      [
-        [
-          "Retorno Anual",
-          null,
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "2023",
-          "2024",
-          "2025",
-          "2026",
-          "Desde\no início"
-        ],
-        [
-          "",
-          "PORTFÓLIO",
-          "",
-          "",
-          "",
-          "",
-          "4.63%",
-          "7.05%",
-          "-3.23%",
-          "5.91%",
-          "14.08%",
-          "-6.05%",
-          "28.46%",
-          "-3.04%",
-          "53.24%"
-        ],
-        [
-          null,
-          "%CDI",
-          "",
-          "",
-          "",
-          "",
-          "115.72%",
-          "254.71%",
-          "-",
-          "47.80%",
-          "107.88%",
-          "-",
-          "198.80%",
-          "-",
-          "59.27%"
-        ],
-        [
-          null,
-          "CDI",
-          "",
-          "",
-          "",
-          "",
-          "4.00%",
-          "2.77%",
-          "4.40%",
-          "12.37%",
-          "13.05%",
-          "10.87%",
-          "14.31%",
-          "5.66%",
-          "89.83%"
-        ]
-      ]
-    ],
-    "_dt": "2026-05-29 00:00:00"
-  },
-  {
     "data_base": "22/05/2026",
     "patrimonio": 10560914.75,
     "perf_total": {
@@ -17559,13 +15187,13 @@
     "perf_total": {
       "mes": -0.0078000000000000005,
       "ano": -0.0028000000000000004,
-      "m12": null,
+      "m12": 0.0,
       "m24": null
     },
     "pct_bench": {
       "mes": -7.2808,
       "ano": -0.048600000000000004,
-      "m12": null,
+      "m12": 0.0,
       "m24": null
     },
     "fundos": [
@@ -18620,13 +16248,13 @@
     "perf_total": {
       "mes": -0.0053,
       "ano": 0.005,
-      "m12": null,
+      "m12": 0.0,
       "m24": null
     },
     "pct_bench": {
       "mes": -0.4962,
       "ano": 0.08839999999999999,
-      "m12": null,
+      "m12": 0.0,
       "m24": null
     },
     "fundos": [
@@ -19681,13 +17309,13 @@
     "perf_total": {
       "mes": -0.0131,
       "ano": -0.0028000000000000004,
-      "m12": null,
+      "m12": 0.0,
       "m24": null
     },
     "pct_bench": {
       "mes": -1.6265,
       "ano": -0.0525,
-      "m12": null,
+      "m12": 0.0,
       "m24": null
     },
     "fundos": [
@@ -22963,5 +20591,2377 @@
       ]
     ],
     "_dt": "2026-06-05 00:00:00"
+  },
+  {
+    "data_base": "29/05/2026",
+    "patrimonio": 69599764.18,
+    "perf_total": {
+      "mes": 0.0023,
+      "ano": 0.0368,
+      "m12": 0.1326,
+      "m24": 0.2748
+    },
+    "pct_bench": {
+      "mes": 0.2097,
+      "ano": 0.6501,
+      "m12": 0.8948,
+      "m24": 0.97
+    },
+    "fundos": [
+      {
+        "nome": "ABSOLUTEPACE LB FIA",
+        "pl": 10.23,
+        "financeiro": 7120894.98,
+        "mes": -0.0358,
+        "ano": 0.0557,
+        "m12": 0.1808,
+        "m24": 0.4122
+      },
+      {
+        "nome": "K ZETA FFIM",
+        "pl": 8.26,
+        "financeiro": 5747218.46,
+        "mes": 0.0297,
+        "ano": 0.010700000000000001,
+        "m12": 0.1452,
+        "m24": 0.3552
+      },
+      {
+        "nome": "SPXR FIQ FIM CP IE",
+        "pl": 7.2,
+        "financeiro": 5012762.43,
+        "mes": 0.015,
+        "ano": -0.0335,
+        "m12": 0.07429999999999999,
+        "m24": 0.2978
+      },
+      {
+        "nome": "RF CDB I",
+        "pl": 6.94,
+        "financeiro": 4827818.16,
+        "mes": 0.0108,
+        "ano": 0.057,
+        "m12": 0.1487,
+        "m24": null
+      },
+      {
+        "nome": "ACS LEGACY C FIC FIM",
+        "pl": 6.84,
+        "financeiro": 4759999.74,
+        "mes": 0.0147,
+        "ano": 0.037200000000000004,
+        "m12": 0.1335,
+        "m24": 0.24309999999999998
+      },
+      {
+        "nome": "PIMCO INCOME FIM IE",
+        "pl": 6.35,
+        "financeiro": 4421649.02,
+        "mes": 0.0138,
+        "ano": 0.0395,
+        "m12": 0.17600000000000002,
+        "m24": 0.3307
+      },
+      {
+        "nome": "TESOURO IPCA LONGORF",
+        "pl": 5.97,
+        "financeiro": 4158536.32,
+        "mes": -0.0024,
+        "ano": 0.042800000000000005,
+        "m12": 0.0883,
+        "m24": 0.11720000000000001
+      },
+      {
+        "nome": "JP GLOBAL MAC OPPFIM",
+        "pl": 5.84,
+        "financeiro": 4067506.7,
+        "mes": 0.0336,
+        "ano": 0.027200000000000002,
+        "m12": 0.1041,
+        "m24": 0.228
+      },
+      {
+        "nome": "ACS IBIUNA STH FC",
+        "pl": 5.73,
+        "financeiro": 3984782.17,
+        "mes": 0.015600000000000001,
+        "ano": 0.0176,
+        "m12": 0.0947,
+        "m24": 0.2087
+      },
+      {
+        "nome": "ARMOR AXE FC FIM",
+        "pl": 5.31,
+        "financeiro": 3698973.36,
+        "mes": 0.016399999999999998,
+        "ano": 0.061399999999999996,
+        "m12": 0.1426,
+        "m24": 0.29100000000000004
+      },
+      {
+        "nome": "BTGP MFS FIC FIM IE",
+        "pl": 5.27,
+        "financeiro": 3665800.96,
+        "mes": 0.013999999999999999,
+        "ano": 0.0173,
+        "m12": 0.08289999999999999,
+        "m24": 0.3048
+      },
+      {
+        "nome": "TREND IBOV ALAV FIA",
+        "pl": 4.28,
+        "financeiro": 2977735.35,
+        "mes": -0.1497,
+        "ano": 0.0873,
+        "m12": 0.35259999999999997,
+        "m24": 0.5324
+      },
+      {
+        "nome": "BTGP PICTET FC FM IE",
+        "pl": 4.1,
+        "financeiro": 2851688.45,
+        "mes": 0.084,
+        "ano": 0.0852,
+        "m12": 0.2324,
+        "m24": 0.3155
+      },
+      {
+        "nome": "BTG T PRE RF IRFM1+",
+        "pl": 3.91,
+        "financeiro": 2723198.82,
+        "mes": 0.0043,
+        "ano": 0.036699999999999997,
+        "m12": 0.1211,
+        "m24": 0.20550000000000002
+      },
+      {
+        "nome": "PACTUAL CAMBIAL FI",
+        "pl": 3.4,
+        "financeiro": 2365234.67,
+        "mes": 0.0208,
+        "ano": -0.0623,
+        "m12": -0.0668,
+        "m24": 0.0698
+      },
+      {
+        "nome": "PIMCO GLBCRED FIM IE",
+        "pl": 2.24,
+        "financeiro": 1557729.42,
+        "mes": 0.0131,
+        "ano": 0.0425,
+        "m12": 0.17170000000000002,
+        "m24": 0.3443
+      },
+      {
+        "nome": "TESOURO IPCA GERALRF",
+        "pl": 2.12,
+        "financeiro": 1472690.62,
+        "mes": 0.0016,
+        "ano": 0.0524,
+        "m12": 0.1042,
+        "m24": 0.16
+      },
+      {
+        "nome": "DAHLIA TOTAL RET FIA",
+        "pl": 1.75,
+        "financeiro": 1218436.48,
+        "mes": -0.0436,
+        "ano": 0.031,
+        "m12": 0.14429999999999998,
+        "m24": null
+      },
+      {
+        "nome": "SPRINGS EH FIC",
+        "pl": 1.74,
+        "financeiro": 1208378.81,
+        "mes": 0.0235,
+        "ano": 0.0732,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "SHIFT ALPHA I FIP A",
+        "pl": 1.55,
+        "financeiro": 1080428.37,
+        "mes": -0.0006,
+        "ano": 0.0556,
+        "m12": 0.0542,
+        "m24": 0.55
+      },
+      {
+        "nome": "BTAG13",
+        "pl": 1.03,
+        "financeiro": 717248.0,
+        "mes": -0.0191,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BTAG11",
+        "pl": 0.59,
+        "financeiro": 413202.09,
+        "mes": -0.0191,
+        "ano": 0.0298,
+        "m12": 0.18,
+        "m24": 0.1162
+      },
+      {
+        "nome": "INFRA II FIC FIP",
+        "pl": 0.04,
+        "financeiro": 27559.38,
+        "mes": -0.0001,
+        "ano": 0.08470000000000001,
+        "m12": 0.316,
+        "m24": null
+      }
+    ],
+    "_filename": "SABIA FIQ FIM CP - 29.05.2026.pdf",
+    "_nome": "SABIA FIQ FIM CP",
+    "_raw_p1": "Relatório de Performance Diário\nSABIA FIQ FIM CP\nData da geração do relatório: 01/06/2026 - 19:41\nPatrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 29/05/2026\n69,599,764.18 4.7700382\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(03/11/2014)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 69,599,764.18 4.770038200000 0.15 277.64 0.23 20.97 3.68 65.01 185.73 94.15\n28/05/2026 69,972,151.39 4.762976600000 0.06 108.06 0.08 7.52 3.53 62.92 185.31 94.01\n27/05/2026 69,931,800.11 4.760229900000 -0.01 -11.97 0.02 1.97 3.47 62.49 185.14 94.00\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 69,599,764.18 4.770038200000 -1.80 -52.69 4.64 66.75 13.26 89.48 27.48 97.00\n28/05/2026 69,972,151.39 4.762976600000 -1.94 -57.88 4.49 65.05 13.09 88.36 26.85 94.85\n27/05/2026 69,931,800.11 4.760229900000 -2.00 -60.56 4.69 67.99 12.98 87.56 26.53 93.76\nRentabilidade Histórica\n240%\n210%\n180%\n150%\n120%\n90%\n60%\n30%\n0%\n-30%\nJan-16 Jan-18 Jan-20 Jan-22 Jan-24 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 3.41% 2.10% -3.64% 1.68% 0.23% 3.68%\n2026 %CDI 292.78% 210.73% - 153.93% 20.97% 65.01%\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 5.66%\nPORTFÓLIO 1.36% 0.23% 0.87% 2.68% 1.82% 1.62% -0.83% 2.37% 1.80% 1.42% 1.82% 0.92% 17.28%\n2025 %CDI 135.05% 23.30% 90.57% 253.89% 159.71% 147.85% - 203.87% 147.32% 111.70% 172.72% 75.82% 120.71%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 15.95% 7.64% 11.36% 10.77% 13.91% 7.36% 1.00% 4.92% 12.53% 4.61% 17.28% 3.68% 185.73%\n%CDI 120.56% 54.55% 114.10% 167.75% 233.02% 265.77% 22.70% 39.76% 96.03% 42.37% 120.71% 65.01% 94.15%\nCDI 13.23% 14.00% 9.95% 6.42% 5.97% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.66% 197.27%\nEm atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante.",
+    "_tabelas_p1": [
+      [
+        [
+          "Relatório de Performance Diário\nSABIA FIQ FIM CP\nData da geração do relatório: 01/06/2026 - 19:41"
+        ],
+        [
+          "Patrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 29/05/2026\n69,599,764.18 4.7700382\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(03/11/2014)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 69,599,764.18 4.770038200000 0.15 277.64 0.23 20.97 3.68 65.01 185.73 94.15\n28/05/2026 69,972,151.39 4.762976600000 0.06 108.06 0.08 7.52 3.53 62.92 185.31 94.01\n27/05/2026 69,931,800.11 4.760229900000 -0.01 -11.97 0.02 1.97 3.47 62.49 185.14 94.00\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 69,599,764.18 4.770038200000 -1.80 -52.69 4.64 66.75 13.26 89.48 27.48 97.00\n28/05/2026 69,972,151.39 4.762976600000 -1.94 -57.88 4.49 65.05 13.09 88.36 26.85 94.85\n27/05/2026 69,931,800.11 4.760229900000 -2.00 -60.56 4.69 67.99 12.98 87.56 26.53 93.76\nRentabilidade Histórica\n240%\n210%\n180%\n150%\n120%\n90%\n60%\n30%\n0%\n-30%\nJan-16 Jan-18 Jan-20 Jan-22 Jan-24 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 3.41% 2.10% -3.64% 1.68% 0.23% 3.68%\n2026 %CDI 292.78% 210.73% - 153.93% 20.97% 65.01%\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 5.66%\nPORTFÓLIO 1.36% 0.23% 0.87% 2.68% 1.82% 1.62% -0.83% 2.37% 1.80% 1.42% 1.82% 0.92% 17.28%\n2025 %CDI 135.05% 23.30% 90.57% 253.89% 159.71% 147.85% - 203.87% 147.32% 111.70% 172.72% 75.82% 120.71%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 15.95% 7.64% 11.36% 10.77% 13.91% 7.36% 1.00% 4.92% 12.53% 4.61% 17.28% 3.68% 185.73%\n%CDI 120.56% 54.55% 114.10% 167.75% 233.02% 265.77% 22.70% 39.76% 96.03% 42.37% 120.71% 65.01% 94.15%\nCDI 13.23% 14.00% 9.95% 6.42% 5.97% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.66% 197.27%"
+        ],
+        [
+          "Em atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante."
+        ]
+      ],
+      [
+        [
+          "",
+          ""
+        ]
+      ],
+      [
+        [
+          "Data",
+          "Patrimônio",
+          "Cota",
+          "Dia",
+          null,
+          "Mês",
+          null,
+          "Ano",
+          null,
+          "Desde o Início\n(03/11/2014)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI"
+        ],
+        [
+          "29/05/2026",
+          "69,599,764.18",
+          "4.770038200000",
+          "0.15",
+          "277.64",
+          "0.23",
+          "20.97",
+          "3.68",
+          "65.01",
+          "185.73",
+          "94.15"
+        ],
+        [
+          "28/05/2026",
+          "69,972,151.39",
+          "4.762976600000",
+          "0.06",
+          "108.06",
+          "0.08",
+          "7.52",
+          "3.53",
+          "62.92",
+          "185.31",
+          "94.01"
+        ],
+        [
+          "27/05/2026",
+          "69,931,800.11",
+          "4.760229900000",
+          "-0.01",
+          "-11.97",
+          "0.02",
+          "1.97",
+          "3.47",
+          "62.49",
+          "185.14",
+          "94.00"
+        ]
+      ],
+      [
+        [
+          "Data",
+          "Patrimônio",
+          "Cota",
+          "3 Meses",
+          null,
+          "6 Meses",
+          null,
+          "12 Meses",
+          null,
+          "24 Meses",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI"
+        ],
+        [
+          "29/05/2026",
+          "69,599,764.18",
+          "4.770038200000",
+          "-1.80",
+          "-52.69",
+          "4.64",
+          "66.75",
+          "13.26",
+          "89.48",
+          "27.48",
+          "97.00"
+        ],
+        [
+          "28/05/2026",
+          "69,972,151.39",
+          "4.762976600000",
+          "-1.94",
+          "-57.88",
+          "4.49",
+          "65.05",
+          "13.09",
+          "88.36",
+          "26.85",
+          "94.85"
+        ],
+        [
+          "27/05/2026",
+          "69,931,800.11",
+          "4.760229900000",
+          "-2.00",
+          "-60.56",
+          "4.69",
+          "67.99",
+          "12.98",
+          "87.56",
+          "26.53",
+          "93.76"
+        ]
+      ],
+      [
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ]
+      ],
+      [
+        [
+          "Retorno Mensal",
+          null,
+          "JAN",
+          "FEV",
+          "MAR",
+          "ABR",
+          "MAI",
+          "JUN",
+          "JUL",
+          "AGO",
+          "SET",
+          "OUT",
+          "NOV",
+          "DEZ",
+          "no Ano"
+        ],
+        [
+          "2026",
+          "PORTFÓLIO",
+          "3.41%",
+          "2.10%",
+          "-3.64%",
+          "1.68%",
+          "0.23%",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "3.68%"
+        ],
+        [
+          null,
+          "%CDI",
+          "292.78%",
+          "210.73%",
+          "-",
+          "153.93%",
+          "20.97%",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "65.01%"
+        ],
+        [
+          null,
+          "CDI",
+          "1.16%",
+          "1.00%",
+          "1.21%",
+          "1.09%",
+          "1.07%",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "5.66%"
+        ],
+        [
+          "2025",
+          "PORTFÓLIO",
+          "1.36%",
+          "0.23%",
+          "0.87%",
+          "2.68%",
+          "1.82%",
+          "1.62%",
+          "-0.83%",
+          "2.37%",
+          "1.80%",
+          "1.42%",
+          "1.82%",
+          "0.92%",
+          "17.28%"
+        ],
+        [
+          null,
+          "%CDI",
+          "135.05%",
+          "23.30%",
+          "90.57%",
+          "253.89%",
+          "159.71%",
+          "147.85%",
+          "-",
+          "203.87%",
+          "147.32%",
+          "111.70%",
+          "172.72%",
+          "75.82%",
+          "120.71%"
+        ],
+        [
+          null,
+          "CDI",
+          "1.01%",
+          "0.99%",
+          "0.96%",
+          "1.06%",
+          "1.14%",
+          "1.10%",
+          "1.28%",
+          "1.16%",
+          "1.22%",
+          "1.28%",
+          "1.05%",
+          "1.22%",
+          "14.31%"
+        ]
+      ],
+      [
+        [
+          "Retorno Anual",
+          null,
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "2026",
+          "Desde\no início"
+        ],
+        [
+          "",
+          "PORTFÓLIO",
+          "15.95%",
+          "7.64%",
+          "11.36%",
+          "10.77%",
+          "13.91%",
+          "7.36%",
+          "1.00%",
+          "4.92%",
+          "12.53%",
+          "4.61%",
+          "17.28%",
+          "3.68%",
+          "185.73%"
+        ],
+        [
+          null,
+          "%CDI",
+          "120.56%",
+          "54.55%",
+          "114.10%",
+          "167.75%",
+          "233.02%",
+          "265.77%",
+          "22.70%",
+          "39.76%",
+          "96.03%",
+          "42.37%",
+          "120.71%",
+          "65.01%",
+          "94.15%"
+        ],
+        [
+          null,
+          "CDI",
+          "13.23%",
+          "14.00%",
+          "9.95%",
+          "6.42%",
+          "5.97%",
+          "2.77%",
+          "4.40%",
+          "12.37%",
+          "13.05%",
+          "10.87%",
+          "14.31%",
+          "5.66%",
+          "197.27%"
+        ]
+      ]
+    ],
+    "_dt": "2026-05-29 00:00:00"
+  },
+  {
+    "data_base": "22/05/2026",
+    "patrimonio": 69694895.66,
+    "perf_total": {
+      "mes": -0.0032,
+      "ano": 0.031200000000000002,
+      "m12": 0.1336,
+      "m24": 0.2595
+    },
+    "pct_bench": {
+      "mes": -0.3978,
+      "ano": 0.5793,
+      "m12": 0.9014,
+      "m24": 0.919
+    },
+    "fundos": [
+      {
+        "nome": "ABSOLUTEPACE LB FIA",
+        "pl": 10.22,
+        "financeiro": 7125918.35,
+        "mes": -0.0351,
+        "ano": 0.0564,
+        "m12": 0.2112,
+        "m24": 0.395
+      },
+      {
+        "nome": "K ZETA FFIM",
+        "pl": 8.12,
+        "financeiro": 5658995.7,
+        "mes": 0.0139,
+        "ano": -0.0048,
+        "m12": 0.1391,
+        "m24": 0.3207
+      },
+      {
+        "nome": "SPXR FIQ FIM CP IE",
+        "pl": 7.15,
+        "financeiro": 4979980.4,
+        "mes": 0.0084,
+        "ano": -0.0398,
+        "m12": 0.0658,
+        "m24": 0.2893
+      },
+      {
+        "nome": "RF CDB I",
+        "pl": 6.91,
+        "financeiro": 4815307.34,
+        "mes": 0.008100000000000001,
+        "ano": 0.0541,
+        "m12": 0.1487,
+        "m24": null
+      },
+      {
+        "nome": "ACS LEGACY C FIC FIM",
+        "pl": 6.77,
+        "financeiro": 4718260.0,
+        "mes": 0.0058,
+        "ano": 0.0281,
+        "m12": 0.1268,
+        "m24": 0.2322
+      },
+      {
+        "nome": "PIMCO INCOME FIM IE",
+        "pl": 6.29,
+        "financeiro": 4380908.51,
+        "mes": 0.0044,
+        "ano": 0.029900000000000003,
+        "m12": 0.17629999999999998,
+        "m24": 0.3118
+      },
+      {
+        "nome": "TESOURO IPCA LONGORF",
+        "pl": 5.93,
+        "financeiro": 4131316.17,
+        "mes": -0.0089,
+        "ano": 0.0359,
+        "m12": 0.0855,
+        "m24": 0.10769999999999999
+      },
+      {
+        "nome": "JP GLOBAL MAC OPPFIM",
+        "pl": 5.77,
+        "financeiro": 4019972.35,
+        "mes": 0.0215,
+        "ano": 0.0152,
+        "m12": 0.08810000000000001,
+        "m24": 0.21109999999999998
+      },
+      {
+        "nome": "ACS IBIUNA STH FC",
+        "pl": 5.65,
+        "financeiro": 3941210.25,
+        "mes": 0.0045000000000000005,
+        "ano": 0.006500000000000001,
+        "m12": 0.09050000000000001,
+        "m24": 0.1902
+      },
+      {
+        "nome": "ARMOR AXE FC FIM",
+        "pl": 5.28,
+        "financeiro": 3681028.33,
+        "mes": 0.011399999999999999,
+        "ano": 0.0562,
+        "m12": 0.1411,
+        "m24": 0.2812
+      },
+      {
+        "nome": "BTGP MFS FIC FIM IE",
+        "pl": 5.2,
+        "financeiro": 3621096.67,
+        "mes": 0.0017000000000000001,
+        "ano": 0.0049,
+        "m12": 0.0742,
+        "m24": 0.2734
+      },
+      {
+        "nome": "TREND IBOV ALAV FIA",
+        "pl": 4.4,
+        "financeiro": 3063217.74,
+        "mes": -0.1253,
+        "ano": 0.1185,
+        "m12": 0.4156,
+        "m24": 0.4997
+      },
+      {
+        "nome": "BTGP PICTET FC FM IE",
+        "pl": 4.01,
+        "financeiro": 2792460.98,
+        "mes": 0.061500000000000006,
+        "ano": 0.06269999999999999,
+        "m12": 0.2133,
+        "m24": 0.2577
+      },
+      {
+        "nome": "BTG T PRE RF IRFM1+",
+        "pl": 3.89,
+        "financeiro": 2713418.91,
+        "mes": 0.0007000000000000001,
+        "ano": 0.033,
+        "m12": 0.1229,
+        "m24": 0.20079999999999998
+      },
+      {
+        "nome": "PACTUAL CAMBIAL FI",
+        "pl": 3.38,
+        "financeiro": 2355256.83,
+        "mes": 0.0165,
+        "ano": -0.0662,
+        "m12": -0.0665,
+        "m24": 0.07719999999999999
+      },
+      {
+        "nome": "PIMCO GLBCRED FIM IE",
+        "pl": 2.22,
+        "financeiro": 1547519.31,
+        "mes": 0.0064,
+        "ano": 0.035699999999999996,
+        "m12": 0.17149999999999999,
+        "m24": 0.33380000000000004
+      },
+      {
+        "nome": "TESOURO IPCA GERALRF",
+        "pl": 2.1,
+        "financeiro": 1465724.78,
+        "mes": -0.0031,
+        "ano": 0.047400000000000005,
+        "m12": 0.10220000000000001,
+        "m24": 0.1539
+      },
+      {
+        "nome": "DAHLIA TOTAL RET FIA",
+        "pl": 1.76,
+        "financeiro": 1228230.41,
+        "mes": -0.0359,
+        "ano": 0.0393,
+        "m12": 0.16820000000000002,
+        "m24": null
+      },
+      {
+        "nome": "SPRINGS EH FIC",
+        "pl": 1.71,
+        "financeiro": 1191718.62,
+        "mes": 0.009399999999999999,
+        "ano": 0.0584,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "SHIFT ALPHA I FIP A",
+        "pl": 1.55,
+        "financeiro": 1080321.28,
+        "mes": -0.0007000000000000001,
+        "ano": 0.0555,
+        "m12": 0.054000000000000006,
+        "m24": 0.5501
+      },
+      {
+        "nome": "BTAG13",
+        "pl": 1.05,
+        "financeiro": 729280.0,
+        "mes": -0.0026,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "BTAG11",
+        "pl": 0.6,
+        "financeiro": 420133.65,
+        "mes": -0.0026,
+        "ano": 0.0471,
+        "m12": 0.2052,
+        "m24": 0.13720000000000002
+      },
+      {
+        "nome": "INFRA II FIC FIP",
+        "pl": 0.04,
+        "financeiro": 27557.65,
+        "mes": -0.0002,
+        "ano": 0.08460000000000001,
+        "m12": 0.2919,
+        "m24": null
+      }
+    ],
+    "_filename": "SABIA FIQ FIM CP - 22.05.2026.pdf",
+    "_nome": "SABIA FIQ FIM CP",
+    "_raw_p1": "Relatório de Performance Diário\nSABIA FIQ FIM CP\nData da geração do relatório: 25/05/2026 - 13:24\nPatrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 22/05/2026\n69,694,895.66 4.7441039\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(03/11/2014)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n22/05/2026 69,694,895.66 4.744103900000 -0.07 -131.38 -0.32 -39.78 3.12 57.93 184.18 93.74\n21/05/2026 69,743,823.99 4.747434500000 0.14 253.39 -0.25 -33.31 3.19 59.91 184.38 93.91\n20/05/2026 69,649,583.24 4.741019500000 0.56 1,050.25 -0.38 -55.23 3.05 57.90 183.99 93.79\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n22/05/2026 69,694,895.66 4.744103900000 -1.87 -54.72 5.77 82.93 13.36 90.14 25.95 91.90\n21/05/2026 69,743,823.99 4.747434500000 -1.80 -53.57 5.85 84.69 13.47 90.84 25.43 90.10\n20/05/2026 69,649,583.24 4.741019500000 -1.94 -58.47 5.49 79.47 12.80 86.35 25.11 89.04\nRentabilidade Histórica\n240%\n210%\n180%\n150%\n120%\n90%\n60%\n30%\n0%\n-30%\nJan-16 Jan-18 Jan-20 Jan-22 Jan-24 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 3.41% 2.10% -3.64% 1.68% -0.32% 3.12%\n2026 %CDI 292.78% 210.73% - 153.93% - 57.93%\nCDI 1.16% 1.00% 1.21% 1.09% 0.80% 5.38%\nPORTFÓLIO 1.36% 0.23% 0.87% 2.68% 1.82% 1.62% -0.83% 2.37% 1.80% 1.42% 1.82% 0.92% 17.28%\n2025 %CDI 135.05% 23.30% 90.57% 253.89% 159.71% 147.85% - 203.87% 147.32% 111.70% 172.72% 75.82% 120.71%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 15.95% 7.64% 11.36% 10.77% 13.91% 7.36% 1.00% 4.92% 12.53% 4.61% 17.28% 3.12% 184.18%\n%CDI 120.56% 54.55% 114.10% 167.75% 233.02% 265.77% 22.70% 39.76% 96.03% 42.37% 120.71% 57.93% 93.74%\nCDI 13.23% 14.00% 9.95% 6.42% 5.97% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.38% 196.48%\nEm atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante.",
+    "_tabelas_p1": [
+      [
+        [
+          "Relatório de Performance Diário\nSABIA FIQ FIM CP\nData da geração do relatório: 25/05/2026 - 13:24"
+        ],
+        [
+          "Patrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 22/05/2026\n69,694,895.66 4.7441039\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(03/11/2014)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n22/05/2026 69,694,895.66 4.744103900000 -0.07 -131.38 -0.32 -39.78 3.12 57.93 184.18 93.74\n21/05/2026 69,743,823.99 4.747434500000 0.14 253.39 -0.25 -33.31 3.19 59.91 184.38 93.91\n20/05/2026 69,649,583.24 4.741019500000 0.56 1,050.25 -0.38 -55.23 3.05 57.90 183.99 93.79\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n22/05/2026 69,694,895.66 4.744103900000 -1.87 -54.72 5.77 82.93 13.36 90.14 25.95 91.90\n21/05/2026 69,743,823.99 4.747434500000 -1.80 -53.57 5.85 84.69 13.47 90.84 25.43 90.10\n20/05/2026 69,649,583.24 4.741019500000 -1.94 -58.47 5.49 79.47 12.80 86.35 25.11 89.04\nRentabilidade Histórica\n240%\n210%\n180%\n150%\n120%\n90%\n60%\n30%\n0%\n-30%\nJan-16 Jan-18 Jan-20 Jan-22 Jan-24 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 3.41% 2.10% -3.64% 1.68% -0.32% 3.12%\n2026 %CDI 292.78% 210.73% - 153.93% - 57.93%\nCDI 1.16% 1.00% 1.21% 1.09% 0.80% 5.38%\nPORTFÓLIO 1.36% 0.23% 0.87% 2.68% 1.82% 1.62% -0.83% 2.37% 1.80% 1.42% 1.82% 0.92% 17.28%\n2025 %CDI 135.05% 23.30% 90.57% 253.89% 159.71% 147.85% - 203.87% 147.32% 111.70% 172.72% 75.82% 120.71%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 15.95% 7.64% 11.36% 10.77% 13.91% 7.36% 1.00% 4.92% 12.53% 4.61% 17.28% 3.12% 184.18%\n%CDI 120.56% 54.55% 114.10% 167.75% 233.02% 265.77% 22.70% 39.76% 96.03% 42.37% 120.71% 57.93% 93.74%\nCDI 13.23% 14.00% 9.95% 6.42% 5.97% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.38% 196.48%"
+        ],
+        [
+          "Em atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante."
+        ]
+      ],
+      [
+        [
+          "",
+          ""
+        ]
+      ],
+      [
+        [
+          "Data",
+          "Patrimônio",
+          "Cota",
+          "Dia",
+          null,
+          "Mês",
+          null,
+          "Ano",
+          null,
+          "Desde o Início\n(03/11/2014)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI"
+        ],
+        [
+          "22/05/2026",
+          "69,694,895.66",
+          "4.744103900000",
+          "-0.07",
+          "-131.38",
+          "-0.32",
+          "-39.78",
+          "3.12",
+          "57.93",
+          "184.18",
+          "93.74"
+        ],
+        [
+          "21/05/2026",
+          "69,743,823.99",
+          "4.747434500000",
+          "0.14",
+          "253.39",
+          "-0.25",
+          "-33.31",
+          "3.19",
+          "59.91",
+          "184.38",
+          "93.91"
+        ],
+        [
+          "20/05/2026",
+          "69,649,583.24",
+          "4.741019500000",
+          "0.56",
+          "1,050.25",
+          "-0.38",
+          "-55.23",
+          "3.05",
+          "57.90",
+          "183.99",
+          "93.79"
+        ]
+      ],
+      [
+        [
+          "Data",
+          "Patrimônio",
+          "Cota",
+          "3 Meses",
+          null,
+          "6 Meses",
+          null,
+          "12 Meses",
+          null,
+          "24 Meses",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI"
+        ],
+        [
+          "22/05/2026",
+          "69,694,895.66",
+          "4.744103900000",
+          "-1.87",
+          "-54.72",
+          "5.77",
+          "82.93",
+          "13.36",
+          "90.14",
+          "25.95",
+          "91.90"
+        ],
+        [
+          "21/05/2026",
+          "69,743,823.99",
+          "4.747434500000",
+          "-1.80",
+          "-53.57",
+          "5.85",
+          "84.69",
+          "13.47",
+          "90.84",
+          "25.43",
+          "90.10"
+        ],
+        [
+          "20/05/2026",
+          "69,649,583.24",
+          "4.741019500000",
+          "-1.94",
+          "-58.47",
+          "5.49",
+          "79.47",
+          "12.80",
+          "86.35",
+          "25.11",
+          "89.04"
+        ]
+      ],
+      [
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ]
+      ],
+      [
+        [
+          "Retorno Mensal",
+          null,
+          "JAN",
+          "FEV",
+          "MAR",
+          "ABR",
+          "MAI",
+          "JUN",
+          "JUL",
+          "AGO",
+          "SET",
+          "OUT",
+          "NOV",
+          "DEZ",
+          "no Ano"
+        ],
+        [
+          "2026",
+          "PORTFÓLIO",
+          "3.41%",
+          "2.10%",
+          "-3.64%",
+          "1.68%",
+          "-0.32%",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "3.12%"
+        ],
+        [
+          null,
+          "%CDI",
+          "292.78%",
+          "210.73%",
+          "-",
+          "153.93%",
+          "-",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "57.93%"
+        ],
+        [
+          null,
+          "CDI",
+          "1.16%",
+          "1.00%",
+          "1.21%",
+          "1.09%",
+          "0.80%",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "5.38%"
+        ],
+        [
+          "2025",
+          "PORTFÓLIO",
+          "1.36%",
+          "0.23%",
+          "0.87%",
+          "2.68%",
+          "1.82%",
+          "1.62%",
+          "-0.83%",
+          "2.37%",
+          "1.80%",
+          "1.42%",
+          "1.82%",
+          "0.92%",
+          "17.28%"
+        ],
+        [
+          null,
+          "%CDI",
+          "135.05%",
+          "23.30%",
+          "90.57%",
+          "253.89%",
+          "159.71%",
+          "147.85%",
+          "-",
+          "203.87%",
+          "147.32%",
+          "111.70%",
+          "172.72%",
+          "75.82%",
+          "120.71%"
+        ],
+        [
+          null,
+          "CDI",
+          "1.01%",
+          "0.99%",
+          "0.96%",
+          "1.06%",
+          "1.14%",
+          "1.10%",
+          "1.28%",
+          "1.16%",
+          "1.22%",
+          "1.28%",
+          "1.05%",
+          "1.22%",
+          "14.31%"
+        ]
+      ],
+      [
+        [
+          "Retorno Anual",
+          null,
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "2026",
+          "Desde\no início"
+        ],
+        [
+          "",
+          "PORTFÓLIO",
+          "15.95%",
+          "7.64%",
+          "11.36%",
+          "10.77%",
+          "13.91%",
+          "7.36%",
+          "1.00%",
+          "4.92%",
+          "12.53%",
+          "4.61%",
+          "17.28%",
+          "3.12%",
+          "184.18%"
+        ],
+        [
+          null,
+          "%CDI",
+          "120.56%",
+          "54.55%",
+          "114.10%",
+          "167.75%",
+          "233.02%",
+          "265.77%",
+          "22.70%",
+          "39.76%",
+          "96.03%",
+          "42.37%",
+          "120.71%",
+          "57.93%",
+          "93.74%"
+        ],
+        [
+          null,
+          "CDI",
+          "13.23%",
+          "14.00%",
+          "9.95%",
+          "6.42%",
+          "5.97%",
+          "2.77%",
+          "4.40%",
+          "12.37%",
+          "13.05%",
+          "10.87%",
+          "14.31%",
+          "5.38%",
+          "196.48%"
+        ]
+      ]
+    ],
+    "_dt": "2026-05-22 00:00:00"
+  },
+  {
+    "data_base": "05/06/2026",
+    "patrimonio": 10326621.25,
+    "perf_total": {
+      "mes": -0.0021,
+      "ano": -0.0325,
+      "m12": 0.008,
+      "m24": 0.1232
+    },
+    "pct_bench": {
+      "mes": -1.9602000000000002,
+      "ano": -0.5621,
+      "m12": 0.053899999999999997,
+      "m24": 0.4334
+    },
+    "fundos": [
+      {
+        "nome": "RF CDB I",
+        "pl": 12.08,
+        "financeiro": 1247070.05,
+        "mes": 0.0021,
+        "ano": 0.0592,
+        "m12": 0.1481,
+        "m24": null
+      },
+      {
+        "nome": "ATMP FC FIA",
+        "pl": 11.43,
+        "financeiro": 1180676.22,
+        "mes": -0.0436,
+        "ano": -0.028900000000000002,
+        "m12": 0.0688,
+        "m24": null
+      },
+      {
+        "nome": "VBBR3",
+        "pl": 7.16,
+        "financeiro": 739555.11,
+        "mes": -0.028900000000000002,
+        "ano": 0.15259999999999999,
+        "m12": 0.5898,
+        "m24": null
+      },
+      {
+        "nome": "BPAC11",
+        "pl": 5.98,
+        "financeiro": 617930.0,
+        "mes": -0.057699999999999994,
+        "ano": -0.036699999999999997,
+        "m12": 0.29469999999999996,
+        "m24": null
+      },
+      {
+        "nome": "ITSA4",
+        "pl": 5.98,
+        "financeiro": 617858.34,
+        "mes": -0.0276,
+        "ano": 0.08689999999999999,
+        "m12": 0.31170000000000003,
+        "m24": null
+      },
+      {
+        "nome": "KLBN11",
+        "pl": 5.58,
+        "financeiro": 576528.7,
+        "mes": 0.022799999999999997,
+        "ano": -0.09119999999999999,
+        "m12": -0.0037,
+        "m24": null
+      },
+      {
+        "nome": "EQTL3",
+        "pl": 5.53,
+        "financeiro": 571159.89,
+        "mes": 0.009300000000000001,
+        "ano": 0.0106,
+        "m12": 0.1057,
+        "m24": null
+      },
+      {
+        "nome": "BBDC4",
+        "pl": 5.08,
+        "financeiro": 524100.0,
+        "mes": -0.011899999999999999,
+        "ano": -0.019799999999999998,
+        "m12": 0.1696,
+        "m24": null
+      },
+      {
+        "nome": "MELI34",
+        "pl": 4.92,
+        "financeiro": 507703.8,
+        "mes": -0.0315,
+        "ano": -0.2588,
+        "m12": -0.43229999999999996,
+        "m24": null
+      },
+      {
+        "nome": "RAIL3",
+        "pl": 4.83,
+        "financeiro": 499052.0,
+        "mes": 0.016,
+        "ano": -0.0489,
+        "m12": -0.2395,
+        "m24": null
+      },
+      {
+        "nome": "BOVA11",
+        "pl": 4.82,
+        "financeiro": 497250.0,
+        "mes": -0.029300000000000003,
+        "ano": 0.049100000000000005,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "SMAL11",
+        "pl": 4.59,
+        "financeiro": 473924.0,
+        "mes": -0.0296,
+        "ano": -0.042199999999999994,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "VULC3",
+        "pl": 4.35,
+        "financeiro": 449337.6,
+        "mes": -0.028300000000000002,
+        "ano": -0.2818,
+        "m12": -0.0537,
+        "m24": null
+      },
+      {
+        "nome": "EMBJ3",
+        "pl": 3.92,
+        "financeiro": 405048.0,
+        "mes": -0.0143,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "POMO4",
+        "pl": 3.53,
+        "financeiro": 364990.0,
+        "mes": -0.0677,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "AZZA3",
+        "pl": 2.69,
+        "financeiro": 277506.0,
+        "mes": -0.11289999999999999,
+        "ano": -0.31920000000000004,
+        "m12": -0.5664,
+        "m24": null
+      },
+      {
+        "nome": "TUESDAY VINTAGE FIA",
+        "pl": 2.4,
+        "financeiro": 247921.43,
+        "mes": 0.0528,
+        "ano": -0.022400000000000003,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "HBOR3",
+        "pl": 2.19,
+        "financeiro": 225680.0,
+        "mes": -0.1457,
+        "ano": -0.0819,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "PASS3",
+        "pl": 1.09,
+        "financeiro": 112200.0,
+        "mes": -0.047400000000000005,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "TREND IBOV ALAV FIA",
+        "pl": 1.04,
+        "financeiro": 107466.42,
+        "mes": -0.059000000000000004,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "AMER3",
+        "pl": 0.44,
+        "financeiro": 45600.0,
+        "mes": -0.0495,
+        "ano": -0.0643,
+        "m12": -0.10949999999999999,
+        "m24": null
+      }
+    ],
+    "_filename": "MEMMO FIM - 05.06.2026.pdf",
+    "_nome": "MEMMO FIM",
+    "_raw_p1": "Relatório de Performance Diário\nMEMMO FIM\nData da geração do relatório: 08/06/2026 - 11:47\nPatrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 05/06/2026\n10,326,621.25 1.4928741\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(22/04/2019)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n05/06/2026 10,326,621.25 1.492874100000 -0.27 -500.60 -2.58 -1,206.64 -5.54 -94.16 49.29 54.62\n03/06/2026 10,354,299.83 1.496875500000 -2.11 -3,957.57 -2.32 -1,446.37 -5.29 -90.73 49.69 55.13\n02/06/2026 10,577,844.28 1.529192300000 0.18 345.32 -0.21 -196.02 -3.25 -56.21 52.92 58.78\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n05/06/2026 10,326,621.25 1.492874100000 -8.33 -244.51 -5.11 -74.20 1.41 9.57 12.23 43.05\n03/06/2026 10,354,299.83 1.496875500000 -8.44 -243.46 -7.51 -108.18 0.80 5.39 12.32 43.34\n02/06/2026 10,577,844.28 1.529192300000 -9.14 -263.39 -5.49 -79.05 3.66 24.74 14.74 51.87\nRentabilidade Histórica\n96%\n84%\n72%\n60%\n48%\n36%\n24%\n12%\n0%\n-12%\nJan-20 Jan-21 Jan-22 Jan-23 Jan-24 Jan-25 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 5.22% 1.31% -3.16% -1.01% -5.11% -2.58% -5.54%\n2026 %CDI 448.32% 131.10% - - - - -\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 0.21% 5.89%\nPORTFÓLIO 4.78% -2.45% 3.17% 8.82% 4.46% 1.76% -4.63% 6.08% 0.81% 1.01% 3.92% -1.64% 28.46%\n2025 %CDI 473.62% - 329.88% 835.54% 392.59% 160.46% - 522.06% 66.69% 79.36% 372.18% - 198.80%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 4.63% 7.05% -3.23% 5.91% 14.08% -6.05% 28.46% -5.54% 49.29%\n%CDI 115.72% 254.71% - 47.80% 107.88% - 198.80% - 54.62%\nCDI 4.00% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.89% 90.23%\nEm atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante.",
+    "_tabelas_p1": [
+      [
+        [
+          "Relatório de Performance Diário\nMEMMO FIM\nData da geração do relatório: 08/06/2026 - 11:47"
+        ],
+        [
+          "Patrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 05/06/2026\n10,326,621.25 1.4928741\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(22/04/2019)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n05/06/2026 10,326,621.25 1.492874100000 -0.27 -500.60 -2.58 -1,206.64 -5.54 -94.16 49.29 54.62\n03/06/2026 10,354,299.83 1.496875500000 -2.11 -3,957.57 -2.32 -1,446.37 -5.29 -90.73 49.69 55.13\n02/06/2026 10,577,844.28 1.529192300000 0.18 345.32 -0.21 -196.02 -3.25 -56.21 52.92 58.78\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n05/06/2026 10,326,621.25 1.492874100000 -8.33 -244.51 -5.11 -74.20 1.41 9.57 12.23 43.05\n03/06/2026 10,354,299.83 1.496875500000 -8.44 -243.46 -7.51 -108.18 0.80 5.39 12.32 43.34\n02/06/2026 10,577,844.28 1.529192300000 -9.14 -263.39 -5.49 -79.05 3.66 24.74 14.74 51.87\nRentabilidade Histórica\n96%\n84%\n72%\n60%\n48%\n36%\n24%\n12%\n0%\n-12%\nJan-20 Jan-21 Jan-22 Jan-23 Jan-24 Jan-25 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 5.22% 1.31% -3.16% -1.01% -5.11% -2.58% -5.54%\n2026 %CDI 448.32% 131.10% - - - - -\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 0.21% 5.89%\nPORTFÓLIO 4.78% -2.45% 3.17% 8.82% 4.46% 1.76% -4.63% 6.08% 0.81% 1.01% 3.92% -1.64% 28.46%\n2025 %CDI 473.62% - 329.88% 835.54% 392.59% 160.46% - 522.06% 66.69% 79.36% 372.18% - 198.80%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 4.63% 7.05% -3.23% 5.91% 14.08% -6.05% 28.46% -5.54% 49.29%\n%CDI 115.72% 254.71% - 47.80% 107.88% - 198.80% - 54.62%\nCDI 4.00% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.89% 90.23%"
+        ],
+        [
+          "Em atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante."
+        ]
+      ],
+      [
+        [
+          "",
+          ""
+        ]
+      ],
+      [
+        [
+          "Data",
+          "Patrimônio",
+          "Cota",
+          "Dia",
+          null,
+          "Mês",
+          null,
+          "Ano",
+          null,
+          "Desde o Início\n(22/04/2019)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI"
+        ],
+        [
+          "05/06/2026",
+          "10,326,621.25",
+          "1.492874100000",
+          "-0.27",
+          "-500.60",
+          "-2.58",
+          "-1,206.64",
+          "-5.54",
+          "-94.16",
+          "49.29",
+          "54.62"
+        ],
+        [
+          "03/06/2026",
+          "10,354,299.83",
+          "1.496875500000",
+          "-2.11",
+          "-3,957.57",
+          "-2.32",
+          "-1,446.37",
+          "-5.29",
+          "-90.73",
+          "49.69",
+          "55.13"
+        ],
+        [
+          "02/06/2026",
+          "10,577,844.28",
+          "1.529192300000",
+          "0.18",
+          "345.32",
+          "-0.21",
+          "-196.02",
+          "-3.25",
+          "-56.21",
+          "52.92",
+          "58.78"
+        ]
+      ],
+      [
+        [
+          "Data",
+          "Patrimônio",
+          "Cota",
+          "3 Meses",
+          null,
+          "6 Meses",
+          null,
+          "12 Meses",
+          null,
+          "24 Meses",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI"
+        ],
+        [
+          "05/06/2026",
+          "10,326,621.25",
+          "1.492874100000",
+          "-8.33",
+          "-244.51",
+          "-5.11",
+          "-74.20",
+          "1.41",
+          "9.57",
+          "12.23",
+          "43.05"
+        ],
+        [
+          "03/06/2026",
+          "10,354,299.83",
+          "1.496875500000",
+          "-8.44",
+          "-243.46",
+          "-7.51",
+          "-108.18",
+          "0.80",
+          "5.39",
+          "12.32",
+          "43.34"
+        ],
+        [
+          "02/06/2026",
+          "10,577,844.28",
+          "1.529192300000",
+          "-9.14",
+          "-263.39",
+          "-5.49",
+          "-79.05",
+          "3.66",
+          "24.74",
+          "14.74",
+          "51.87"
+        ]
+      ],
+      [
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ]
+      ],
+      [
+        [
+          "Retorno Mensal",
+          null,
+          "JAN",
+          "FEV",
+          "MAR",
+          "ABR",
+          "MAI",
+          "JUN",
+          "JUL",
+          "AGO",
+          "SET",
+          "OUT",
+          "NOV",
+          "DEZ",
+          "no Ano"
+        ],
+        [
+          "2026",
+          "PORTFÓLIO",
+          "5.22%",
+          "1.31%",
+          "-3.16%",
+          "-1.01%",
+          "-5.11%",
+          "-2.58%",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-5.54%"
+        ],
+        [
+          null,
+          "%CDI",
+          "448.32%",
+          "131.10%",
+          "-",
+          "-",
+          "-",
+          "-",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-"
+        ],
+        [
+          null,
+          "CDI",
+          "1.16%",
+          "1.00%",
+          "1.21%",
+          "1.09%",
+          "1.07%",
+          "0.21%",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "5.89%"
+        ],
+        [
+          "2025",
+          "PORTFÓLIO",
+          "4.78%",
+          "-2.45%",
+          "3.17%",
+          "8.82%",
+          "4.46%",
+          "1.76%",
+          "-4.63%",
+          "6.08%",
+          "0.81%",
+          "1.01%",
+          "3.92%",
+          "-1.64%",
+          "28.46%"
+        ],
+        [
+          null,
+          "%CDI",
+          "473.62%",
+          "-",
+          "329.88%",
+          "835.54%",
+          "392.59%",
+          "160.46%",
+          "-",
+          "522.06%",
+          "66.69%",
+          "79.36%",
+          "372.18%",
+          "-",
+          "198.80%"
+        ],
+        [
+          null,
+          "CDI",
+          "1.01%",
+          "0.99%",
+          "0.96%",
+          "1.06%",
+          "1.14%",
+          "1.10%",
+          "1.28%",
+          "1.16%",
+          "1.22%",
+          "1.28%",
+          "1.05%",
+          "1.22%",
+          "14.31%"
+        ]
+      ],
+      [
+        [
+          "Retorno Anual",
+          null,
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "2026",
+          "Desde\no início"
+        ],
+        [
+          "",
+          "PORTFÓLIO",
+          "",
+          "",
+          "",
+          "",
+          "4.63%",
+          "7.05%",
+          "-3.23%",
+          "5.91%",
+          "14.08%",
+          "-6.05%",
+          "28.46%",
+          "-5.54%",
+          "49.29%"
+        ],
+        [
+          null,
+          "%CDI",
+          "",
+          "",
+          "",
+          "",
+          "115.72%",
+          "254.71%",
+          "-",
+          "47.80%",
+          "107.88%",
+          "-",
+          "198.80%",
+          "-",
+          "54.62%"
+        ],
+        [
+          null,
+          "CDI",
+          "",
+          "",
+          "",
+          "",
+          "4.00%",
+          "2.77%",
+          "4.40%",
+          "12.37%",
+          "13.05%",
+          "10.87%",
+          "14.31%",
+          "5.89%",
+          "90.23%"
+        ]
+      ]
+    ],
+    "_dt": "2026-06-05 00:00:00"
+  },
+  {
+    "data_base": "29/05/2026",
+    "patrimonio": 10600041.01,
+    "perf_total": {
+      "mes": -0.044000000000000004,
+      "ano": -0.0232,
+      "m12": 0.0321,
+      "m24": 0.152
+    },
+    "pct_bench": {
+      "mes": -4.3189,
+      "ano": -0.41450000000000004,
+      "m12": 0.2165,
+      "m24": 0.5365
+    },
+    "fundos": [
+      {
+        "nome": "ATMP FC FIA",
+        "pl": 11.65,
+        "financeiro": 1234555.98,
+        "mes": -0.0452,
+        "ano": 0.0154,
+        "m12": 0.1091,
+        "m24": null
+      },
+      {
+        "nome": "RF CDB I",
+        "pl": 7.58,
+        "financeiro": 803602.17,
+        "mes": 0.0108,
+        "ano": 0.057,
+        "m12": 0.1487,
+        "m24": null
+      },
+      {
+        "nome": "VBBR3",
+        "pl": 7.18,
+        "financeiro": 761570.25,
+        "mes": -0.1066,
+        "ano": 0.187,
+        "m12": 0.6023,
+        "m24": null
+      },
+      {
+        "nome": "BPAC11",
+        "pl": 6.19,
+        "financeiro": 655750.0,
+        "mes": -0.0942,
+        "ano": 0.0223,
+        "m12": 0.36,
+        "m24": null
+      },
+      {
+        "nome": "ITSA4",
+        "pl": 6.01,
+        "financeiro": 636581.32,
+        "mes": -0.0718,
+        "ano": 0.1177,
+        "m12": 0.3201,
+        "m24": null
+      },
+      {
+        "nome": "EQTL3",
+        "pl": 5.34,
+        "financeiro": 565875.45,
+        "mes": -0.0891,
+        "ano": 0.0013,
+        "m12": 0.08449999999999999,
+        "m24": null
+      },
+      {
+        "nome": "BBDC4",
+        "pl": 5.01,
+        "financeiro": 531000.0,
+        "mes": -0.08289999999999999,
+        "ano": -0.008,
+        "m12": 0.177,
+        "m24": null
+      },
+      {
+        "nome": "MELI34",
+        "pl": 4.95,
+        "financeiro": 524193.96,
+        "mes": -0.0496,
+        "ano": -0.2348,
+        "m12": -0.4092,
+        "m24": null
+      },
+      {
+        "nome": "BOVA11",
+        "pl": 4.83,
+        "financeiro": 512250.0,
+        "mes": -0.0725,
+        "ano": 0.08070000000000001,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "RAIL3",
+        "pl": 4.63,
+        "financeiro": 491176.0,
+        "mes": -0.1278,
+        "ano": -0.064,
+        "m12": -0.2484,
+        "m24": null
+      },
+      {
+        "nome": "SMAL11",
+        "pl": 4.61,
+        "financeiro": 488356.0,
+        "mes": -0.0412,
+        "ano": -0.013000000000000001,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "KLBN11",
+        "pl": 4.36,
+        "financeiro": 461992.38,
+        "mes": -0.0463,
+        "ano": -0.1114,
+        "m12": -0.0508,
+        "m24": null
+      },
+      {
+        "nome": "VULC3",
+        "pl": 4.36,
+        "financeiro": 462443.28,
+        "mes": -0.0608,
+        "ano": -0.2608,
+        "m12": -0.0513,
+        "m24": null
+      },
+      {
+        "nome": "AZZA3",
+        "pl": 2.95,
+        "financeiro": 312822.0,
+        "mes": -0.10679999999999999,
+        "ano": -0.2325,
+        "m12": -0.4997,
+        "m24": null
+      },
+      {
+        "nome": "EMBJ3",
+        "pl": 2.91,
+        "financeiro": 308196.0,
+        "mes": -0.047400000000000005,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "POMO4",
+        "pl": 2.74,
+        "financeiro": 290880.0,
+        "mes": -0.06480000000000001,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "HBOR3",
+        "pl": 2.49,
+        "financeiro": 264160.0,
+        "mes": 0.0809,
+        "ano": 0.0747,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "TUESDAY VINTAGE FIA",
+        "pl": 2.22,
+        "financeiro": 235479.22,
+        "mes": 0.0033,
+        "ano": -0.07139999999999999,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "PASS3",
+        "pl": 1.11,
+        "financeiro": 117788.0,
+        "mes": null,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "TREND IBOV ALAV FIA",
+        "pl": 1.08,
+        "financeiro": 114200.12,
+        "mes": -0.1497,
+        "ano": null,
+        "m12": null,
+        "m24": null
+      },
+      {
+        "nome": "AMER3",
+        "pl": 0.45,
+        "financeiro": 47975.0,
+        "mes": -0.1202,
+        "ano": -0.015600000000000001,
+        "m12": -0.027000000000000003,
+        "m24": null
+      }
+    ],
+    "_filename": "MEMMO FIM - 29.05.2026.pdf",
+    "_nome": "MEMMO FIM",
+    "_raw_p1": "Relatório de Performance Diário\nMEMMO FIM\nData da geração do relatório: 01/06/2026 - 12:16\nPatrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 29/05/2026\n10,600,041.01 1.5324012\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(22/04/2019)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 10,600,041.01 1.532401200000 -0.74 -1,379.24 -5.11 -475.78 -3.04 -53.74 53.24 59.27\n28/05/2026 10,678,690.32 1.543771200000 -0.41 -776.94 -4.40 -431.89 -2.32 -41.45 54.38 60.60\n27/05/2026 10,723,179.06 1.550202700000 -0.01 -25.33 -4.00 -414.76 -1.92 -34.54 55.02 61.39\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 10,600,041.01 1.532401200000 -9.04 -264.73 -4.63 -66.63 3.21 21.65 15.20 53.65\n28/05/2026 10,678,690.32 1.543771200000 -8.37 -248.99 -3.92 -56.92 3.79 25.58 15.91 56.19\n27/05/2026 10,723,179.06 1.550202700000 -7.98 -241.59 -2.86 -41.43 4.14 27.95 16.46 58.19\nRentabilidade Histórica\n96%\n84%\n72%\n60%\n48%\n36%\n24%\n12%\n0%\n-12%\nJan-20 Jan-21 Jan-22 Jan-23 Jan-24 Jan-25 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 5.22% 1.31% -3.16% -1.01% -5.11% -3.04%\n2026 %CDI 448.32% 131.10% - - - -\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 5.66%\nPORTFÓLIO 4.78% -2.45% 3.17% 8.82% 4.46% 1.76% -4.63% 6.08% 0.81% 1.01% 3.92% -1.64% 28.46%\n2025 %CDI 473.62% - 329.88% 835.54% 392.59% 160.46% - 522.06% 66.69% 79.36% 372.18% - 198.80%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 4.63% 7.05% -3.23% 5.91% 14.08% -6.05% 28.46% -3.04% 53.24%\n%CDI 115.72% 254.71% - 47.80% 107.88% - 198.80% - 59.27%\nCDI 4.00% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.66% 89.83%\nEm atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante.",
+    "_tabelas_p1": [
+      [
+        [
+          "Relatório de Performance Diário\nMEMMO FIM\nData da geração do relatório: 01/06/2026 - 12:16"
+        ],
+        [
+          "Patrimônio e Rentabilidades\nPatrimônio Valor da Cota\nem 29/05/2026\n10,600,041.01 1.5324012\nR$ R$\nRentabilidade nos Últimos 3 Dias Úteis\nDesde o Início\nDia Mês Ano\n(22/04/2019)\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 10,600,041.01 1.532401200000 -0.74 -1,379.24 -5.11 -475.78 -3.04 -53.74 53.24 59.27\n28/05/2026 10,678,690.32 1.543771200000 -0.41 -776.94 -4.40 -431.89 -2.32 -41.45 54.38 60.60\n27/05/2026 10,723,179.06 1.550202700000 -0.01 -25.33 -4.00 -414.76 -1.92 -34.54 55.02 61.39\n3 Meses 6 Meses 12 Meses 24 Meses\nData Patrimônio Cota\n% %CDI % %CDI % %CDI % %CDI\n29/05/2026 10,600,041.01 1.532401200000 -9.04 -264.73 -4.63 -66.63 3.21 21.65 15.20 53.65\n28/05/2026 10,678,690.32 1.543771200000 -8.37 -248.99 -3.92 -56.92 3.79 25.58 15.91 56.19\n27/05/2026 10,723,179.06 1.550202700000 -7.98 -241.59 -2.86 -41.43 4.14 27.95 16.46 58.19\nRentabilidade Histórica\n96%\n84%\n72%\n60%\n48%\n36%\n24%\n12%\n0%\n-12%\nJan-20 Jan-21 Jan-22 Jan-23 Jan-24 Jan-25 Jan-26\nFundo CDI\nRetornos Mensais e Anuais\nRetorno Mensal JAN FEV MAR ABR MAI JUN JUL AGO SET OUT NOV DEZ no Ano\nPORTFÓLIO 5.22% 1.31% -3.16% -1.01% -5.11% -3.04%\n2026 %CDI 448.32% 131.10% - - - -\nCDI 1.16% 1.00% 1.21% 1.09% 1.07% 5.66%\nPORTFÓLIO 4.78% -2.45% 3.17% 8.82% 4.46% 1.76% -4.63% 6.08% 0.81% 1.01% 3.92% -1.64% 28.46%\n2025 %CDI 473.62% - 329.88% 835.54% 392.59% 160.46% - 522.06% 66.69% 79.36% 372.18% - 198.80%\nCDI 1.01% 0.99% 0.96% 1.06% 1.14% 1.10% 1.28% 1.16% 1.22% 1.28% 1.05% 1.22% 14.31%\nDesde\nRetorno Anual 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\no início\nPORTFÓLIO 4.63% 7.05% -3.23% 5.91% 14.08% -6.05% 28.46% -3.04% 53.24%\n%CDI 115.72% 254.71% - 47.80% 107.88% - 198.80% - 59.27%\nCDI 4.00% 2.77% 4.40% 12.37% 13.05% 10.87% 14.31% 5.66% 89.83%"
+        ],
+        [
+          "Em atendimento à instrução CVM nº 465, desde 02 / 05 / 2008, os fundos compostos por ativos de renda variável deixaram de apurar suas rentabilidades com base na cotação média das ações e passaram a fazê - lo com base na cotação de\nfechamento.Assim comparações de rentabilidade devem utilizar, para períodos anteriores a 02 / 05 / 2008, a cotação média dos índices de ações e, para períodos posteriores a esta data, a cotação de fechamento. A referida alteração não se aplica aos\nFundos Exclusivos de Entidades Fechadas de Previdência Complementar, regulamentados pela Resolução 3.456 / 2007 do Conselho Monetário Nacional - CMN.\n*Para os fundos BTGP Access é considerado o Gestor do fundo investido com alocação predominante."
+        ]
+      ],
+      [
+        [
+          "",
+          ""
+        ]
+      ],
+      [
+        [
+          "Data",
+          "Patrimônio",
+          "Cota",
+          "Dia",
+          null,
+          "Mês",
+          null,
+          "Ano",
+          null,
+          "Desde o Início\n(22/04/2019)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI"
+        ],
+        [
+          "29/05/2026",
+          "10,600,041.01",
+          "1.532401200000",
+          "-0.74",
+          "-1,379.24",
+          "-5.11",
+          "-475.78",
+          "-3.04",
+          "-53.74",
+          "53.24",
+          "59.27"
+        ],
+        [
+          "28/05/2026",
+          "10,678,690.32",
+          "1.543771200000",
+          "-0.41",
+          "-776.94",
+          "-4.40",
+          "-431.89",
+          "-2.32",
+          "-41.45",
+          "54.38",
+          "60.60"
+        ],
+        [
+          "27/05/2026",
+          "10,723,179.06",
+          "1.550202700000",
+          "-0.01",
+          "-25.33",
+          "-4.00",
+          "-414.76",
+          "-1.92",
+          "-34.54",
+          "55.02",
+          "61.39"
+        ]
+      ],
+      [
+        [
+          "Data",
+          "Patrimônio",
+          "Cota",
+          "3 Meses",
+          null,
+          "6 Meses",
+          null,
+          "12 Meses",
+          null,
+          "24 Meses",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI",
+          "%",
+          "%CDI"
+        ],
+        [
+          "29/05/2026",
+          "10,600,041.01",
+          "1.532401200000",
+          "-9.04",
+          "-264.73",
+          "-4.63",
+          "-66.63",
+          "3.21",
+          "21.65",
+          "15.20",
+          "53.65"
+        ],
+        [
+          "28/05/2026",
+          "10,678,690.32",
+          "1.543771200000",
+          "-8.37",
+          "-248.99",
+          "-3.92",
+          "-56.92",
+          "3.79",
+          "25.58",
+          "15.91",
+          "56.19"
+        ],
+        [
+          "27/05/2026",
+          "10,723,179.06",
+          "1.550202700000",
+          "-7.98",
+          "-241.59",
+          "-2.86",
+          "-41.43",
+          "4.14",
+          "27.95",
+          "16.46",
+          "58.19"
+        ]
+      ],
+      [
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ],
+        [
+          ""
+        ]
+      ],
+      [
+        [
+          "Retorno Mensal",
+          null,
+          "JAN",
+          "FEV",
+          "MAR",
+          "ABR",
+          "MAI",
+          "JUN",
+          "JUL",
+          "AGO",
+          "SET",
+          "OUT",
+          "NOV",
+          "DEZ",
+          "no Ano"
+        ],
+        [
+          "2026",
+          "PORTFÓLIO",
+          "5.22%",
+          "1.31%",
+          "-3.16%",
+          "-1.01%",
+          "-5.11%",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-3.04%"
+        ],
+        [
+          null,
+          "%CDI",
+          "448.32%",
+          "131.10%",
+          "-",
+          "-",
+          "-",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "-"
+        ],
+        [
+          null,
+          "CDI",
+          "1.16%",
+          "1.00%",
+          "1.21%",
+          "1.09%",
+          "1.07%",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "5.66%"
+        ],
+        [
+          "2025",
+          "PORTFÓLIO",
+          "4.78%",
+          "-2.45%",
+          "3.17%",
+          "8.82%",
+          "4.46%",
+          "1.76%",
+          "-4.63%",
+          "6.08%",
+          "0.81%",
+          "1.01%",
+          "3.92%",
+          "-1.64%",
+          "28.46%"
+        ],
+        [
+          null,
+          "%CDI",
+          "473.62%",
+          "-",
+          "329.88%",
+          "835.54%",
+          "392.59%",
+          "160.46%",
+          "-",
+          "522.06%",
+          "66.69%",
+          "79.36%",
+          "372.18%",
+          "-",
+          "198.80%"
+        ],
+        [
+          null,
+          "CDI",
+          "1.01%",
+          "0.99%",
+          "0.96%",
+          "1.06%",
+          "1.14%",
+          "1.10%",
+          "1.28%",
+          "1.16%",
+          "1.22%",
+          "1.28%",
+          "1.05%",
+          "1.22%",
+          "14.31%"
+        ]
+      ],
+      [
+        [
+          "Retorno Anual",
+          null,
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "2026",
+          "Desde\no início"
+        ],
+        [
+          "",
+          "PORTFÓLIO",
+          "",
+          "",
+          "",
+          "",
+          "4.63%",
+          "7.05%",
+          "-3.23%",
+          "5.91%",
+          "14.08%",
+          "-6.05%",
+          "28.46%",
+          "-3.04%",
+          "53.24%"
+        ],
+        [
+          null,
+          "%CDI",
+          "",
+          "",
+          "",
+          "",
+          "115.72%",
+          "254.71%",
+          "-",
+          "47.80%",
+          "107.88%",
+          "-",
+          "198.80%",
+          "-",
+          "59.27%"
+        ],
+        [
+          null,
+          "CDI",
+          "",
+          "",
+          "",
+          "",
+          "4.00%",
+          "2.77%",
+          "4.40%",
+          "12.37%",
+          "13.05%",
+          "10.87%",
+          "14.31%",
+          "5.66%",
+          "89.83%"
+        ]
+      ]
+    ],
+    "_dt": "2026-05-29 00:00:00"
   }
 ]
