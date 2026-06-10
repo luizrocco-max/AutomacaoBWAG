@@ -656,12 +656,13 @@ with tab_detalhe:
     c2.metric("Patrimônio",  f"R$ {cart.get('patrimonio',0)/1e6:.2f}M")
     b_mes = bench.get("mes")
     b_ano = bench.get("ano")
-    c3.metric("Retorno Mês", fmt_pct(perf.get("mes")),
-              delta=f"bench {fmt_pct(b_mes)}" if b_mes is not None else None,
-              delta_color="inverse" if (b_mes or 0) < 0 else "normal")
-    c4.metric("Retorno Ano", fmt_pct(perf.get("ano")),
-              delta=f"bench {fmt_pct(b_ano)}" if b_ano is not None else None,
-              delta_color="inverse" if (b_ano or 0) < 0 else "normal")
+    # Streamlit detecta cor pelo 1º char: string deve começar com "-" para vermelho
+    def _bench_delta(val):
+        if val is None:
+            return None
+        return f"{fmt_pct(val)} (bench)"  # "-4.60% (bench)" → começa com "-" → vermelho
+    c3.metric("Retorno Mês", fmt_pct(perf.get("mes")), delta=_bench_delta(b_mes))
+    c4.metric("Retorno Ano", fmt_pct(perf.get("ano")), delta=_bench_delta(b_ano))
     c5.metric("12M",         fmt_pct(perf.get("m12")))
     st.markdown("---")
 
